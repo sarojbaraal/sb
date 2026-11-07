@@ -1,10 +1,10 @@
 {
   "strengths": [
-    "Project planning and end-to-end implementation",
-    "Workflow optimisation and process improvement",
-    "Technical sales and solution-led client engagement",
-    "MIS development, optimisation and data-driven reporting",
-    "Cross-functional coordination across sales, finance, supply chain and delivery"
+    "MIS reporting, data organisation and information accuracy",
+    "Project coordination, schedule tracking and action follow-up",
+    "Technical sales support, requirements gathering and bid documentation",
+    "ERP/SCM-related records, material planning support and vendor coordination",
+    "Cross-functional communication across sales, finance, supply chain and delivery"
   ],
   "stack": [
     {
@@ -13,7 +13,7 @@
     },
     {
       "label": "Data and productivity",
-      "value": "Microsoft Excel (advanced), PowerPoint, Word, Outlook"
+      "value": "Microsoft Excel, PowerPoint, Word, Outlook"
     },
     {
       "label": "Design and documentation",
