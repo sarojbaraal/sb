@@ -1,85 +1,53 @@
 ---
 import { url } from "../utils/url";
+import Icon from "./Icon.astro";
+
 interface Props {
   id: string;
   label: string;
+  icon?: string;
   title: string;
   priceFrom?: string;
   engagement?: string;
   bullets?: string[];
   ctaText?: string;
   ctaHref?: string;
-  detailed?: boolean;
 }
 
 const {
   id,
   label,
+  icon = 'chart-column',
   title,
   priceFrom,
   engagement,
   bullets = [],
-  ctaText = 'Learn more →',
+  ctaText = 'Learn more',
   ctaHref = `/services#${id}`,
-  detailed = false,
 } = Astro.props;
 ---
 
-<div id={id} class="card-base p-6 md:p-8 flex flex-col justify-between hover:border-[var(--color-accent)]/40 transition-colors">
+<div id={id} class="card-base card-hover p-6 md:p-7 flex flex-col justify-between h-full scroll-mt-24">
   <div>
-    <!-- Header with label & Icon -->
-    <div class="flex items-center justify-between mb-4">
-      <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-accent-soft)] text-[var(--color-accent)] font-bold text-sm">
-        {label}
-      </span>
-      <div class="text-[var(--color-accent)]">
-        {id === 'mis-reporting' && (
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-        )}
-        {id === 'doc-control' && (
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-        )}
-        {id === 'project-coordination' && (
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-          </svg>
-        )}
-      </div>
+    <div class="flex items-center justify-between mb-5">
+      <span class="icon-tile"><Icon name={icon} size={22} /></span>
+      <span class="text-sm font-semibold text-[var(--color-subtle)]">Service {label}</span>
     </div>
 
-    <!-- Title -->
-    <h3 class="text-xl font-semibold text-[var(--color-text)] mb-2">
-      {title}
-    </h3>
+    <h3 class="text-xl font-semibold mb-3">{title}</h3>
 
-    <!-- Pricing & Engagement meta if available -->
     {(priceFrom || engagement) && (
-      <div class="mb-4 pb-4 border-b border-[var(--color-border)] text-sm">
-        {priceFrom && (
-          <span class="font-semibold text-[var(--color-text)] block">
-            {priceFrom}
-          </span>
-        )}
-        {engagement && (
-          <span class="text-[var(--color-muted)] text-xs block">
-            {engagement}
-          </span>
-        )}
+      <div class="mb-5 pb-5 border-b border-[var(--color-border)]">
+        {priceFrom && <span class="block font-semibold text-[var(--color-accent)]">{priceFrom}</span>}
+        {engagement && <span class="block text-sm text-[var(--color-muted)]">{engagement}</span>}
       </div>
     )}
 
-    <!-- Bullet points -->
     {bullets.length > 0 && (
-      <ul class="space-y-2 mb-6 text-sm text-[var(--color-muted)]">
+      <ul class="space-y-3 mb-7 text-[15px] text-[var(--color-muted)] list-none p-0">
         {bullets.map((bullet) => (
-          <li class="flex items-start gap-2">
-            <svg class="w-4 h-4 text-[var(--color-accent)] mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-            </svg>
+          <li class="flex items-start gap-2.5">
+            <Icon name="check" size={16} strokeWidth={2.5} class="mt-1 shrink-0 text-[var(--color-accent)]" />
             <span>{bullet}</span>
           </li>
         ))}
@@ -87,14 +55,8 @@ const {
     )}
   </div>
 
-  <!-- Action CTA -->
-  <div class="pt-2">
-    <a
-      href={url(ctaHref)}
-      class={detailed ? "btn-base btn-primary w-full text-sm" : "inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"}
-    >
-      {ctaText}
-    </a>
-  </div>
+  <a href={url(ctaHref)} class="btn-base btn-primary w-full text-sm">
+    {ctaText}
+    <Icon name="arrow-right" size={16} />
+  </a>
 </div>
-

@@ -11,9 +11,10 @@ interface Props {
   ogImage?: string;
   type?: "website" | "article" | "profile";
   jsonLd?: Record<string, any> | Array<Record<string, any>>;
+  noindex?: boolean;
 }
 
-const { title, description, ogImage, type, jsonLd } = Astro.props;
+const { title, description, ogImage, type, jsonLd, noindex } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,22 +22,27 @@ const { title, description, ogImage, type, jsonLd } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0B1220" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href={url("/favicon.ico")} sizes="48x48" />
     <link rel="icon" type="image/svg+xml" href={url("/favicon.svg")} />
+    <link rel="apple-touch-icon" href={url("/apple-touch-icon.png")} />
+    <link rel="alternate" type="application/rss+xml" title="Saroj Baral: Field Notes" href={url("/rss.xml")} />
     <SEO
       title={title}
       description={description}
       ogImage={ogImage}
       type={type}
       jsonLd={jsonLd}
+      noindex={noindex}
     />
   </head>
-  <body
-    class="bg-[var(--color-bg)] text-[var(--color-text)] flex flex-col min-h-screen antialiased selection:bg-[var(--color-accent-soft)] selection:text-[var(--color-accent-hover)]"
-  >
-    <!-- Accessible Skip Link -->
+  <body>
+    <!-- Accessible skip link -->
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--color-accent)] focus:text-white focus:rounded focus:shadow-md focus:outline-none"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:bg-[var(--color-btn)] focus:text-white focus:rounded-lg focus:shadow-md focus:outline-none"
     >
       Skip to main content
     </a>
@@ -49,13 +55,18 @@ const { title, description, ogImage, type, jsonLd } = Astro.props;
 
     <Footer />
 
+    <!-- Header scroll state, mobile menu, scroll reveals, count-ups. Bundled by Astro. -->
+    <script>
+      import "../scripts/site.ts";
+    </script>
+
     <!--
       ==========================================================================
       CLOUDFLARE WEB ANALYTICS (PLACEHOLDER)
       To activate:
       1. Go to your Cloudflare Dashboard -> Analytics & Logs -> Web Analytics
       2. Add site "sarojbaral.com.np" and copy your 'token'
-      3. Uncomment the script below and replace Cloudflare 'YOUR_CLOUDFLARE_ANALYTICS_TOKEN'
+      3. Uncomment the script below and replace 'YOUR_CLOUDFLARE_ANALYTICS_TOKEN'
       ==========================================================================
       <script
         defer
