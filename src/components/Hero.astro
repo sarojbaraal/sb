@@ -9,17 +9,17 @@ import ProofStrip from "./ProofStrip.astro";
   <div class="site-container">
     <div class="hero-grid">
       <div>
-        <p class="text-[15px] text-[var(--color-muted)] mb-5 flex items-center gap-2">
+        <p class="hero-kicker text-[15px] text-[var(--color-muted)] mb-5 flex items-center gap-2">
           <span class="inline-block w-2 h-2 rounded-full bg-[var(--color-marigold)]" aria-hidden="true"></span>
-          {profile.availability}. Working from {profile.location.country} on {profile.location.tzLabel}.
+          MIS · Business intelligence · Project control
         </p>
 
-        <h1 class="max-w-[15ch] md:max-w-[17ch] mb-6">
-          Turning complex information into clear, useful decisions.
+        <h1 class="hero-title max-w-[13ch] mb-6">
+          Make every number useful.
         </h1>
 
         <p class="text-lg md:text-xl text-[var(--color-muted)] prose-measure mb-8 leading-[1.6]">
-          I bring together <strong class="text-[var(--color-text)]">MIS, business intelligence and project coordination</strong> to turn complex information into accurate reports, reliable records and better-informed decisions. My background includes six years at Huawei Technologies Nepal, an engineering degree, an Executive MBA and independent freelance work.
+          I turn scattered operational data into <strong class="text-[var(--color-text)]">reports people trust, records teams can hand over and actions managers can see.</strong> Six years at Huawei Technologies Nepal, an engineering degree and an Executive MBA shape the way I work.
         </p>
 
         <div class="flex flex-wrap items-center gap-3 mb-8 md:mb-0">
@@ -29,20 +29,24 @@ import ProofStrip from "./ProofStrip.astro";
         </div>
       </div>
 
-      <div class="decision-preview" aria-label="A preview of a reporting workflow">
-        <div class="flex items-start justify-between gap-4 mb-8">
+      <div class="impact-board" aria-label="Illustrative reporting improvement from five days to four hours">
+        <div class="impact-board-top">
           <div>
-            <p class="preview-kicker">Reporting system / 01</p>
-            <h2 class="text-2xl md:text-3xl text-white mb-0">From scattered inputs<br />to a clear next step.</h2>
+            <p class="preview-kicker">Field note / reporting intervention</p>
+            <p class="impact-board-title">A better reporting rhythm.</p>
           </div>
-          <span class="preview-status">Ready</span>
+          <span class="impact-board-number">01</span>
         </div>
-        <div class="space-y-3">
-          <div class="preview-row"><span>Branch inputs</span><strong>Validated</strong></div>
-          <div class="preview-row"><span>Monthly pack</span><strong>Consolidated</strong></div>
-          <div class="preview-row"><span>Management view</span><strong class="text-[var(--color-marigold)]">Actionable</strong></div>
+        <div class="impact-metric">
+          <div><strong>5 days</strong><span>before</span></div>
+          <span class="impact-arrow" aria-hidden="true">→</span>
+          <div class="impact-metric-after"><strong>4 hours</strong><span>after</span></div>
         </div>
-        <div class="preview-footer"><span>Reliable information</span><span>Clear reporting</span></div>
+        <p class="impact-caption">Illustrative cycle-time improvement from a unified monthly executive pack.</p>
+        <div class="impact-bars" aria-hidden="true">
+          <span style="--bar-height: 100%"></span><span style="--bar-height: 82%"></span><span style="--bar-height: 64%"></span><span class="is-active" style="--bar-height: 24%"></span>
+        </div>
+        <div class="impact-board-footer"><span>Inputs validated</span><span>Decision-ready</span></div>
       </div>
     </div>
 
