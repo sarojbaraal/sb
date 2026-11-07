@@ -1,4 +1,5 @@
 ---
+import { url } from "../utils/url";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import Timeline from "../components/Timeline.astro";
@@ -214,10 +215,10 @@ import profile from "../data/profile.json";
 
     <!-- CTAs -->
     <div class="max-w-3xl flex flex-wrap items-center gap-4">
-      <a href="/cv" class="btn-base btn-primary text-sm px-5 py-2.5">
+      <a href={url("/cv")} class="btn-base btn-primary text-sm px-5 py-2.5">
         Download CV
       </a>
-      <a href="/contact" class="btn-base btn-secondary text-sm px-5 py-2.5">
+      <a href={url("/contact")} class="btn-base btn-secondary text-sm px-5 py-2.5">
         Contact me &rarr;
       </a>
     </div>

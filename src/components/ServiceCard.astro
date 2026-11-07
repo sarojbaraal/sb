@@ -1,4 +1,5 @@
 ---
+import { url } from "../utils/url";
 interface Props {
   id: string;
   label: string;
@@ -89,7 +90,7 @@ const {
   <!-- Action CTA -->
   <div class="pt-2">
     <a
-      href={ctaHref}
+      href={url(ctaHref)}
       class={detailed ? "btn-base btn-primary w-full text-sm" : "inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"}
     >
       {ctaText}

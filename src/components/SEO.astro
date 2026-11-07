@@ -1,4 +1,5 @@
 ---
+import { url } from "../utils/url";
 interface Props {
   title: string;
   description: string;
@@ -15,11 +16,11 @@ const {
   jsonLd,
 } = Astro.props;
 
-const siteUrl = 'https://sarojbaral.com.np';
+const siteUrl = (Astro.site?.origin ?? 'https://sarojbaral.com.np').replace(/\/$/, '');
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '';
 const canonicalUrl = `${siteUrl}${pathname}`;
 const formattedTitle = title.includes('Saroj Baral') ? title : `${title} | Saroj Baral`;
-const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${url(ogImage)}`;
 ---
 
 <title>{formattedTitle}</title>

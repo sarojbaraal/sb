@@ -1,4 +1,5 @@
 ---
+import { url } from "../utils/url";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import profile from '../data/profile.json';
 import experience from '../data/experience.json';
@@ -23,7 +24,7 @@ import education from '../data/education.json';
 
       <div class="flex items-center gap-3">
         <a
-          href="/cv/Saroj-Baral-CV.pdf"
+          href={url("/cv/Saroj-Baral-CV.pdf")}
           download="Saroj-Baral-CV.pdf"
           class="btn-base btn-primary text-sm px-4 py-2"
         >

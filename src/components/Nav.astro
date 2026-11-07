@@ -1,4 +1,5 @@
 ---
+import { url, stripBase } from "../utils/url";
 const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
@@ -9,13 +10,13 @@ const navLinks = [
   { href: '/cv', label: 'CV' },
 ];
 
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const currentPath = stripBase(Astro.url.pathname).replace(/\/$/, '') || '/';
 ---
 
 <header class="sticky top-0 z-40 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]">
   <div class="site-container flex items-center justify-between h-16">
     <!-- Logo / Brand -->
-    <a href="/" class="text-xl font-bold tracking-tight text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded">
+    <a href={url("/")} class="text-xl font-bold tracking-tight text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded">
       Saroj Baral
     </a>
 
@@ -25,7 +26,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
         const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
         return (
           <a
-            href={link.href}
+            href={url(link.href)}
             class={`text-[15px] font-medium transition-colors hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded py-1 px-1.5 ${
               isActive ? 'text-[var(--color-accent)] font-semibold' : 'text-[var(--color-muted)]'
             }`}
@@ -38,7 +39,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
     <!-- Desktop Action Button -->
     <div class="hidden md:flex items-center">
-      <a href="/contact" class="btn-base btn-primary text-sm py-2 px-3.5">
+      <a href={url("/contact")} class="btn-base btn-primary text-sm py-2 px-3.5">
         Contact me &rarr;
       </a>
     </div>
@@ -72,13 +73,13 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       <nav class="flex flex-col gap-3" aria-label="Mobile Navigation">
         {navLinks.map((link) => (
           <a
-            href={link.href}
+            href={url(link.href)}
             class="mobile-nav-link text-lg font-medium text-[var(--color-text)] hover:text-[var(--color-accent)] py-1.5 border-b border-[var(--color-border)]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           >
             {link.label}
           </a>
         ))}
-        <a href="/contact" class="mobile-nav-link btn-base btn-primary mt-2 text-center">
+        <a href={url("/contact")} class="mobile-nav-link btn-base btn-primary mt-2 text-center">
           Contact me &rarr;
         </a>
       </nav>

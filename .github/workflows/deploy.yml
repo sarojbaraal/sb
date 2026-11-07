@@ -32,6 +32,10 @@ jobs:
 
       - name: Build Astro site
         run: npm run build
+        env:
+          # Project page is served from https://sarojbaraal.github.io/sb/
+          SITE_URL: https://sarojbaraal.github.io
+          BASE_PATH: /sb
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

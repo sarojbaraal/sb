@@ -1,5 +1,5 @@
 ---
-
+import { url } from "../utils/url";
 ---
 
 <form
@@ -18,7 +18,7 @@
   <input
     type="hidden"
     name="redirect"
-    value="https://sarojbaral.com.np/thank-you"
+    value={new URL(url("/thank-you"), Astro.site ?? "https://sarojbaral.com.np").href}
   />
 
   <!-- Honeypot Spam Protection Field -->

@@ -1,4 +1,5 @@
 ---
+import { url } from "../utils/url";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
@@ -98,7 +99,7 @@ const jsonLd = [
       </div>
 
       <div class="text-center">
-        <a href="/work" class="btn-base btn-secondary text-sm px-6 py-2.5">
+        <a href={url("/work")} class="btn-base btn-secondary text-sm px-6 py-2.5">
           All case studies &rarr;
         </a>
       </div>
@@ -131,7 +132,7 @@ const jsonLd = [
             </p>
           </div>
           <div>
-            <a href="/websites" class="btn-base btn-secondary text-sm w-full sm:w-auto">
+            <a href={url("/websites")} class="btn-base btn-secondary text-sm w-full sm:w-auto">
               See packages &rarr;
             </a>
           </div>
@@ -154,7 +155,7 @@ const jsonLd = [
             </p>
           </div>
           <div>
-            <a href="/teaching" class="btn-base btn-secondary text-sm w-full sm:w-auto">
+            <a href={url("/teaching")} class="btn-base btn-secondary text-sm w-full sm:w-auto">
               Teaching details &rarr;
             </a>
           </div>
@@ -180,7 +181,7 @@ const jsonLd = [
           <a href={`mailto:${profile.email}`} class="btn-base btn-primary text-sm px-5 py-2.5">
             Email me
           </a>
-          <a href="/cv" class="btn-base btn-secondary text-sm px-5 py-2.5">
+          <a href={url("/cv")} class="btn-base btn-secondary text-sm px-5 py-2.5">
             Download CV
           </a>
           <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="btn-base btn-secondary text-sm px-5 py-2.5">
