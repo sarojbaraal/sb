@@ -1,7 +1,7 @@
 {
   "name": "Saroj Baral",
-  "headline": "Project Control, MIS & Business Operations",
-  "tagline": "Accurate data. Clear reports. Projects that stay on track.",
+  "headline": "MIS, Business Intelligence & Project Coordination",
+  "tagline": "Reliable information. Clear reporting. Better-coordinated work.",
   "location": {
     "city": "Kathmandu",
     "country": "Nepal",
@@ -12,38 +12,17 @@
   "emailFallback": "sarojbaraal@gmail.com",
   "phone": "+977-97010-83549",
   "linkedin": "https://www.linkedin.com/in/sarojbaraal",
-  "availability": "Available for remote roles and consulting",
+  "availability": "Open to remote roles and project-based assignments",
   "languages": [
-    {
-      "name": "Nepali",
-      "level": "Native"
-    },
-    {
-      "name": "English",
-      "level": "Professional"
-    },
-    {
-      "name": "Hindi",
-      "level": "Conversational"
-    }
+    { "name": "Nepali", "level": "Native" },
+    { "name": "English", "level": "Professional" },
+    { "name": "Hindi", "level": "Conversational" }
   ],
   "proofStrip": [
-    {
-      "value": "6 years",
-      "label": "Huawei Technologies Nepal"
-    },
-    {
-      "value": "EMBA",
-      "label": "Strategic management, 2022"
-    },
-    {
-      "value": "B.E.",
-      "label": "Electronics & Communication"
-    },
-    {
-      "value": "UTC+5:45",
-      "label": "Remote-ready"
-    }
+    { "value": "6 years", "label": "Huawei Technologies Nepal" },
+    { "value": "EMBA", "label": "Completed in 2022" },
+    { "value": "B.E.", "label": "Electronics & Communication" },
+    { "value": "UTC+5:45", "label": "Remote-ready from Nepal" }
   ],
-  "summary": "Engineer with six years of project implementation, technical sales and solution delivery at Huawei Technologies Nepal, followed by independent MIS and operations consulting for small and medium businesses. I turn scattered inputs from sales, finance, supply chain and vendors into one accurate, reportable picture, and I hold an Executive MBA in strategic management."
+  "summary": "Electronics and Communication Engineer with six years of experience at Huawei Technologies Nepal across project coordination, project control, technical solutions, sales support and SCM-related operations. I completed an Executive MBA in 2022. Since 2022, I have taken on independent freelance and project-based assignments involving data research, Excel, data entry, reporting, business documentation and presentations. My focus is on accurate information, clear reporting and dependable coordination."
 }
