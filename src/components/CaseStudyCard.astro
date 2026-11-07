@@ -1,84 +1,65 @@
 ---
 import { url } from "../utils/url";
+import { splitKpi } from "../utils/kpi";
+import Icon from "./Icon.astro";
+
 interface Props {
   slug: string;
   title: string;
   summary: string;
   client_type: string;
   year: number;
-  services: string[];
+  services?: string[];
   tools: string[];
   result_metrics: string[];
+  kpi?: { from?: string; to: string; label: string };
   cover?: string;
 }
 
-const {
-  slug,
-  title,
-  summary,
-  client_type,
-  year,
-  services,
-  tools,
-  result_metrics,
-} = Astro.props;
+const { slug, title, summary, client_type, year, tools, result_metrics, kpi } = Astro.props;
+
+const from = kpi?.from ? splitKpi(kpi.from) : null;
+const to = kpi ? splitKpi(kpi.to) : null;
 ---
 
-<article class="card-base case-study-card p-6 md:p-7 flex flex-col justify-between hover:border-[var(--color-accent)] transition-all group">
-  <div>
-    <!-- Header Meta: Client Type & Year -->
-    <div class="flex items-center justify-between text-xs text-[var(--color-muted)] mb-3 pb-2 border-b border-[var(--color-border)]">
-      <span class="font-medium text-[var(--color-accent)]">{client_type}</span>
-      <span>{year}</span>
-    </div>
-
-    <!-- Title -->
-    <div class="flex items-start justify-between gap-4 mb-2.5">
-      <h3 class="text-xl font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors mb-0">
-        <a href={url(`/work/${slug}`)} class="focus-visible:outline-none focus-visible:underline">
-          {title}
-        </a>
-      </h3>
-      <span class="case-study-index" aria-hidden="true">’{String(year).slice(-2)}</span>
-    </div>
-
-    <!-- Summary -->
-    <p class="text-sm text-[var(--color-muted)] leading-relaxed mb-4">
-      {summary}
+<article class="card-base card-hover work-card">
+  <!-- The key result is the visual hero of the card -->
+  <div class="work-card__kpi">
+    <p class="kpi-eyebrow">
+      <span>Key result</span>
+      <span>Illustrative sample</span>
     </p>
 
-    <!-- Highlight Metric Line -->
-    {result_metrics.length > 0 && (
-      <div class="p-4 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] mb-4">
-        <span class="text-xs font-semibold text-[var(--color-accent)] block mb-0.5">Illustrative outcome</span>
-        <span class="text-base text-[var(--color-text)] font-semibold leading-snug block">
-          {result_metrics[0]}
-        </span>
-      </div>
+    {kpi && to ? (
+      <>
+        <p class="kpi-value">
+          {from && (
+            <>
+              <span class="from">
+                {from.prefix}{from.num !== null && <span data-count={from.num}>{from.num}</span>}{from.suffix}
+              </span>
+              <Icon name="arrow-right" size={22} class="arrow" />
+            </>
+          )}
+          <span class="to">
+            {to.prefix}{to.num !== null && <span data-count={to.num}>{to.num}</span>}{to.suffix}
+          </span>
+        </p>
+        <p class="kpi-label">{kpi.label}</p>
+      </>
+    ) : (
+      <p class="kpi-value" style="font-size:1.25rem;letter-spacing:-0.01em">{result_metrics[0]}</p>
     )}
-
-    <!-- Tags: Services & Tools -->
-    <div class="flex flex-wrap gap-1.5 mb-6">
-      {services.map((service) => (
-        <span class="inline-block px-2 py-0.5 rounded text-[11px] font-medium bg-[var(--color-bg)] text-[var(--color-text)] border border-[var(--color-border)]">
-          {service}
-        </span>
-      ))}
-      {tools.slice(0, 2).map((tool) => (
-        <span class="inline-block px-2 py-0.5 rounded text-[11px] font-medium bg-[var(--color-surface)] text-[var(--color-muted)] border border-[var(--color-border)]">
-          {tool}
-        </span>
-      ))}
-    </div>
   </div>
 
-  <!-- Footer Link -->
-  <div class="pt-2">
-    <a
-      href={url(`/work/${slug}`)}
-      class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-accent)] group-hover:text-[var(--color-accent-hover)] transition-colors"
-    >
-      <span>Read case study <span aria-hidden="true" class="ml-1 transition-transform group-hover:translate-x-1">→</span></span>
-    </a>
+  <div class="work-card__body">
+    <p class="work-card__meta">{client_type} &middot; {year}</p>
+    <h3>
+      <a href={url(`/work/${slug}`)} class="stretched-link" style="text-decoration:none;color:inherit">{title}</a>
+    </h3>
+    <p class="work-card__summary">{summary}</p>
+    <div class="tag-row">
+      {tools.slice(0, 3).map((tool) => <span class="tag">{tool}</span>)}
+    </div>
   </div>
 </article>

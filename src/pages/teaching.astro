@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import CTA from '../components/CTA.astro';
+import Icon from '../components/Icon.astro';
 import teaching from '../data/teaching.json';
 import profile from '../data/profile.json';
 
@@ -28,17 +29,11 @@ const jsonLd = {
 >
   <div class="site-container section-padding">
     <!-- Header -->
-    <div class="max-w-3xl mb-12">
-      <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-2">
-        Academic &amp; Training Engagements
-      </span>
-      <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-4">
-        Teaching &amp; workshops
-      </h1>
-      <p class="text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
-        Available for part-time faculty, guest lectures and short workshops.
-      </p>
-    </div>
+    <header class="page-head">
+      <span class="eyebrow">Academic &amp; Training Engagements</span>
+      <h1>Teaching &amp; workshops</h1>
+      <p>Available for part-time faculty, guest lectures and short workshops.</p>
+    </header>
 
     <!-- Topics Grid (Two Columns) -->
     <div class="mb-16">
@@ -52,11 +47,7 @@ const jsonLd = {
         <!-- Column 1: Electronics -->
         <div class="card-base p-6 md:p-8 bg-[var(--color-surface)]">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-8 h-8 rounded bg-[var(--color-accent-soft)] text-[var(--color-accent)] flex items-center justify-center font-bold">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
+            <span class="icon-tile" style="width:36px;height:36px"><Icon name="zap" size={18} /></span>
             <h3 class="text-xl font-bold text-[var(--color-text)]">
               Electronics &amp; Communications
             </h3>
@@ -64,9 +55,7 @@ const jsonLd = {
           <ul class="space-y-3 text-sm text-[var(--color-muted)]">
             {teaching.topics.electronics.map((item) => (
               <li class="flex items-start gap-2.5">
-                <svg class="w-4 h-4 text-[var(--color-accent)] mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                </svg>
+                <Icon name="check" size={16} strokeWidth={2.5} class="mt-0.5 shrink-0 text-[var(--color-accent)]" />
                 <span class="text-[var(--color-text)] font-medium">{item}</span>
               </li>
             ))}
@@ -76,11 +65,7 @@ const jsonLd = {
         <!-- Column 2: Management -->
         <div class="card-base p-6 md:p-8 bg-[var(--color-surface)]">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-8 h-8 rounded bg-[var(--color-accent-soft)] text-[var(--color-accent)] flex items-center justify-center font-bold">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-            </div>
+            <span class="icon-tile" style="width:36px;height:36px"><Icon name="chart-column" size={18} /></span>
             <h3 class="text-xl font-bold text-[var(--color-text)]">
               Management &amp; Data Operations
             </h3>
@@ -88,9 +73,7 @@ const jsonLd = {
           <ul class="space-y-3 text-sm text-[var(--color-muted)]">
             {teaching.topics.management.map((item) => (
               <li class="flex items-start gap-2.5">
-                <svg class="w-4 h-4 text-[var(--color-accent)] mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                </svg>
+                <Icon name="check" size={16} strokeWidth={2.5} class="mt-0.5 shrink-0 text-[var(--color-accent)]" />
                 <span class="text-[var(--color-text)] font-medium">{item}</span>
               </li>
             ))}

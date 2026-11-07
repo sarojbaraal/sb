@@ -18,10 +18,24 @@ const principles = [
   description="Saroj Baral: electronics and communication engineer with experience in project coordination, MIS, reporting, SCM-related operations and independent freelance work."
 >
   <div class="site-container py-14 md:py-20">
-    <h1 class="max-w-[18ch] mb-6">Engineering discipline applied to business information.</h1>
-    <p class="text-lg md:text-xl text-[var(--color-muted)] prose-measure mb-14">
-      {profile.summary}
-    </p>
+    <div class="about-hero">
+      <div>
+        <h1 class="max-w-[18ch] mb-6" style="font-size:clamp(2rem,4.6vw,3rem)">Engineering discipline applied to business information.</h1>
+        <p class="lead prose-measure m-0">
+          {profile.summary}
+        </p>
+      </div>
+      <!-- Normal rectangular crop (no fade) is used on About and CV only -->
+      <figure class="portrait m-0">
+        <img
+          src={url("/images/saroj-portrait.webp")}
+          width="464"
+          height="580"
+          alt="Portrait of Saroj Baral in a navy blazer and white shirt"
+          decoding="async"
+        />
+      </figure>
+    </div>
 
     <div>
       <section class="rule-row">
@@ -74,7 +88,7 @@ const principles = [
     </div>
 
     <div class="mt-16 mb-4">
-      <h2 class="mb-8">Career history</h2>
+      <h2 class="mb-6">Career history</h2>
       <Timeline />
     </div>
 
@@ -94,8 +108,8 @@ const principles = [
     </section>
 
     <div class="pt-4 flex flex-wrap gap-3">
-      <a href={url("/cv")} class="btn-base btn-primary px-5 py-2.5">View CV</a>
-      <a href={url("/contact")} class="btn-base btn-secondary px-5 py-2.5">Contact me</a>
+      <a href={url("/cv")} class="btn-base btn-primary">View CV</a>
+      <a href={url("/contact")} class="btn-base btn-secondary">Contact me</a>
     </div>
   </div>
 </BaseLayout>

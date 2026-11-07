@@ -2,7 +2,10 @@
 import { url } from "../utils/url";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import ServiceSummary from '../components/ServiceSummary.astro';
 import CaseStudyCard from '../components/CaseStudyCard.astro';
+import Icon from '../components/Icon.astro';
 import profile from '../data/profile.json';
 import services from '../data/services.json';
 import { getCollection } from 'astro:content';
@@ -10,15 +13,16 @@ import { getCollection } from 'astro:content';
 const workEntries = await getCollection('work');
 const sortedWork = workEntries.sort((a, b) => a.data.order - b.data.order).slice(0, 3);
 
+// Structured data. The phone number is deliberately left out of public markup.
+const siteHome = new URL(url('/'), Astro.site ?? 'https://sarojbaral.com.np').href;
 const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: profile.name,
     jobTitle: profile.headline,
-    url: 'https://sarojbaral.com.np',
+    url: siteHome,
     email: profile.email,
-    telephone: profile.phone,
     address: {
       '@type': 'PostalAddress',
       addressLocality: profile.location.city,
@@ -31,113 +35,140 @@ const jsonLd = [
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Saroj Baral',
-    url: 'https://sarojbaral.com.np',
+    url: siteHome,
     description: profile.headline,
   },
 ];
 ---
 
 <BaseLayout
-  title={`${profile.name} — ${profile.headline}`}
+  title={`${profile.name}: ${profile.headline}`}
   description={`${profile.name}: ${profile.headline}. ${profile.tagline} Six years at Huawei Technologies Nepal, Executive MBA 2022, open to remote roles.`}
   jsonLd={jsonLd}
 >
-  <!-- Hero Section -->
+  <!-- 1. Hero -->
   <Hero />
 
-  <!-- What I Do -->
-  <section class="border-t border-[var(--color-border)] py-16 md:py-24">
-    <div class="site-container">
-      <h2 class="mb-2">What I do</h2>
-      <p class="text-[var(--color-muted)] text-lg prose-measure mb-10">
-        Reporting systems, document control and cross-functional project tracking for teams that need dependable information before they make the next decision.
-      </p>
+  <!-- 2. Stats strip -->
+  <Stats />
 
-      <div>
-        {services.map((service) => (
-          <div class="rule-row">
-            <div>
-              <h3 class="mb-1">{service.title}</h3>
-              <p class="text-sm text-[var(--color-muted)] m-0">{service.priceFrom}</p>
-              <p class="text-sm text-[var(--color-muted)] m-0">{service.engagement}</p>
-            </div>
-            <div>
-              <ul class="space-y-2 pl-5 list-disc text-[var(--color-text)] prose-measure mb-4">
-                {service.bullets.map((b) => <li>{b}</li>)}
-              </ul>
-              <a href={url(`/services#${service.id}`)} class="link-quiet text-[15px]">About {service.title}</a>
-            </div>
+  <!-- 3. Core services -->
+  <section class="section" aria-labelledby="services-title">
+    <div class="site-container">
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">What I do</span>
+          <h2 id="services-title">Core services</h2>
+          <p>
+            Reporting systems, document control and cross-functional project tracking for teams that need dependable information before they make the next decision.
+          </p>
+        </div>
+        <a href={url("/services")} class="link-arrow">
+          All services <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
+
+      <div class="cards-auto">
+        {services.map((service, i) => (
+          <div data-reveal style={`--i:${i}`}>
+            <ServiceSummary
+              id={service.id}
+              icon={service.icon}
+              title={service.title}
+              summary={service.summary}
+              tags={service.tags}
+            />
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Illustrative samples -->
-  <section class="bg-[var(--color-surface)] border-t border-[var(--color-border)] py-16 md:py-24">
+  <!-- 4. Selected work -->
+  <section class="section section--alt" aria-labelledby="work-title">
     <div class="site-container">
-      <h2 class="mb-2">Sample work</h2>
-      <p class="text-[var(--color-muted)] text-lg prose-measure mb-10">
-        Worked examples built on dummy data. They show how I structure a reporting pack, a register or a tracker. They are samples of method, not client results.
-      </p>
+      <div class="section-head" data-reveal>
+        <div>
+          <span class="eyebrow">Selected work</span>
+          <h2 id="work-title">Case studies</h2>
+          <p>
+            Worked examples built on dummy data. They show how I structure a reporting pack, a register or a tracker. They are samples of method, not client results.
+          </p>
+        </div>
+        <a href={url("/work")} class="link-arrow">
+          All case studies <Icon name="arrow-right" size={16} />
+        </a>
+      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        {sortedWork.map((entry) => (
-          <CaseStudyCard
-            slug={entry.id}
-            title={entry.data.title}
-            summary={entry.data.summary}
-            client_type={entry.data.client_type}
-            year={entry.data.year}
-            services={entry.data.services}
-            tools={entry.data.tools}
-            result_metrics={entry.data.result_metrics}
-            cover={entry.data.cover}
-          />
+      <div class="cards-auto">
+        {sortedWork.map((entry, i) => (
+          <div data-reveal style={`--i:${i}`}>
+            <CaseStudyCard
+              slug={entry.id}
+              title={entry.data.title}
+              summary={entry.data.summary}
+              client_type={entry.data.client_type}
+              year={entry.data.year}
+              tools={entry.data.tools}
+              result_metrics={entry.data.result_metrics}
+              kpi={entry.data.kpi}
+            />
+          </div>
         ))}
       </div>
-      <a href={url("/work")} class="link-quiet">All sample work</a>
     </div>
   </section>
 
-  <!-- Two more ways -->
-  <section class="border-t border-[var(--color-border)] py-16 md:py-24">
-    <div class="site-container">
-      <h2 class="mb-10">Also available</h2>
-      <div>
-        <div class="rule-row">
-          <h3 class="m-0">Simple business websites</h3>
+  <!-- 5. More ways I help -->
+  <section class="section" aria-labelledby="more-title" style="padding-block-end:0">
+    <div class="site-container" data-reveal>
+      <h2 id="more-title" class="sr-only">More ways I help</h2>
+      <div class="card-base more">
+        <div class="more__item">
+          <span class="icon-tile"><Icon name="globe" size={22} /></span>
           <div>
-            <p class="text-[var(--color-muted)] prose-measure mb-3">
-              Clean, fast, mobile-friendly sites for local businesses. From NPR 15,000, 7 to 10 days. AI-assisted build, human-reviewed delivery.
-            </p>
-            <a href={url("/websites")} class="link-quiet text-[15px]">See website packages</a>
+            <h3>Simple business websites</h3>
+            <p>Clean, fast, mobile-friendly sites for local businesses in 7 to 10 days. AI-assisted build, human-reviewed delivery.</p>
+            <a href={url("/websites")} class="link-arrow stretched-link">
+              See website packages <Icon name="arrow-right" size={16} />
+            </a>
           </div>
         </div>
-        <div class="rule-row">
-          <h3 class="m-0">Workshops</h3>
+        <div class="more__item">
+          <span class="icon-tile"><Icon name="graduation-cap" size={22} /></span>
           <div>
-            <p class="text-[var(--color-muted)] prose-measure mb-3">
-              Practical sessions on Excel for business, MIS, operations and project management, for teams and training programmes.
-            </p>
-            <a href={url("/teaching")} class="link-quiet text-[15px]">Workshop details</a>
+            <h3>Teaching &amp; workshops</h3>
+            <p>Practical sessions on Excel for business, MIS, operations and project management, for teams and training programmes.</p>
+            <a href={url("/teaching")} class="link-arrow stretched-link">
+              Workshop details <Icon name="arrow-right" size={16} />
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="bg-[var(--color-text)] text-white py-16 md:py-24">
-    <div class="site-container">
-      <h2 class="text-white mb-4 max-w-[20ch]">Hiring for a remote project or MIS role?</h2>
-      <p class="text-lg text-[var(--color-ash)] prose-measure mb-8">
-        Open to remote roles in MIS, project control, data operations and project coordination. Based in Nepal (NPT, UTC+5:45), with working overlap for Gulf, European and Asia-Pacific hours.
-      </p>
-      <div class="flex flex-wrap items-center gap-3">
-        <a href={`mailto:${profile.email}`} class="btn-base bg-[var(--color-marigold)] text-[var(--color-text)] border border-[var(--color-marigold)] hover:brightness-95 px-5 py-2.5 font-semibold">Email me</a>
-        <a href={url("/cv/Saroj-Baral-CV.pdf")} download class="btn-base border border-white/40 text-white hover:bg-white/10 px-5 py-2.5">Download CV (PDF)</a>
-        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="btn-base text-white underline underline-offset-4 px-3 py-2.5">LinkedIn</a>
+  <!-- 6. Hire me -->
+  <section class="section" aria-labelledby="hire-title">
+    <div class="site-container" data-reveal>
+      <div class="cta-banner">
+        <div>
+          <h2 id="hire-title">Hiring for a remote project or MIS role?</h2>
+          <p>
+            Open to remote roles in MIS, project control, data operations and project coordination. Based in Nepal (NPT, UTC+5:45), with working overlap for Gulf, European and Asia-Pacific hours.
+          </p>
+        </div>
+        <div class="cta-banner__actions">
+          <a href={`mailto:${profile.email}`} class="btn-base btn-light">
+            <Icon name="mail" size={16} /> Email me
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="btn-base btn-outline-light">
+            <Icon name="linkedin" size={16} /> LinkedIn
+          </a>
+          <a href={url("/cv/Saroj-Baral-CV.pdf")} download="Saroj-Baral-CV.pdf" class="link-cta">
+            Download CV <Icon name="download" size={15} />
+          </a>
+        </div>
       </div>
     </div>
   </section>

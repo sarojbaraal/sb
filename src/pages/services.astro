@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SectionHeading from '../components/SectionHeading.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import CTA from '../components/CTA.astro';
 import services from '../data/services.json';
@@ -19,7 +18,8 @@ const jsonLd = {
     },
     offers: {
       '@type': 'Offer',
-      price: s.priceFrom,
+      description: `${s.priceFrom}. ${s.engagement}`,
+      priceCurrency: 'NPR',
     },
   })),
 };
@@ -32,17 +32,11 @@ const jsonLd = {
 >
   <div class="site-container section-padding">
     <!-- Header -->
-    <div class="max-w-3xl mb-12">
-      <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-2">
-        Core Offerings
-      </span>
-      <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-4">
-        Services
-      </h1>
-      <p class="text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
-        Three ways I usually help — pick the one that matches your problem.
-      </p>
-    </div>
+    <header class="page-head">
+      <span class="eyebrow">Core Offerings</span>
+      <h1>Services</h1>
+      <p>Three ways I usually help — pick the one that matches your problem.</p>
+    </header>
 
     <!-- Service Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -54,9 +48,8 @@ const jsonLd = {
           priceFrom={service.priceFrom}
           engagement={service.engagement}
           bullets={service.bullets}
-          ctaText="Request this →"
+          ctaText="Request this"
           ctaHref={`/contact?service=${service.id}`}
-          detailed={true}
         />
       ))}
     </div>
