@@ -1,38 +1,62 @@
 [
   {
-    "role": "Freelance Consultant — IT Solutions & Business Operations",
+    "role": "Freelance Consultant, IT Solutions & Business Operations",
     "org": "Self-employed",
     "location": "Kathmandu, Nepal",
     "start": "2022",
     "end": "Present",
-    "summary": "Independent consulting for SMEs on MIS support, workflow optimization, reporting, and technical documentation.",
+    "summary": "Independent MIS and operations support for small and medium businesses.",
     "bullets": [
-      "Provided IT solution consulting and MIS support to small and medium businesses.",
-      "Assisted clients in workflow optimization, data reporting, and process improvement.",
-      "Delivered technical documentation, system requirement analysis, and project planning support.",
-      "Supported business development through technical proposal writing and solution design."
+      "Advise SMEs on IT solutions and MIS, covering requirement analysis, workflow optimisation and data reporting.",
+      "Write technical documentation and project plans that a client team can run after handover.",
+      "Support business development with technical proposals and solution design."
     ]
   },
   {
-    "role": "Engineer / Manager — Technical Solution, Project Control & Operations",
+    "role": "Engineer / Manager",
     "org": "Huawei Technologies Nepal Co., Pvt. Ltd.",
     "location": "Kathmandu, Nepal",
     "start": "2013",
     "end": "2019",
-    "summary": "Project control and technical coordination across sales, finance, supply chain, vendors, and delivery teams.",
-    "bullets": [
-      "Maintained ERP data accuracy and prepared regular project performance reports for senior management.",
-      "Consolidated inputs from sales, finance, supply chain, vendors, and delivery teams; followed up on gaps.",
-      "Prepared and reviewed project documentation, status reports, schedules, and budgets.",
-      "Led material planning and inventory coordination based on BOQ and SCM systems.",
-      "Implemented change-control processes and coordinated ERP/SCM-related documentation and issue tracking.",
-      "Supported bid and proposal reviews by coordinating technical and commercial inputs."
+    "summary": "Six years across technical solutions, project control and delivery coordination in a multinational operating environment.",
+    "groups": [
+      {
+        "title": "Technical solution and strategy",
+        "bullets": [
+          "Translated client business and technical requirements into scalable IT solutions, from design and integration through implementation.",
+          "Advised customers on information-systems strategy covering policy, security and service-delivery frameworks.",
+          "Ran technical feasibility studies, risk assessments and system-security evaluations.",
+          "Led solution design and forecasting against business trends and customer requirements.",
+          "Worked with sales, finance, supply chain and delivery teams to prepare technical bids and finalise solutions."
+        ]
+      },
+      {
+        "title": "Project control and operations",
+        "bullets": [
+          "Planned, executed and monitored projects to hold delivery dates and quality standards.",
+          "Set priorities, delegated work and enforced operating procedures and deadlines.",
+          "Oversaw budgeting, contracting and administration for project management.",
+          "Kept ERP data accurate and issued regular performance reports to senior management.",
+          "Led material planning and inventory coordination from BOQ and SCM systems.",
+          "Introduced change-control processes to keep execution on course."
+        ]
+      },
+      {
+        "title": "Leadership and coordination",
+        "bullets": [
+          "Guided vendors and internal teams to build capability and meet delivery timelines.",
+          "Aligned project outcomes with customer expectations through regular stakeholder coordination.",
+          "Supervised support staff and kept records and documentation orderly."
+        ]
+      }
     ],
     "awards": [
+      "Certificate of Merit, Top Performing Team, WDM Golden Seeds Training Programme, Shenzhen (2019)"
+    ],
+    "awardsUnverified": [
       "Outstanding Achievement in Customer Satisfaction",
       "Project Office Business Skill Authentication",
-      "Employee of the Month",
-      "Certificate of Merit — Top Performing Team, WDM Golden Seeds Training, Shenzhen (2019)"
+      "Employee of the Month"
     ]
   },
   {
@@ -41,25 +65,23 @@
     "location": "Kathmandu, Nepal",
     "start": "Nov 2011",
     "end": "May 2012",
-    "summary": "Technical assessments at BTS sites and detailed reporting.",
+    "summary": "Site surveys of telecom base stations.",
     "bullets": [
-      "Conducted technical assessments at multiple BTS sites, including power supply and network status.",
-      "Produced detailed reports based on thorough technical assessments.",
-      "Provided comprehensive optimization recommendations."
+      "Assessed power supply and network status at multiple BTS sites.",
+      "Wrote detailed technical reports and optimisation recommendations from each assessment."
     ]
   },
   {
-    "role": "Internship",
+    "role": "Intern",
     "org": "Radio Nepal",
     "location": "Kathmandu, Nepal",
     "start": "Sep 2010",
     "end": "Dec 2010",
-    "summary": "Broadcast equipment maintenance and signal quality analysis.",
+    "summary": "Broadcast equipment maintenance and signal analysis.",
     "bullets": [
-      "Gained practical experience in troubleshooting, repairing, and maintaining broadcasting equipment.",
-      "Collaborated with the technical team to analyze signal quality and improve transmission performance.",
-      "Assisted in implementing new technologies for broadcasting."
+      "Troubleshot, repaired and maintained broadcasting equipment.",
+      "Worked with the technical team to analyse signal quality and improve transmission performance.",
+      "Assisted in introducing new technology for broadcasting."
     ]
   }
 ]
-

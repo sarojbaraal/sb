@@ -1,0 +1,37 @@
+{
+  "strengths": [
+    "Project planning and end-to-end implementation",
+    "Workflow optimisation and process improvement",
+    "Technical sales and solution-led client engagement",
+    "MIS development, optimisation and data-driven reporting",
+    "Cross-functional coordination across sales, finance, supply chain and delivery"
+  ],
+  "stack": [
+    {
+      "label": "Systems exposure",
+      "value": "EIS, CRM, TPS, SCM, ERP"
+    },
+    {
+      "label": "Data and productivity",
+      "value": "Microsoft Excel (advanced), PowerPoint, Word, Outlook"
+    },
+    {
+      "label": "Design and documentation",
+      "value": "Adobe Photoshop, Acrobat Pro, Audition"
+    },
+    {
+      "label": "Infrastructure support",
+      "value": "Windows configuration, hardware and software troubleshooting"
+    },
+    {
+      "label": "Networking",
+      "value": "Basic networking, enterprise transmission awareness"
+    }
+  ],
+  "volunteer": {
+    "title": "Volunteer, earthquake relief and reconstruction",
+    "place": "Nepal",
+    "year": "2015",
+    "text": "Supported relief and rehabilitation in affected districts: temporary shelters, reconstruction of homes, schools and community infrastructure, sanitation and hygiene awareness, health camps and livelihood assistance."
+  }
+}

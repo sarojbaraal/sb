@@ -7,7 +7,7 @@ export async function GET(context: APIContext) {
   const notes = await getCollection('notes', ({ data }) => !data.draft);
   return rss({
     title: 'Saroj Baral — Field Notes',
-    description: 'Working notes on MIS, business intelligence, spreadsheet architecture, ERP data integrity, and project operations.',
+    description: 'Working notes on MIS, project control, spreadsheet architecture, ERP data integrity, and project operations.',
     site: context.site?.toString() || 'https://sarojbaral.com.np',
     items: notes.map((note) => ({
       title: note.data.title,

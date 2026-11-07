@@ -2,8 +2,6 @@
 import { url } from "../utils/url";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import SectionHeading from '../components/SectionHeading.astro';
-import ServiceCard from '../components/ServiceCard.astro';
 import CaseStudyCard from '../components/CaseStudyCard.astro';
 import profile from '../data/profile.json';
 import services from '../data/services.json';
@@ -41,48 +39,49 @@ const jsonLd = [
 
 <BaseLayout
   title={`${profile.name} — ${profile.headline}`}
-  description={`${profile.name}: ${profile.headline}. ${profile.tagline} Six years at Huawei Technologies Nepal in project control and MIS, EMBA 2022.`}
+  description={`${profile.name}: ${profile.headline}. ${profile.tagline} Six years at Huawei Technologies Nepal, Executive MBA 2022, open to remote roles.`}
   jsonLd={jsonLd}
 >
   <!-- Hero Section -->
   <Hero />
 
-  <!-- What I Do Section -->
-  <section class="section-padding border-t border-[var(--color-border)]">
+  <!-- What I Do -->
+  <section class="border-t border-[var(--color-border)] py-16 md:py-24">
     <div class="site-container">
-      <SectionHeading
-        eyebrow="Core Services"
-        title="What I do"
-        intro="Direct, specialized support in reporting systems, documentation integrity, and cross-functional project tracking."
-      />
+      <h2 class="mb-2">What I do</h2>
+      <p class="text-[var(--color-muted)] text-lg prose-measure mb-10">
+        Reporting systems, document control and cross-functional project tracking for teams that have outgrown spreadsheets passed around by email.
+      </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div>
         {services.map((service) => (
-          <ServiceCard
-            id={service.id}
-            label={service.label}
-            title={service.title}
-            priceFrom={service.priceFrom}
-            engagement={service.engagement}
-            bullets={service.bullets}
-            ctaText="Learn more →"
-            ctaHref={`/services#${service.id}`}
-          />
+          <div class="rule-row">
+            <div>
+              <h3 class="mb-1">{service.title}</h3>
+              <p class="text-sm text-[var(--color-muted)] m-0">{service.priceFrom}</p>
+              <p class="text-sm text-[var(--color-muted)] m-0">{service.engagement}</p>
+            </div>
+            <div>
+              <ul class="space-y-2 pl-5 list-disc text-[var(--color-text)] prose-measure mb-4">
+                {service.bullets.map((b) => <li>{b}</li>)}
+              </ul>
+              <a href={url(`/services#${service.id}`)} class="link-quiet text-[15px]">About {service.title}</a>
+            </div>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Proof, Not Promises Section -->
-  <section class="section-padding bg-[var(--color-surface)] border-t border-[var(--color-border)]">
+  <!-- Illustrative samples -->
+  <section class="bg-[var(--color-surface)] border-t border-[var(--color-border)] py-16 md:py-24">
     <div class="site-container">
-      <SectionHeading
-        eyebrow="Sample Work"
-        title="Proof, not promises"
-        intro="Anonymized samples with fake data — see exactly how I work."
-      />
+      <h2 class="mb-2">Sample work</h2>
+      <p class="text-[var(--color-muted)] text-lg prose-measure mb-10">
+        Worked examples built on dummy data. They show how I structure a reporting pack, a register or a tracker. They are samples of method, not client results.
+      </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         {sortedWork.map((entry) => (
           <CaseStudyCard
             slug={entry.id}
@@ -97,97 +96,48 @@ const jsonLd = [
           />
         ))}
       </div>
-
-      <div class="text-center">
-        <a href={url("/work")} class="btn-base btn-secondary text-sm px-6 py-2.5">
-          All case studies &rarr;
-        </a>
-      </div>
+      <a href={url("/work")} class="link-quiet">All sample work</a>
     </div>
   </section>
 
-  <!-- Two More Ways I Help Section -->
-  <section class="section-padding border-t border-[var(--color-border)]">
+  <!-- Two more ways -->
+  <section class="border-t border-[var(--color-border)] py-16 md:py-24">
     <div class="site-container">
-      <SectionHeading
-        eyebrow="Additional Capabilities"
-        title="Two more ways I help"
-        intro="Complementary services for local small businesses, educational institutions, and training programs."
-      />
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Card 1: Websites -->
-        <div class="card-base p-8 bg-[var(--color-surface)] flex flex-col justify-between hover:border-[var(--color-accent)]/50 transition-colors">
+      <h2 class="mb-10">Also available</h2>
+      <div>
+        <div class="rule-row">
+          <h3 class="m-0">Simple business websites</h3>
           <div>
-            <div class="w-10 h-10 rounded-lg bg-[var(--color-accent-soft)] text-[var(--color-accent)] flex items-center justify-center mb-4">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-[var(--color-text)] mb-2">
-              Simple business websites
-            </h3>
-            <p class="text-sm text-[var(--color-muted)] leading-relaxed mb-6">
-              Clean, fast, mobile-friendly sites for local businesses. From NPR 15,000 · 7–10 days. AI-assisted build, human-reviewed delivery.
+            <p class="text-[var(--color-muted)] prose-measure mb-3">
+              Clean, fast, mobile-friendly sites for local businesses. From NPR 15,000, 7 to 10 days. AI-assisted build, human-reviewed delivery.
             </p>
-          </div>
-          <div>
-            <a href={url("/websites")} class="btn-base btn-secondary text-sm w-full sm:w-auto">
-              See packages &rarr;
-            </a>
+            <a href={url("/websites")} class="link-quiet text-[15px]">See website packages</a>
           </div>
         </div>
-
-        <!-- Card 2: Teaching -->
-        <div class="card-base p-8 bg-[var(--color-surface)] flex flex-col justify-between hover:border-[var(--color-accent)]/50 transition-colors">
+        <div class="rule-row">
+          <h3 class="m-0">Workshops</h3>
           <div>
-            <div class="w-10 h-10 rounded-lg bg-[var(--color-accent-soft)] text-[var(--color-accent)] flex items-center justify-center mb-4">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-[var(--color-text)] mb-2">
-              Teaching &amp; workshops
-            </h3>
-            <p class="text-sm text-[var(--color-muted)] leading-relaxed mb-6">
-              Part-time faculty, guest lectures and workshops in electronics and management. Excel for business, MIS, operations, project management.
+            <p class="text-[var(--color-muted)] prose-measure mb-3">
+              Practical sessions on Excel for business, MIS, operations and project management, for teams and training programmes.
             </p>
-          </div>
-          <div>
-            <a href={url("/teaching")} class="btn-base btn-secondary text-sm w-full sm:w-auto">
-              Teaching details &rarr;
-            </a>
+            <a href={url("/teaching")} class="link-quiet text-[15px]">Workshop details</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Hire Me Section -->
-  <section class="section-padding bg-[var(--color-surface)] border-t border-[var(--color-border)]">
+  <!-- Contact -->
+  <section class="bg-[var(--color-text)] text-white py-16 md:py-24">
     <div class="site-container">
-      <div class="max-w-2xl mx-auto text-center">
-        <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-2">
-          Collaboration &amp; Opportunities
-        </span>
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--color-text)] mb-4">
-          Hire me
-        </h2>
-        <p class="text-base md:text-lg text-[var(--color-muted)] leading-relaxed mb-8">
-          Open to remote roles in MIS, business intelligence, data operations and project coordination. Based in Nepal (NPT, UTC+5:45); comfortable overlapping with Gulf, EU and APAC hours.
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-3">
-          <a href={`mailto:${profile.email}`} class="btn-base btn-primary text-sm px-5 py-2.5">
-            Email me
-          </a>
-          <a href={url("/cv")} class="btn-base btn-secondary text-sm px-5 py-2.5">
-            Download CV
-          </a>
-          <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="btn-base btn-secondary text-sm px-5 py-2.5">
-            LinkedIn &rarr;
-          </a>
-        </div>
+      <h2 class="text-white mb-4 max-w-[20ch]">Hiring for a remote project or MIS role?</h2>
+      <p class="text-lg text-[var(--color-ash)] prose-measure mb-8">
+        Open to remote roles in MIS, project control, data operations and project coordination. Based in Nepal (NPT, UTC+5:45), with working overlap for Gulf, European and Asia-Pacific hours.
+      </p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href={`mailto:${profile.email}`} class="btn-base bg-[var(--color-marigold)] text-[var(--color-text)] border border-[var(--color-marigold)] hover:brightness-95 px-5 py-2.5 font-semibold">Email me</a>
+        <a href={url("/cv/Saroj-Baral-CV.pdf")} download class="btn-base border border-white/40 text-white hover:bg-white/10 px-5 py-2.5">Download CV (PDF)</a>
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="btn-base text-white underline underline-offset-4 px-3 py-2.5">LinkedIn</a>
       </div>
     </div>
   </section>

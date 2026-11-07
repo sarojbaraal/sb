@@ -1,0 +1,67 @@
+---
+// A career drawn as a project schedule. Every bar comes from the CV dates.
+// kind: edu = outlined, field = field engineering, core = main employer, now = current
+const AXIS_START = 2005;
+const now = new Date();
+const nowFrac = now.getFullYear() + now.getMonth() / 12;
+const AXIS_END = Math.ceil(nowFrac) + 1;
+const span = AXIS_END - AXIS_START;
+
+const rows = [
+  { label: 'B.E. Electronics & Communication', sub: 'Kathmandu Engineering College', start: 2005, end: 2009, kind: 'edu', years: '2005–2009' },
+  { label: 'Intern', sub: 'Radio Nepal', start: 2010 + 8 / 12, end: 2010 + 12 / 12, kind: 'field', years: 'Sep–Dec 2010' },
+  { label: 'Survey Engineer', sub: 'GTL Nepal', start: 2011 + 10 / 12, end: 2012 + 5 / 12, kind: 'field', years: 'Nov 2011–May 2012' },
+  { label: 'Engineer / Manager', sub: 'Huawei Technologies Nepal', start: 2013, end: 2019, kind: 'core', years: '2013–2019' },
+  { label: 'Executive MBA', sub: 'Himalayan WhiteHouse International College', start: 2019, end: 2022, kind: 'edu', years: '2019–2022' },
+  { label: 'Independent consultant', sub: 'IT solutions and business operations', start: 2022, end: nowFrac, kind: 'now', years: '2022–present' },
+];
+
+const pct = (y: number) => ((y - AXIS_START) / span) * 100;
+const ticks = [2005, 2010, 2015, 2020, 2025].filter((t) => t <= AXIS_END);
+---
+
+<figure class="sched" aria-labelledby="sched-title">
+  <figcaption id="sched-title" class="font-display text-xl md:text-2xl text-[var(--color-text)] mb-5">
+    My career, drawn the way I plan projects
+  </figcaption>
+
+  <div class="sched-axis" aria-hidden="true">
+    <div></div>
+    <div class="sched-axis-track">
+      {ticks.map((t) => <span style={`left:${pct(t)}%`}>{t}</span>)}
+    </div>
+  </div>
+
+  <div class="sched-body">
+  <div class="sched-overlay" aria-hidden="true">
+    <span class="sched-today" style={`left:${pct(nowFrac)}%`}></span>
+  </div>
+  <ol class="m-0 p-0 list-none">
+    {rows.map((r, i) => {
+      const left = pct(r.start);
+      const width = Math.max(pct(r.end) - left, 1.1);
+      const yearsOnRight = left + width < 78;
+      return (
+        <li class="sched-row" style={`--i:${i}`}>
+          <div class="sched-label">
+            {r.label}
+            <small>{r.sub}</small>
+          </div>
+          <div class="sched-track">
+            <span class={`sched-bar ${r.kind}`} style={`left:${left}%;width:${width}%`} aria-hidden="true" />
+            <span
+              class="sched-years"
+              style={yearsOnRight ? `left:calc(${left + width}% + 8px)` : `right:calc(${100 - left}% + 8px)`}
+            >
+              {r.years}
+            </span>
+          </div>
+        </li>
+      );
+    })}
+  </ol>
+  </div>
+  <p class="text-[13px] text-[var(--color-muted)] mt-3 mb-0">
+    The amber line marks today.
+  </p>
+</figure>

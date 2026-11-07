@@ -1,226 +1,101 @@
 ---
 import { url } from "../utils/url";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SectionHeading from "../components/SectionHeading.astro";
 import Timeline from "../components/Timeline.astro";
 import profile from "../data/profile.json";
+import cv from "../data/cv.json";
+
+const principles = [
+  ['Structure first', 'A clean, verified tracker beats a clever, fragile macro-heavy sheet.'],
+  ['Define "done" before starting', 'Agree the output format, required fields and sign-off criteria up front.'],
+  ['Write it down and follow up on gaps', 'Unrecorded assumptions turn into disputes. Keep one source register and close discrepancies promptly.'],
+  ['Hand over something the team can run', 'A system only works if the people who inherit it can maintain it with confidence.'],
+];
 ---
 
 <BaseLayout
   title="About"
-  description="Learn about Saroj Baral's background in electronics and communication engineering, 6 years at Huawei Technologies Nepal in project control, EMBA, and freelance operations consulting."
+  description="Saroj Baral: electronics and communication engineer, six years at Huawei Technologies Nepal in solutions and project control, Executive MBA, independent MIS and operations consultant."
 >
-  <div class="site-container section-padding">
-    <!-- Header -->
-    <div class="max-w-3xl mb-12">
-      <span
-        class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-2"
-      >
-        Background &amp; Philosophy
-      </span>
-      <h1
-        class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-6"
-      >
-        About
-      </h1>
+  <div class="site-container py-14 md:py-20">
+    <h1 class="max-w-[18ch] mb-6">Engineering discipline applied to business information.</h1>
+    <p class="text-lg md:text-xl text-[var(--color-muted)] prose-measure mb-14">
+      {profile.summary}
+    </p>
 
-      <p
-        class="text-lg md:text-xl text-[var(--color-text)] leading-relaxed font-medium"
-      >
-        From <span class="text-[var(--color-accent)] font-semibold"
-          >electronics engineering</span
-        > to multinational project management and business studies, my journey has
-        shaped one core interest: <span
-          class="text-[var(--color-accent)] font-semibold"
-          >making information reliable, meaningful, and actionable.</span
-        >
-      </p>
-    </div>
-
-    <!-- Three Story Blocks -->
-    <div
-      class="max-w-3xl space-y-10 text-[var(--color-text)] leading-relaxed mb-16"
-    >
-      <!-- Story Block 1 -->
-      <section class="card-base p-6 md:p-8 bg-[var(--color-surface)]">
-        <h2
-          class="text-xl font-bold text-[var(--color-text)] mb-3 text-[var(--color-accent)]"
-        >
-          Engineering Foundation
-        </h2>
-        <p class="text-[var(--color-muted)] text-base mb-3">
-          My technical journey began with a Bachelor's Degree in Electronics
-          &amp; Communication Engineering from Kathmandu Engineering College.
-          Early hands-on roles at Radio Nepal analyzing transmission equipment
-          and at GTL Nepal conducting technical assessments across
-          telecommunication BTS sites taught me the discipline of systematic
-          field data collection.
-        </p>
-        <p class="text-[var(--color-muted)] text-base">
-          Working directly with broadcast transmitters and BTS infrastructure
-          demonstrated how minor data discrepancies at the site level compound
-          into severe operational blindspots. That technical grounding
-          established a lifelong respect for verified, empirical data over
-          assumptions.
-        </p>
+    <div>
+      <section class="rule-row">
+        <h2 class="text-[1.5rem]">Engineering foundation</h2>
+        <div class="prose-measure text-[var(--color-text)]">
+          <p>
+            I studied Electronics and Communication Engineering at Kathmandu Engineering College. My first field roles were an internship at Radio Nepal, working on broadcast equipment and signal quality, and a survey engineer post at GTL Nepal, assessing power supply and network status at BTS sites.
+          </p>
+          <p class="mb-0">
+            Site work taught me to trust verified data over assumptions, and to write findings down so the next person can act on them. I still work that way.
+          </p>
+        </div>
       </section>
 
-      <!-- Story Block 2 -->
-      <section class="card-base p-6 md:p-8 bg-[var(--color-surface)]">
-        <h2
-          class="text-xl font-bold text-[var(--color-text)] mb-3 text-[var(--color-accent)]"
-        >
-          Huawei Technologies Nepal (2013–2019)
-        </h2>
-        <p class="text-[var(--color-muted)] text-base mb-3">
-          For six years at Huawei Technologies Nepal, I served as Engineer and
-          Manager within Technical Solution, Project Control &amp; Operations.
-          My primary mandate was maintaining ERP data integrity and producing
-          project performance reports for senior executive leadership.
-        </p>
-        <p class="text-[var(--color-muted)] text-base mb-3">
-          I consolidated high-volume operational inputs across sales, finance,
-          supply chain, delivery teams, and external subcontractors—relentlessly
-          following up to close documentation gaps. I led material planning and
-          inventory coordination based on Bill of Quantities (BOQ) and SCM
-          systems, implemented change-control protocols, and tracked issue
-          resolution across multi-million dollar rollouts.
-        </p>
-        <p class="text-[var(--color-muted)] text-base">
-          This rigor earned multiple team recognitions, including Outstanding
-          Achievement in Customer Satisfaction, Project Office Business Skill
-          Authentication, Employee of the Month, and a Certificate of Merit at
-          the WDM Golden Seeds Training in Shenzhen.
-        </p>
+      <section class="rule-row">
+        <h2 class="text-[1.5rem]">Huawei Technologies Nepal, 2013 to 2019</h2>
+        <div class="prose-measure text-[var(--color-text)]">
+          <p>
+            I spent six years as Engineer and Manager across technical solutions, project control and operations. I worked with clients to turn requirements into scalable IT solutions, and with sales, finance, supply chain and delivery teams to prepare bids and keep projects on schedule.
+          </p>
+          <p class="mb-0">
+            On the control side I kept ERP data accurate, reported project performance to senior management, led BOQ-based material planning, and introduced change control. In 2019 our team was recognised as a top performer at the WDM Golden Seeds Training Programme in Shenzhen.
+          </p>
+        </div>
       </section>
 
-      <!-- Story Block 3 -->
-      <section class="card-base p-6 md:p-8 bg-[var(--color-surface)]">
-        <h2
-          class="text-xl font-bold text-[var(--color-text)] mb-3 text-[var(--color-accent)]"
-        >
-          Business + Independence (2019–present)
-        </h2>
-        <p class="text-[var(--color-muted)] text-base mb-3">
-          Recognizing that operational data issues are fundamentally business
-          problems, I completed my Executive MBA at Himalayan WhiteHouse
-          International College between 2019 and 2022. The program deepened my
-          understanding of managerial finance, operations strategy, and
-          organizational decision-making.
-        </p>
-        <p class="text-[var(--color-muted)] text-base">
-          Since 2022, I have operated as an independent consultant helping small
-          and medium enterprises bring enterprise-grade structure to their
-          reporting workflows. I design practical Excel MIS systems, standardize
-          document registers, optimize fulfillment pipelines, and provide
-          hands-on project coordination support.
-        </p>
+      <section class="rule-row">
+        <h2 class="text-[1.5rem]">Business studies and independent work</h2>
+        <div class="prose-measure text-[var(--color-text)]">
+          <p>
+            I completed an Executive MBA in strategic management at Himalayan WhiteHouse International College (2019 to 2022), because most reporting problems I met were really business problems.
+          </p>
+          <p class="mb-0">
+            Since 2022 I have worked independently with small and medium businesses on MIS, workflow optimisation, data reporting, technical documentation and project planning.
+          </p>
+        </div>
+      </section>
+
+      <section class="rule-row">
+        <h2 class="text-[1.5rem]">How I work</h2>
+        <dl class="m-0 space-y-5 prose-measure">
+          {principles.map(([term, text]) => (
+            <div>
+              <dt class="font-semibold text-[var(--color-text)]">{term}</dt>
+              <dd class="m-0 text-[var(--color-muted)]">{text}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
     </div>
 
-    <!-- Career Timeline -->
-    <div class="max-w-3xl mb-16">
-      <SectionHeading
-        eyebrow="Chronology"
-        title="Experience & Career History"
-        intro="A detailed summary of corporate, consulting, and engineering roles."
-      />
+    <div class="mt-16 mb-4">
+      <h2 class="mb-8">Career history</h2>
       <Timeline />
     </div>
 
-    <!-- How I Work -->
-    <div class="max-w-3xl mb-16">
-      <SectionHeading
-        eyebrow="Operating Principles"
-        title="How I work"
-        intro="Four principles that guide every consulting engagement and internal reporting setup."
-      />
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="card-base p-5 bg-[var(--color-surface)]">
-          <span class="text-xl font-bold text-[var(--color-accent)] block mb-1"
-            >01</span
-          >
-          <h3 class="text-base font-semibold text-[var(--color-text)] mb-1">
-            Structure first
-          </h3>
-          <p class="text-sm text-[var(--color-muted)]">
-            A clean, verified tracker beats a clever or fragile macro-heavy
-            sheet every time.
-          </p>
-        </div>
-        <div class="card-base p-5 bg-[var(--color-surface)]">
-          <span class="text-xl font-bold text-[var(--color-accent)] block mb-1"
-            >02</span
-          >
-          <h3 class="text-base font-semibold text-[var(--color-text)] mb-1">
-            Define "done" before starting
-          </h3>
-          <p class="text-sm text-[var(--color-muted)]">
-            Agree explicitly on the exact output format, required fields, and
-            sign-off criteria.
-          </p>
-        </div>
-        <div class="card-base p-5 bg-[var(--color-surface)]">
-          <span class="text-xl font-bold text-[var(--color-accent)] block mb-1"
-            >03</span
-          >
-          <h3 class="text-base font-semibold text-[var(--color-text)] mb-1">
-            Write it down; follow up on gaps
-          </h3>
-          <p class="text-sm text-[var(--color-muted)]">
-            Unrecorded assumptions create disputes. Keep single-source registers
-            and close discrepancies promptly.
-          </p>
-        </div>
-        <div class="card-base p-5 bg-[var(--color-surface)]">
-          <span class="text-xl font-bold text-[var(--color-accent)] block mb-1"
-            >04</span
-          >
-          <h3 class="text-base font-semibold text-[var(--color-text)] mb-1">
-            Hand over something you can maintain
-          </h3>
-          <p class="text-sm text-[var(--color-muted)]">
-            A system is only successful if your existing team can run it
-            confidently after handover.
-          </p>
-        </div>
+    <section class="rule-row">
+      <h2 class="text-[1.5rem]">Beyond work</h2>
+      <div class="prose-measure text-[var(--color-text)]">
+        <p>
+          In 2015 I volunteered in earthquake relief and reconstruction across affected districts of Nepal: temporary shelters, rebuilding homes and schools, sanitation and hygiene awareness, health camps and livelihood support.
+        </p>
+        <p>
+          I am a devotee of Lord Shiva. <a href={url("/devotion")} class="link-quiet">Read a little about that here.</a>
+        </p>
+        <p class="mb-0 text-[var(--color-muted)]">
+          Languages: {profile.languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(', ')}.
+        </p>
       </div>
-    </div>
+    </section>
 
-    <!-- Beyond Work -->
-    <div class="max-w-3xl card-base p-6 md:p-8 bg-[var(--color-surface)] mb-12">
-      <h3 class="text-xl font-bold text-[var(--color-text)] mb-3">
-        Beyond work
-      </h3>
-      <p class="text-base text-[var(--color-muted)] leading-relaxed mb-4">
-        Based in Bhaktapur, Nepal. Volunteer in 2015 earthquake relief and
-        reconstruction — shelter, homes, schools, sanitation, health camps.
-      </p>
-      <div class="pt-4 border-t border-[var(--color-border)]">
-        <span
-          class="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)] block mb-2"
-          >Languages:</span
-        >
-        <div class="flex flex-wrap gap-2 text-sm text-[var(--color-text)]">
-          {
-            profile.languages.map((lang) => (
-              <span class="inline-flex items-center px-3 py-1 rounded-full bg-[var(--color-bg)] border border-[var(--color-border)] text-xs font-medium">
-                {lang.name} ({lang.level})
-              </span>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-
-    <!-- CTAs -->
-    <div class="max-w-3xl flex flex-wrap items-center gap-4">
-      <a href={url("/cv")} class="btn-base btn-primary text-sm px-5 py-2.5">
-        Download CV
-      </a>
-      <a href={url("/contact")} class="btn-base btn-secondary text-sm px-5 py-2.5">
-        Contact me &rarr;
-      </a>
+    <div class="pt-4 flex flex-wrap gap-3">
+      <a href={url("/cv")} class="btn-base btn-primary px-5 py-2.5">View CV</a>
+      <a href={url("/contact")} class="btn-base btn-secondary px-5 py-2.5">Contact me</a>
     </div>
   </div>
 </BaseLayout>

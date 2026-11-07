@@ -3,85 +3,57 @@ import { url } from "../utils/url";
 import profile from '../data/profile.json';
 
 const currentYear = new Date().getFullYear();
+const nav = [
+  ['/about', 'About'],
+  ['/services', 'Services'],
+  ['/work', 'Work samples'],
+  ['/websites', 'Simple websites'],
+  ['/teaching', 'Teaching and workshops'],
+  ['/cv', 'Curriculum vitae'],
+  ['/devotion', 'Beyond work'],
+];
 ---
 
-<footer class="mt-auto border-t border-[var(--color-border)] bg-[var(--color-surface)] py-12 text-[15px] text-[var(--color-muted)]">
+<footer class="mt-auto bg-[var(--color-night)] text-[var(--color-ash)] py-14 text-[15px]">
   <div class="site-container">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-      <!-- Col 1: Identity & Positioning -->
-      <div class="md:col-span-2">
-        <a href={url("/")} class="text-lg font-bold text-[var(--color-text)] tracking-tight hover:text-[var(--color-accent)] inline-block mb-2">
-          {profile.name}
-        </a>
-        <p class="text-sm text-[var(--color-muted)] mb-3 max-w-sm">
+    <div class="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr] gap-10 mb-12">
+      <div>
+        <a href={url("/")} class="font-display text-2xl text-white inline-block mb-3">{profile.name}</a>
+        <p class="max-w-sm mb-3 leading-relaxed">
           {profile.headline}. {profile.tagline}
         </p>
-        <p class="text-xs text-[var(--color-muted)]">
-          Based in {profile.location.city}, {profile.location.country} ({profile.location.tzLabel}).<br />
-          {profile.availability}.
+        <p class="text-sm opacity-80 mb-0">
+          {profile.location.city}, {profile.location.country} ({profile.location.tzLabel})
         </p>
       </div>
 
-      <!-- Col 2: Navigation Links -->
-      <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-3">
-          Navigation
-        </h4>
-        <ul class="space-y-2">
-          <li><a href={url("/about")} class="hover:text-[var(--color-accent)] transition-colors">About</a></li>
-          <li><a href={url("/services")} class="hover:text-[var(--color-accent)] transition-colors">Services</a></li>
-          <li><a href={url("/websites")} class="hover:text-[var(--color-accent)] transition-colors">Simple Websites</a></li>
-          <li><a href={url("/teaching")} class="hover:text-[var(--color-accent)] transition-colors">Teaching & Workshops</a></li>
-          <li><a href={url("/work")} class="hover:text-[var(--color-accent)] transition-colors">Work Samples</a></li>
-          <li><a href={url("/notes")} class="hover:text-[var(--color-accent)] transition-colors">Notes</a></li>
-          <li><a href={url("/cv")} class="hover:text-[var(--color-accent)] transition-colors">Curriculum Vitae</a></li>
+      <nav aria-label="Footer">
+        <p class="text-white font-semibold mb-3">Pages</p>
+        <ul class="list-none p-0 m-0 space-y-2">
+          {nav.map(([href, label]) => (
+            <li><a href={url(href)} class="hover:text-white underline-offset-4 hover:underline">{label}</a></li>
+          ))}
         </ul>
-      </div>
+      </nav>
 
-      <!-- Col 3: Direct Contact & Feeds -->
       <div>
-        <h4 class="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-3">
-          Direct Connect
-        </h4>
-        <ul class="space-y-2">
-          <li>
-            <a href={`mailto:${profile.email}`} class="hover:text-[var(--color-accent)] transition-colors">
-              {profile.email}
-            </a>
-          </li>
-          <li>
-            <a href={`tel:${profile.phone}`} class="hover:text-[var(--color-accent)] transition-colors">
-              {profile.phone}
-            </a>
-          </li>
-          <li>
-            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-accent)] transition-colors inline-flex items-center gap-1">
-              LinkedIn &nearr;
-            </a>
-          </li>
-          <li>
-            <a href={url("/contact")} class="text-[var(--color-accent)] font-medium hover:underline">
-              Contact Form &rarr;
-            </a>
-          </li>
-          <li class="pt-2">
-            <a href={url("/rss.xml")} class="text-xs text-[var(--color-muted)] hover:text-[var(--color-accent)]">
-              RSS Feed
-            </a>
-          </li>
+        <p class="text-white font-semibold mb-3">Contact</p>
+        <ul class="list-none p-0 m-0 space-y-2">
+          <li><a href={`mailto:${profile.email}`} class="hover:text-white underline-offset-4 hover:underline">{profile.email}</a></li>
+          <li><a href={`tel:${profile.phone}`} class="hover:text-white underline-offset-4 hover:underline">{profile.phone}</a></li>
+          <li><a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-white underline-offset-4 hover:underline">LinkedIn</a></li>
+          <li><a href={url("/contact")} class="hover:text-white underline-offset-4 hover:underline">Contact form</a></li>
+          <li><a href={url("/rss.xml")} class="text-sm opacity-80 hover:opacity-100 underline-offset-4 hover:underline">RSS feed</a></li>
         </ul>
       </div>
     </div>
 
-    <!-- Bottom Bar -->
-    <div class="pt-6 border-t border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-muted)]">
-      <p>&copy; {currentYear} {profile.name}. All rights reserved.</p>
-      <div class="flex items-center gap-4">
-        <a href={url("/privacy")} class="hover:text-[var(--color-accent)] transition-colors">Privacy Policy</a>
-        <span>&bull;</span>
-        <a href={url("/cv/Saroj-Baral-CV.pdf")} download class="hover:text-[var(--color-accent)] transition-colors">Download CV (PDF)</a>
+    <div class="pt-6 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-sm opacity-80">
+      <p class="m-0">&copy; {currentYear} {profile.name}</p>
+      <div class="flex items-center gap-5">
+        <a href={url("/privacy")} class="hover:text-white">Privacy policy</a>
+        <a href={url("/cv/Saroj-Baral-CV.pdf")} download class="hover:text-white">Download CV (PDF)</a>
       </div>
     </div>
   </div>
 </footer>
-

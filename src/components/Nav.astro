@@ -6,7 +6,6 @@ const navLinks = [
   { href: '/websites', label: 'Websites' },
   { href: '/teaching', label: 'Teaching' },
   { href: '/work', label: 'Work' },
-  { href: '/notes', label: 'Notes' },
   { href: '/cv', label: 'CV' },
 ];
 
@@ -16,7 +15,7 @@ const currentPath = stripBase(Astro.url.pathname).replace(/\/$/, '') || '/';
 <header class="sticky top-0 z-40 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]">
   <div class="site-container flex items-center justify-between h-16">
     <!-- Logo / Brand -->
-    <a href={url("/")} class="text-xl font-bold tracking-tight text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded">
+    <a href={url("/")} class="font-display text-[1.45rem] font-medium tracking-tight text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors">
       Saroj Baral
     </a>
 
@@ -28,7 +27,7 @@ const currentPath = stripBase(Astro.url.pathname).replace(/\/$/, '') || '/';
           <a
             href={url(link.href)}
             class={`text-[15px] font-medium transition-colors hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded py-1 px-1.5 ${
-              isActive ? 'text-[var(--color-accent)] font-semibold' : 'text-[var(--color-muted)]'
+              isActive ? 'text-[var(--color-text)] underline underline-offset-[10px] decoration-2 decoration-[var(--color-marigold)]' : 'text-[var(--color-muted)]'
             }`}
           >
             {link.label}
@@ -40,7 +39,7 @@ const currentPath = stripBase(Astro.url.pathname).replace(/\/$/, '') || '/';
     <!-- Desktop Action Button -->
     <div class="hidden md:flex items-center">
       <a href={url("/contact")} class="btn-base btn-primary text-sm py-2 px-3.5">
-        Contact me &rarr;
+        Contact me
       </a>
     </div>
 
@@ -80,7 +79,7 @@ const currentPath = stripBase(Astro.url.pathname).replace(/\/$/, '') || '/';
           </a>
         ))}
         <a href={url("/contact")} class="mobile-nav-link btn-base btn-primary mt-2 text-center">
-          Contact me &rarr;
+          Contact me
         </a>
       </nav>
     </div>

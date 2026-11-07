@@ -1,62 +1,31 @@
 ---
 import { url } from "../utils/url";
 import profile from "../data/profile.json";
-import ProofStrip from "./ProofStrip.astro";
+import CareerSchedule from "./CareerSchedule.astro";
 ---
 
-<section class="section-padding pt-12 md:pt-20">
+<section class="pt-12 md:pt-20 pb-14 md:pb-20">
   <div class="site-container">
-    <!-- Availability Pill -->
-    <div
-      class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs md:text-sm font-medium bg-[var(--color-accent-soft)] text-[var(--color-accent-hover)] mb-6 border border-[var(--color-accent)]/20"
-    >
-      <span
-        class="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse"
-        aria-hidden="true"></span>
-      <span>{profile.availability}</span>
-    </div>
+    <p class="text-[15px] text-[var(--color-muted)] mb-5 flex items-center gap-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-[var(--color-marigold)]" aria-hidden="true"></span>
+      {profile.availability}. Working from {profile.location.country} on {profile.location.tzLabel}.
+    </p>
 
-    <!-- H1 + Subhead -->
-    <h1
-      class="text-4xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-3"
-    >
-      {profile.name}
+    <h1 class="max-w-[15ch] md:max-w-[17ch] mb-6">
+      One reliable picture of every project.
     </h1>
-    <p
-      class="text-2xl md:text-3xl font-semibold text-[var(--color-accent)] mb-6 tracking-tight"
-    >
-      {profile.headline}
+
+    <p class="text-lg md:text-xl text-[var(--color-muted)] prose-measure mb-8 leading-[1.6]">
+      I am {profile.name}: project control, MIS and business operations. Six years inside Huawei Technologies Nepal,
+      an engineering degree, an Executive MBA, and independent work with small and medium businesses.
     </p>
 
-    <!-- Lead Paragraph -->
-
-    <p
-      class="text-lg md:text-xl text-[var(--color-muted)] max-w-3xl leading-relaxed mb-8"
-    >
-      I bring together <span class="text-[var(--color-text)] font-semibold"
-        >MIS, business intelligence and project coordination</span
-      > to turn complex information into accurate reports, reliable records and better-informed
-      decisions. My background includes six years at Huawei Technologies Nepal, an
-      Executive MBA, and independent consulting experience.
-    </p>
-
-    <!-- 3 CTAs -->
-    <div class="flex flex-wrap items-center gap-4 mb-14">
-      <a
-        href={url("/cv")}
-        class="btn-base btn-primary text-base px-5 py-2.5 shadow-sm"
-      >
-        Download CV
-      </a>
-      <a href={url("/work")} class="btn-base btn-secondary text-base px-5 py-2.5">
-        See sample work
-      </a>
-      <a href={url("/contact")} class="btn-base btn-ghost text-base px-5 py-2.5">
-        Contact me &rarr;
-      </a>
+    <div class="flex flex-wrap items-center gap-3 mb-14 md:mb-20">
+      <a href={url("/cv")} class="btn-base btn-primary text-base px-5 py-2.5">View CV</a>
+      <a href={`mailto:${profile.email}`} class="btn-base btn-secondary text-base px-5 py-2.5">Email me</a>
+      <a href={url("/work")} class="link-quiet text-base ml-1">See sample work</a>
     </div>
 
-    <!-- Proof Strip -->
-    <ProofStrip />
+    <CareerSchedule />
   </div>
 </section>

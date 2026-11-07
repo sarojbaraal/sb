@@ -24,7 +24,7 @@ const {
 } = Astro.props;
 ---
 
-<article class="card-base p-6 md:p-7 flex flex-col justify-between hover:border-[var(--color-accent)]/50 transition-all group">
+<article class="card-base p-6 md:p-7 flex flex-col justify-between hover:border-[var(--color-accent)] transition-colors group">
   <div>
     <!-- Header Meta: Client Type & Year -->
     <div class="flex items-center justify-between text-xs text-[var(--color-muted)] mb-3 pb-2 border-b border-[var(--color-border)]">
@@ -47,7 +47,7 @@ const {
     <!-- Highlight Metric Line -->
     {result_metrics.length > 0 && (
       <div class="p-3 bg-[var(--color-bg)] rounded-lg border border-[var(--color-border)] mb-4">
-        <span class="text-xs font-semibold text-[var(--color-accent)] block mb-0.5">Key Result:</span>
+        <span class="text-xs font-semibold text-[var(--color-accent)] block mb-0.5">Illustrative outcome</span>
         <span class="text-xs text-[var(--color-text)] font-medium leading-snug block">
           {result_metrics[0]}
         </span>
@@ -76,7 +76,7 @@ const {
       class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-accent)] group-hover:text-[var(--color-accent-hover)] transition-colors"
     >
       <span>Read case study</span>
-      <span aria-hidden="true">&rarr;</span>
+      
     </a>
   </div>
 </article>
