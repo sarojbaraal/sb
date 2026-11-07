@@ -1,6 +1,7 @@
 ---
 import { url, stripBase } from "../utils/url";
 const navLinks = [
+  { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
   { href: '/websites', label: 'Websites' },
@@ -115,4 +116,3 @@ const currentPath = stripBase(Astro.url.pathname).replace(/\/$/, '') || '/';
   links.forEach(l => l.addEventListener('click', () => toggleMenu(false)));
   dialog?.addEventListener('click', (e) => { if (e.target === dialog) toggleMenu(false); });
 </script>
-
