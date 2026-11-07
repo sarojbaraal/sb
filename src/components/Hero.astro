@@ -1,58 +1,75 @@
 ---
 import { url } from "../utils/url";
 import profile from "../data/profile.json";
-import CareerSchedule from "./CareerSchedule.astro";
-import ProofStrip from "./ProofStrip.astro";
+import Icon from "./Icon.astro";
+
+// Mirrors the first case study so the hero card and the work section agree.
+const kpi = { label: "Monthly reporting cycle", from: "5 days", to: "4 hours" };
 ---
 
-<section class="pt-12 md:pt-20 pb-14 md:pb-20">
-  <div class="site-container">
-    <div class="hero-grid">
-      <div>
-        <p class="hero-kicker text-[15px] text-[var(--color-muted)] mb-5 flex items-center gap-2">
-          <span class="inline-block w-2 h-2 rounded-full bg-[var(--color-marigold)]" aria-hidden="true"></span>
-          MIS · Business intelligence · Project control
-        </p>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="site-container hero__grid">
+    <!-- Copy -->
+    <div class="hero__copy">
+      <p class="badge hero-in" style="--d:0ms">
+        <span class="badge__dot" aria-hidden="true"></span>
+        Available for remote roles
+      </p>
 
-        <h1 class="hero-title max-w-[13ch] mb-6">
-          Make every number useful.
-        </h1>
+      <h1 id="hero-title" class="hero__title hero-in" style="--d:60ms">{profile.name}</h1>
+      <p class="hero__role hero-in" style="--d:110ms">{profile.headline}</p>
+      <p class="hero__summary hero-in" style="--d:160ms">
+        I turn scattered operational data into reports people trust, records teams can hand over and actions managers can see.
+      </p>
 
-        <p class="text-lg md:text-xl text-[var(--color-muted)] prose-measure mb-8 leading-[1.6]">
-          I turn scattered operational data into <strong class="text-[var(--color-text)]">reports people trust, records teams can hand over and actions managers can see.</strong> Six years at Huawei Technologies Nepal, an engineering degree and an Executive MBA shape the way I work.
-        </p>
-
-        <div class="flex flex-wrap items-center gap-3 mb-8 md:mb-0">
-          <a href={`mailto:${profile.email}`} class="btn-base btn-primary text-base px-5 py-2.5">Discuss a project</a>
-          <a href={url("/cv")} class="btn-base btn-secondary text-base px-5 py-2.5">View CV</a>
-          <a href={url("/work")} class="link-quiet text-base ml-1">See sample work</a>
-        </div>
-      </div>
-
-      <div class="impact-board" aria-label="Illustrative reporting improvement from five days to four hours">
-        <div class="impact-board-top">
-          <div>
-            <p class="preview-kicker">Field note / reporting intervention</p>
-            <p class="impact-board-title">A better reporting rhythm.</p>
-          </div>
-          <span class="impact-board-number">01</span>
-        </div>
-        <div class="impact-metric">
-          <div><strong>5 days</strong><span>before</span></div>
-          <span class="impact-arrow" aria-hidden="true">→</span>
-          <div class="impact-metric-after"><strong>4 hours</strong><span>after</span></div>
-        </div>
-        <p class="impact-caption">Illustrative cycle-time improvement from a unified monthly executive pack.</p>
-        <div class="impact-bars" aria-hidden="true">
-          <span style="--bar-height: 100%"></span><span style="--bar-height: 82%"></span><span style="--bar-height: 64%"></span><span class="is-active" style="--bar-height: 24%"></span>
-        </div>
-        <div class="impact-board-footer"><span>Inputs validated</span><span>Decision-ready</span></div>
+      <div class="hero__actions hero-in" style="--d:210ms">
+        <a href={url("/contact")} class="btn-base btn-primary">
+          Contact me <Icon name="arrow-right" size={16} />
+        </a>
+        <a href={url("/cv/Saroj-Baral-CV.pdf")} download="Saroj-Baral-CV.pdf" class="btn-base btn-secondary">
+          <Icon name="download" size={16} /> Download CV
+        </a>
       </div>
     </div>
 
-    <CareerSchedule />
-    <div class="mt-10 md:mt-12">
-      <ProofStrip />
+    <!-- Faded portrait + floating KPI card -->
+    <div class="hero__visual">
+      <!-- Faded portrait. Dark mode swaps in a version with an oval studio-light fade,
+           so the light photo backdrop never sits as a hard box on the dark page. -->
+      <picture>
+        <source
+          media="(prefers-color-scheme: dark)"
+          srcset={`${url("/images/saroj-hero-dark-sm.webp")} 406w, ${url("/images/saroj-hero-dark.webp")} 678w`}
+          sizes="(min-width: 800px) 46vw, 340px"
+        />
+        <img
+          class="hero__photo"
+          src={url("/images/saroj-hero.webp")}
+          srcset={`${url("/images/saroj-hero-sm.webp")} 406w, ${url("/images/saroj-hero.webp")} 678w`}
+          sizes="(min-width: 800px) 46vw, 340px"
+          width="678"
+          height="848"
+          alt="Portrait of Saroj Baral, smiling, in a navy blazer and white shirt"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+
+      <aside class="kpi-card" aria-label="Illustrative reporting improvement">
+        <p class="kpi-card__label">{kpi.label}</p>
+        <p class="kpi-card__value">
+          <span class="from">{kpi.from}</span>
+          <Icon name="arrow-right" size={14} class="arrow" />
+          <span class="to">{kpi.to}</span>
+        </p>
+        <div class="kpi-card__bars" aria-hidden="true">
+          <span style="--h:100%"></span>
+          <span style="--h:78%"></span>
+          <span style="--h:52%"></span>
+          <span class="is-active" style="--h:20%"></span>
+        </div>
+        <p class="kpi-card__note">Illustrative sample, not a client result</p>
+      </aside>
     </div>
   </div>
 </section>

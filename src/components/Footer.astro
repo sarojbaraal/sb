@@ -3,57 +3,48 @@ import { url } from "../utils/url";
 import profile from '../data/profile.json';
 
 const currentYear = new Date().getFullYear();
-const nav = [
+const pages = [
   ['/about', 'About'],
   ['/services', 'Services'],
-  ['/work', 'Work samples'],
-  ['/websites', 'Simple websites'],
-  ['/teaching', 'Teaching and workshops'],
-  ['/cv', 'Curriculum vitae'],
+  ['/work', 'Work'],
+  ['/cv', 'CV'],
   ['/devotion', 'Beyond work'],
 ];
 ---
 
-<footer class="mt-auto bg-[var(--color-night)] text-[var(--color-ash)] py-14 text-[15px]">
+<footer class="site-footer">
   <div class="site-container">
-    <div class="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr] gap-10 mb-12">
+    <div class="site-footer__grid">
       <div>
-        <a href={url("/")} class="font-display text-2xl text-white inline-block mb-3">{profile.name}</a>
-        <p class="max-w-sm mb-3 leading-relaxed">
-          {profile.headline}. {profile.tagline}
-        </p>
-        <p class="text-sm opacity-80 mb-0">
-          {profile.location.city}, {profile.location.country} ({profile.location.tzLabel})
-        </p>
+        <a href={url("/")} class="brand" aria-label="Saroj Baral, home">
+          <span class="brand__mark" aria-hidden="true">SB</span>
+          <span>{profile.name}</span>
+        </a>
+        <p class="footer-tag">{profile.tagline}</p>
       </div>
 
       <nav aria-label="Footer">
-        <p class="text-white font-semibold mb-3">Pages</p>
-        <ul class="list-none p-0 m-0 space-y-2">
-          {nav.map(([href, label]) => (
-            <li><a href={url(href)} class="hover:text-white underline-offset-4 hover:underline">{label}</a></li>
+        <p class="footer-title">Pages</p>
+        <ul class="footer-links">
+          {pages.map(([href, label]) => (
+            <li><a href={url(href)}>{label}</a></li>
           ))}
         </ul>
       </nav>
 
       <div>
-        <p class="text-white font-semibold mb-3">Contact</p>
-        <ul class="list-none p-0 m-0 space-y-2">
-          <li><a href={`mailto:${profile.email}`} class="hover:text-white underline-offset-4 hover:underline">{profile.email}</a></li>
-          <li><a href={`tel:${profile.phone}`} class="hover:text-white underline-offset-4 hover:underline">{profile.phone}</a></li>
-          <li><a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-white underline-offset-4 hover:underline">LinkedIn</a></li>
-          <li><a href={url("/contact")} class="hover:text-white underline-offset-4 hover:underline">Contact form</a></li>
-          <li><a href={url("/rss.xml")} class="text-sm opacity-80 hover:opacity-100 underline-offset-4 hover:underline">RSS feed</a></li>
+        <p class="footer-title">Get in touch</p>
+        <ul class="footer-links">
+          <li><a href={`mailto:${profile.email}`}>{profile.email}</a></li>
+          <li><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href={url("/contact")}>Contact form</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="pt-6 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-sm opacity-80">
+    <div class="site-footer__bottom">
       <p class="m-0">&copy; {currentYear} {profile.name}</p>
-      <div class="flex items-center gap-5">
-        <a href={url("/privacy")} class="hover:text-white">Privacy policy</a>
-        <a href={url("/cv/Saroj-Baral-CV.pdf")} download class="hover:text-white">Download CV (PDF)</a>
-      </div>
+      <a href={url("/privacy")}>Privacy policy</a>
     </div>
   </div>
 </footer>

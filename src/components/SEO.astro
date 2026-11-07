@@ -1,11 +1,13 @@
 ---
 import { url } from "../utils/url";
+
 interface Props {
   title: string;
   description: string;
   ogImage?: string;
   type?: 'website' | 'article' | 'profile';
   jsonLd?: Record<string, any> | Array<Record<string, any>>;
+  noindex?: boolean;
 }
 
 const {
@@ -14,35 +16,44 @@ const {
   ogImage = '/og/default.png',
   type = 'website',
   jsonLd,
+  noindex = false,
 } = Astro.props;
 
+// Canonical + social URLs always use the origin the build is configured for
+// (SITE_URL in CI, otherwise the custom domain) plus the real page path, so
+// they match wherever the site is actually served from.
 const siteUrl = (Astro.site?.origin ?? 'https://sarojbaral.com.np').replace(/\/$/, '');
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '';
 const canonicalUrl = `${siteUrl}${pathname}`;
 const formattedTitle = title.includes('Saroj Baral') ? title : `${title} | Saroj Baral`;
 const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${url(ogImage)}`;
+const ogAlt = 'Saroj Baral: MIS, Business Intelligence and Project Coordination';
 ---
 
 <title>{formattedTitle}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
+{noindex && <meta name="robots" content="noindex, follow" />}
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph -->
 <meta property="og:type" content={type} />
+<meta property="og:locale" content="en_US" />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:title" content={formattedTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={absoluteOgImage} />
-<meta property="og:site_name" content="Saroj Baral — Project Control, MIS & Business Operations" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={ogAlt} />
+<meta property="og:site_name" content="Saroj Baral" />
 
-<!-- Twitter -->
+<!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content={canonicalUrl} />
 <meta name="twitter:title" content={formattedTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={absoluteOgImage} />
+<meta name="twitter:image:alt" content={ogAlt} />
 
 {jsonLd && (
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 )}
-

@@ -1,5 +1,7 @@
 ---
 import { url } from "../utils/url";
+import Icon from "./Icon.astro";
+
 interface Props {
   name: string;
   price: string;
@@ -14,57 +16,43 @@ const {
   price,
   featured = false,
   features = [],
-  ctaText = 'Request quote →',
+  ctaText = 'Request a quote',
   ctaHref = '/contact?service=website',
 } = Astro.props;
 ---
 
-<div class={`card-base p-6 md:p-8 flex flex-col justify-between relative transition-all ${
-  featured ? 'border-2 border-[var(--color-accent)] shadow-md bg-[var(--color-surface)]' : 'bg-[var(--color-surface)]'
-}`}>
+<div
+  class={`card-base card-hover relative p-6 md:p-7 flex flex-col justify-between h-full ${
+    featured ? 'border-[var(--color-accent)] shadow-[var(--shadow-md)]' : ''
+  }`}
+  style={featured ? 'border-width:2px' : undefined}
+>
   {featured && (
-    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--color-accent)] text-white text-[11px] font-bold uppercase tracking-wider px-3 py-0.5 rounded-full shadow-sm">
-      Most Popular
-    </div>
+    <span class="tag tag--accent absolute -top-3 left-6 font-bold shadow-sm" style="background:var(--color-btn);color:#fff">
+      Most popular
+    </span>
   )}
 
   <div>
-    <!-- Package Name -->
-    <h3 class="text-xl font-bold text-[var(--color-text)] mb-2">
-      {name}
-    </h3>
+    <h3 class="text-xl font-semibold mb-3">{name}</h3>
 
-    <!-- Price -->
     <div class="mb-6 pb-6 border-b border-[var(--color-border)]">
-      <div class="text-3xl font-bold text-[var(--color-text)]">
-        {price}
-      </div>
+      <div class="text-3xl font-bold tracking-tight">{price}</div>
       <span class="text-xs text-[var(--color-muted)]">Fixed quote · 7–10 days turnaround</span>
     </div>
 
-    <!-- Features -->
-    <ul class="space-y-3 mb-8 text-sm">
+    <ul class="space-y-3 mb-8 text-[15px] list-none p-0">
       {features.map((feature) => (
         <li class="flex items-start gap-2.5">
-          <svg class="w-4 h-4 text-[var(--color-accent)] mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-          </svg>
-          <span class="text-[var(--color-text)] font-medium">{feature}</span>
+          <Icon name="check" size={16} strokeWidth={2.5} class="mt-1 shrink-0 text-[var(--color-accent)]" />
+          <span class="text-[var(--color-text)]">{feature}</span>
         </li>
       ))}
     </ul>
   </div>
 
-  <!-- Action CTA -->
-  <div>
-    <a
-      href={url(ctaHref)}
-      class={`btn-base w-full text-center ${
-        featured ? 'btn-primary' : 'btn-secondary'
-      }`}
-    >
-      {ctaText}
-    </a>
-  </div>
+  <a href={url(ctaHref)} class={`btn-base w-full ${featured ? 'btn-primary' : 'btn-secondary'}`}>
+    {ctaText}
+    <Icon name="arrow-right" size={16} />
+  </a>
 </div>
-

@@ -1,8 +1,9 @@
 ---
 import { url } from "../../utils/url";
+import { splitKpi } from "../../utils/kpi";
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CTA from '../../components/CTA.astro';
+import Icon from '../../components/Icon.astro';
 
 export async function getStaticPaths() {
   const workEntries = await getCollection('work');
@@ -14,6 +15,9 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const kpi = entry.data.kpi;
+const from = kpi?.from ? splitKpi(kpi.from) : null;
+const to = kpi ? splitKpi(kpi.to) : null;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -39,72 +43,66 @@ const jsonLd = {
 >
   <article class="site-container section-padding">
     <!-- Breadcrumb -->
-    <nav class="mb-6 text-sm text-[var(--color-muted)]" aria-label="Breadcrumb">
-      <a href={url("/work")} class="hover:text-[var(--color-accent)]">&larr; Back to all work samples</a>
+    <nav class="mb-6 text-sm" aria-label="Breadcrumb">
+      <a href={url("/work")} class="link-arrow" style="font-size:0.875rem">
+        <span aria-hidden="true">&larr;</span> All work samples
+      </a>
     </nav>
 
     <!-- Header -->
-    <header class="max-w-3xl mb-8 pb-8 border-b border-[var(--color-border)]">
-      <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-4">
-        {entry.data.title}
-      </h1>
-      
-      <!-- Meta line: client_type · year · services.join(' · ') -->
-      <div class="text-sm md:text-base font-medium text-[var(--color-accent)] mb-6 flex flex-wrap items-center gap-2">
-        <span>{entry.data.client_type}</span>
-        <span>&bull;</span>
-        <span>{entry.data.year}</span>
-        <span>&bull;</span>
-        <span>{entry.data.services.join(' · ')}</span>
-      </div>
-
-      <!-- Tools Used -->
-      <div class="flex flex-wrap gap-2 items-center">
-        <span class="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">Tools:</span>
-        {entry.data.tools.map((tool) => (
-          <span class="px-2.5 py-0.5 rounded text-xs font-medium bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)]">
-            {tool}
-          </span>
-        ))}
-      </div>
+    <header class="max-w-3xl mb-8">
+      <p class="eyebrow">{entry.data.client_type} &middot; {entry.data.year}</p>
+      <h1 class="mb-4" style="font-size:clamp(2rem,4.4vw,2.75rem)">{entry.data.title}</h1>
+      <p class="lead m-0">{entry.data.summary}</p>
     </header>
 
-    <!-- Mandatory Visible Notice -->
-    <div class="max-w-3xl mb-8 p-4 rounded-lg bg-[var(--color-surface)] border-l-4 border-[var(--color-accent)] text-sm text-[var(--color-muted)]">
-      <strong>Notice:</strong> Illustrative case study with anonymized data.
+    <!-- Key result -->
+    {kpi && to && (
+      <div class="card-base max-w-3xl mb-6 work-card__kpi" style="border-bottom:1px solid var(--color-border)">
+        <p class="kpi-eyebrow"><span>Key result</span><span>Illustrative sample</span></p>
+        <p class="kpi-value">
+          {from && (
+            <>
+              <span class="from">{from.prefix}{from.num}{from.suffix}</span>
+              <Icon name="arrow-right" size={22} class="arrow" />
+            </>
+          )}
+          <span class="to">{to.prefix}{to.num}{to.suffix}</span>
+        </p>
+        <p class="kpi-label">{kpi.label}</p>
+      </div>
+    )}
+
+    <!-- Meta: services + tools -->
+    <div class="max-w-3xl mb-8 pb-8 border-b border-[var(--color-border)] space-y-3">
+      <div class="tag-row items-center">
+        <span class="text-xs font-semibold text-[var(--color-subtle)] mr-1">Services</span>
+        {entry.data.services.map((svc) => <span class="tag tag--accent">{svc}</span>)}
+      </div>
+      <div class="tag-row items-center">
+        <span class="text-xs font-semibold text-[var(--color-subtle)] mr-1">Tools</span>
+        {entry.data.tools.map((tool) => <span class="tag">{tool}</span>)}
+      </div>
     </div>
 
-    <!-- Optional Download Sample Link -->
+    <!-- Mandatory visible notice -->
+    <div class="max-w-3xl mb-8 p-4 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)] text-sm text-[var(--color-muted)]" style="border-left:4px solid var(--color-accent)">
+      <strong class="text-[var(--color-text)]">Notice:</strong> Illustrative case study with anonymized data.
+    </div>
+
+    <!-- Optional sample download -->
     {entry.data.sample_file && (
-      <div class="max-w-3xl mb-10 p-4 rounded-lg bg-[var(--color-accent-soft)]/50 border border-[var(--color-accent)]/20 flex items-center justify-between">
-        <div class="text-sm font-medium text-[var(--color-text)]">
-          Download the illustrative data schema outline
-        </div>
-        <a
-          href={url(entry.data.sample_file)}
-          download
-          class="btn-base btn-primary text-xs py-1.5 px-3.5"
-        >
-          Download sample &darr;
+      <div class="card-base max-w-3xl mb-10 p-4 flex flex-wrap items-center justify-between gap-3">
+        <div class="text-sm font-medium">Download the illustrative data schema outline</div>
+        <a href={url(entry.data.sample_file)} download class="btn-base btn-primary btn-sm">
+          <Icon name="download" size={15} /> Download sample
         </a>
       </div>
     )}
 
-    <!-- MDX Content Body -->
-    <div class="max-w-3xl prose prose-neutral text-[var(--color-text)] leading-relaxed space-y-6 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-[var(--color-text)] [&_p]:text-base [&_p]:text-[var(--color-muted)] [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ul]:text-[var(--color-muted)] [&_blockquote]:border-l-4 [&_blockquote]:border-[var(--color-accent)] [&_blockquote]:pl-4 [&_blockquote]:italic">
+    <!-- MDX body. Each study ends with its own service-specific call to action. -->
+    <div class="max-w-3xl prose-content">
       <Content />
-    </div>
-
-    <!-- Bottom CTA Block -->
-    <div class="max-w-3xl mt-12 pt-8 border-t border-[var(--color-border)]">
-      <CTA
-        title="Facing a similar operational challenge?"
-        description="Whether you need spreadsheet restructuring, document controls, or project coordination, let's talk through your setup."
-        primaryText="Discuss a similar project"
-        primaryHref="/contact"
-        secondaryText="All work samples"
-        secondaryHref="/work"
-      />
     </div>
   </article>
 </BaseLayout>
