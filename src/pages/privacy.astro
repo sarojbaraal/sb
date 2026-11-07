@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import profile from '../data/profile.json';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="Privacy policy for sarojbaral.com.np: details on contact form submissions, cookieless analytics, and data rights."
+>
+  <div class="site-container section-padding">
+    <div class="max-w-3xl">
+      <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-2">
+        Legal &amp; Data Handling
+      </span>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-8">
+        Privacy Policy
+      </h1>
+
+      <div class="card-base p-8 md:p-10 bg-[var(--color-surface)] space-y-6 text-base text-[var(--color-text)] leading-relaxed">
+        <p>
+          <strong>Information collected via the contact form:</strong> When you submit an inquiry through the contact form on this website, your name, email address, chosen inquiry topic, and message content are transmitted securely via Web3Forms directly to my primary email inbox. This information is used strictly to reply to your message, assess project feasibility, or prepare a formal proposal.
+        </p>
+
+        <p>
+          <strong>Cookieless website analytics:</strong> This website utilizes Cloudflare Web Analytics, a privacy-focused analytics service that does not use cookies, does not collect personal identifiers, and does not track you across other websites. Metrics collected are limited to aggregate page views, referrers, and basic browser device types for performance monitoring.
+        </p>
+
+        <p>
+          <strong>No sale or sharing of personal data:</strong> Your contact details and communication history will never be sold, rented, monetized, or shared with third-party advertising networks. Information shared regarding your company's spreadsheets, internal processes, or project requirements is treated with strict professional confidentiality.
+        </p>
+
+        <p>
+          <strong>Data deletion and access requests:</strong> You retain the right to request a copy of any correspondence or ask for your contact details to be permanently deleted from my email archives at any time. Simply send an email request directly to <a href={`mailto:${profile.email}`} class="text-[var(--color-accent)] font-semibold hover:underline">{profile.email}</a>, and it will be completed promptly.
+        </p>
+      </div>
+
+      <div class="mt-8">
+        <a href="/" class="btn-base btn-secondary text-sm">
+          &larr; Back to home
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+

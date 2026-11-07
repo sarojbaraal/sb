@@ -1,0 +1,65 @@
+[
+  {
+    "role": "Freelance Consultant — IT Solutions & Business Operations",
+    "org": "Self-employed",
+    "location": "Kathmandu, Nepal",
+    "start": "2022",
+    "end": "Present",
+    "summary": "Independent consulting for SMEs on MIS support, workflow optimization, reporting, and technical documentation.",
+    "bullets": [
+      "Provided IT solution consulting and MIS support to small and medium businesses.",
+      "Assisted clients in workflow optimization, data reporting, and process improvement.",
+      "Delivered technical documentation, system requirement analysis, and project planning support.",
+      "Supported business development through technical proposal writing and solution design."
+    ]
+  },
+  {
+    "role": "Engineer / Manager — Technical Solution, Project Control & Operations",
+    "org": "Huawei Technologies Nepal Co., Pvt. Ltd.",
+    "location": "Kathmandu, Nepal",
+    "start": "2013",
+    "end": "2019",
+    "summary": "Project control and technical coordination across sales, finance, supply chain, vendors, and delivery teams.",
+    "bullets": [
+      "Maintained ERP data accuracy and prepared regular project performance reports for senior management.",
+      "Consolidated inputs from sales, finance, supply chain, vendors, and delivery teams; followed up on gaps.",
+      "Prepared and reviewed project documentation, status reports, schedules, and budgets.",
+      "Led material planning and inventory coordination based on BOQ and SCM systems.",
+      "Implemented change-control processes and coordinated ERP/SCM-related documentation and issue tracking.",
+      "Supported bid and proposal reviews by coordinating technical and commercial inputs."
+    ],
+    "awards": [
+      "Outstanding Achievement in Customer Satisfaction",
+      "Project Office Business Skill Authentication",
+      "Employee of the Month",
+      "Certificate of Merit — Top Performing Team, WDM Golden Seeds Training, Shenzhen (2019)"
+    ]
+  },
+  {
+    "role": "Survey Engineer",
+    "org": "GTL Nepal",
+    "location": "Kathmandu, Nepal",
+    "start": "Nov 2011",
+    "end": "May 2012",
+    "summary": "Technical assessments at BTS sites and detailed reporting.",
+    "bullets": [
+      "Conducted technical assessments at multiple BTS sites, including power supply and network status.",
+      "Produced detailed reports based on thorough technical assessments.",
+      "Provided comprehensive optimization recommendations."
+    ]
+  },
+  {
+    "role": "Internship",
+    "org": "Radio Nepal",
+    "location": "Kathmandu, Nepal",
+    "start": "Sep 2010",
+    "end": "Dec 2010",
+    "summary": "Broadcast equipment maintenance and signal quality analysis.",
+    "bullets": [
+      "Gained practical experience in troubleshooting, repairing, and maintaining broadcasting equipment.",
+      "Collaborated with the technical team to analyze signal quality and improve transmission performance.",
+      "Assisted in implementing new technologies for broadcasting."
+    ]
+  }
+]
+

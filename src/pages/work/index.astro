@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseStudyCard from '../../components/CaseStudyCard.astro';
+import { getCollection } from 'astro:content';
+
+const workEntries = await getCollection('work');
+const sortedWork = workEntries.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Work samples"
+  description="Explore anonymized case studies and reporting architecture samples demonstrating MIS reporting packs, change logs, and ERP tracking."
+>
+  <div class="site-container section-padding">
+    <!-- Header -->
+    <div class="max-w-3xl mb-12">
+      <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-2">
+        Case Studies &amp; Sample Architecture
+      </span>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-4">
+        Work samples
+      </h1>
+      <p class="text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+        Anonymized, fake-data samples. No client names.
+      </p>
+    </div>
+
+    <!-- Case Studies Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {sortedWork.map((entry) => (
+        <CaseStudyCard
+          slug={entry.id}
+          title={entry.data.title}
+          summary={entry.data.summary}
+          client_type={entry.data.client_type}
+          year={entry.data.year}
+          services={entry.data.services}
+          tools={entry.data.tools}
+          result_metrics={entry.data.result_metrics}
+          cover={entry.data.cover}
+        />
+      ))}
+    </div>
+
+    <!-- Bottom Notice -->
+    <div class="p-6 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] text-sm text-[var(--color-muted)] text-center max-w-2xl mx-auto">
+      <p>
+        All samples use synthetic test data to demonstrate schema organization, calculation pipelines, and user interface discipline without compromising proprietary client information.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

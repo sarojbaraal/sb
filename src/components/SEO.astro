@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  type?: 'website' | 'article' | 'profile';
+  jsonLd?: Record<string, any> | Array<Record<string, any>>;
+}
+
+const {
+  title,
+  description,
+  ogImage = '/og/default.png',
+  type = 'website',
+  jsonLd,
+} = Astro.props;
+
+const siteUrl = 'https://sarojbaral.com.np';
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '';
+const canonicalUrl = `${siteUrl}${pathname}`;
+const formattedTitle = title.includes('Saroj Baral') ? title : `${title} | Saroj Baral`;
+const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+---
+
+<title>{formattedTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={formattedTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={absoluteOgImage} />
+<meta property="og:site_name" content="Saroj Baral — MIS, Business Intelligence & Project Coordination" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={formattedTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={absoluteOgImage} />
+
+{jsonLd && (
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+)}
+

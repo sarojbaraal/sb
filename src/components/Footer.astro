@@ -1,0 +1,86 @@
+---
+import profile from '../data/profile.json';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="mt-auto border-t border-[var(--color-border)] bg-[var(--color-surface)] py-12 text-[15px] text-[var(--color-muted)]">
+  <div class="site-container">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <!-- Col 1: Identity & Positioning -->
+      <div class="md:col-span-2">
+        <a href="/" class="text-lg font-bold text-[var(--color-text)] tracking-tight hover:text-[var(--color-accent)] inline-block mb-2">
+          {profile.name}
+        </a>
+        <p class="text-sm text-[var(--color-muted)] mb-3 max-w-sm">
+          {profile.headline}. {profile.tagline}
+        </p>
+        <p class="text-xs text-[var(--color-muted)]">
+          Based in {profile.location.city}, {profile.location.country} ({profile.location.tzLabel}).<br />
+          {profile.availability}.
+        </p>
+      </div>
+
+      <!-- Col 2: Navigation Links -->
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-3">
+          Navigation
+        </h4>
+        <ul class="space-y-2">
+          <li><a href="/about" class="hover:text-[var(--color-accent)] transition-colors">About</a></li>
+          <li><a href="/services" class="hover:text-[var(--color-accent)] transition-colors">Services</a></li>
+          <li><a href="/websites" class="hover:text-[var(--color-accent)] transition-colors">Simple Websites</a></li>
+          <li><a href="/teaching" class="hover:text-[var(--color-accent)] transition-colors">Teaching & Workshops</a></li>
+          <li><a href="/work" class="hover:text-[var(--color-accent)] transition-colors">Work Samples</a></li>
+          <li><a href="/notes" class="hover:text-[var(--color-accent)] transition-colors">Notes</a></li>
+          <li><a href="/cv" class="hover:text-[var(--color-accent)] transition-colors">Curriculum Vitae</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Direct Contact & Feeds -->
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-3">
+          Direct Connect
+        </h4>
+        <ul class="space-y-2">
+          <li>
+            <a href={`mailto:${profile.email}`} class="hover:text-[var(--color-accent)] transition-colors">
+              {profile.email}
+            </a>
+          </li>
+          <li>
+            <a href={`tel:${profile.phone}`} class="hover:text-[var(--color-accent)] transition-colors">
+              {profile.phone}
+            </a>
+          </li>
+          <li>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-accent)] transition-colors inline-flex items-center gap-1">
+              LinkedIn &nearr;
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class="text-[var(--color-accent)] font-medium hover:underline">
+              Contact Form &rarr;
+            </a>
+          </li>
+          <li class="pt-2">
+            <a href="/rss.xml" class="text-xs text-[var(--color-muted)] hover:text-[var(--color-accent)]">
+              RSS Feed
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-6 border-t border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-muted)]">
+      <p>&copy; {currentYear} {profile.name}. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <a href="/privacy" class="hover:text-[var(--color-accent)] transition-colors">Privacy Policy</a>
+        <span>&bull;</span>
+        <a href="/cv/Saroj-Baral-CV.pdf" download class="hover:text-[var(--color-accent)] transition-colors">Download CV (PDF)</a>
+      </div>
+    </div>
+  </div>
+</footer>
+

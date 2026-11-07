@@ -1,0 +1,21 @@
+---
+import profile from '../data/profile.json';
+
+const items = profile.proofStrip;
+---
+
+<div class="card-base p-6 md:p-8 bg-[var(--color-surface)]">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-[var(--color-border)]">
+    {items.map((item, index) => (
+      <div class={`flex flex-col ${index !== 0 ? 'md:pl-6' : ''} ${index !== items.length - 1 ? 'md:pr-6' : ''}`}>
+        <span class="text-xl md:text-2xl font-bold tracking-tight text-[var(--color-accent)] mb-1">
+          {item.value}
+        </span>
+        <span class="text-xs md:text-sm text-[var(--color-muted)] font-medium leading-snug">
+          {item.label}
+        </span>
+      </div>
+    ))}
+  </div>
+</div>
+

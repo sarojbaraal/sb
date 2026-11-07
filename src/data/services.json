@@ -1,0 +1,38 @@
+[
+  {
+    "id": "mis-reporting",
+    "label": "A",
+    "title": "MIS & Reporting Support",
+    "priceFrom": "Starting From NPR 20,000",
+    "engagement": "Typical engagement: 1–3 weeks",
+    "bullets": [
+      "Build or fix Excel-based MIS: trackers, validation, pivot summaries, monthly packs.",
+      "Consolidate inputs from multiple teams into one reliable report.",
+      "Weekly/monthly performance reporting for management."
+    ]
+  },
+  {
+    "id": "doc-control",
+    "label": "B",
+    "title": "Data & Document Control",
+    "priceFrom": "Starting From NPR 15,000",
+    "engagement": "Typical engagement: project-based",
+    "bullets": [
+      "Registers, issue logs, change-control trackers, version control.",
+      "Record audits: duplicates, missing fields, inconsistent formats.",
+      "SOPs and checklists so the system survives handover."
+    ]
+  },
+  {
+    "id": "project-coordination",
+    "label": "C",
+    "title": "Project Coordination & Reporting",
+    "priceFrom": "Retainer",
+    "engagement": "10–20 hours/week",
+    "bullets": [
+      "Cross-functional follow-up across sales, finance, SCM, and vendors.",
+      "Status reports, schedules, and action logs.",
+      "ERP/SCM-related documentation and issue tracking."
+    ]
+  }
+]

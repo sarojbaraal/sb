@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PricingCard from '../components/PricingCard.astro';
+import CTA from '../components/CTA.astro';
+import packages from '../data/website-packages.json';
+
+const steps = [
+  {
+    step: '01',
+    title: '30-min call',
+    desc: 'What you need, what you don’t. We define pages, goals, and content essentials upfront.',
+  },
+  {
+    step: '02',
+    title: 'Fixed quote and timeline',
+    desc: 'Clear scope with guaranteed deliverables and no surprise add-on costs.',
+  },
+  {
+    step: '03',
+    title: 'Build + review',
+    desc: 'You receive a live private preview link to test on mobile and desktop before anything goes live.',
+  },
+  {
+    step: '04',
+    title: 'Launch + handover guide',
+    desc: 'Domain connection, launch checklist, a guide to edit text yourself, plus 30 days of free minor fixes.',
+  },
+];
+
+const deliverables = [
+  'Fast, mobile-friendly site',
+  'Your domain + email setup',
+  'Basic SEO',
+  'A guide to update text yourself',
+  '30 days of small fixes',
+  'No monthly fee unless you want hosting',
+];
+---
+
+<BaseLayout
+  title="Simple websites for small businesses"
+  description="Clean, fast, mobile-friendly sites for local businesses delivered in 7–10 days. Fixed pricing, no monthly lock-in, with handover guide."
+>
+  <div class="site-container section-padding">
+    <!-- Header -->
+    <div class="max-w-3xl mb-12">
+      <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-2">
+        Web Development for SMEs
+      </span>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-4">
+        Simple websites for small businesses
+      </h1>
+      <p class="text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+        Clean, fast, mobile-friendly sites — delivered in 7–10 days. AI-assisted build, human-reviewed, with a handover guide.
+      </p>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+      {packages.map((pkg) => (
+        <PricingCard
+          name={pkg.name}
+          price={pkg.price}
+          featured={pkg.featured}
+          features={pkg.features}
+          ctaText="Request a quote →"
+          ctaHref="/contact?service=website"
+        />
+      ))}
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="mb-20">
+      <SectionHeading
+        eyebrow="Process"
+        title="How it works"
+        intro="A transparent 4-step workflow that keeps projects straightforward and delivered on time."
+      />
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {steps.map((s) => (
+          <div class="card-base p-6 bg-[var(--color-surface)]">
+            <span class="text-xs font-bold text-[var(--color-accent)] uppercase tracking-wider block mb-2">
+              Step {s.step}
+            </span>
+            <h3 class="text-lg font-bold text-[var(--color-text)] mb-2">
+              {s.title}
+            </h3>
+            <p class="text-sm text-[var(--color-muted)] leading-relaxed">
+              {s.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- What You Get Section -->
+    <div class="card-base p-8 md:p-10 bg-[var(--color-surface)] mb-16">
+      <h2 class="text-2xl font-bold text-[var(--color-text)] mb-6">
+        What you get
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {deliverables.map((item) => (
+          <div class="flex items-center gap-3">
+            <div class="w-5 h-5 rounded-full bg-[var(--color-accent-soft)] text-[var(--color-accent)] flex items-center justify-center shrink-0">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <span class="text-base text-[var(--color-text)] font-medium">{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Final CTA -->
+    <CTA
+      title="Ready for a clean, fast website?"
+      description="Tell me about your business and goals. You'll get a clear quote and timeline within 24 hours."
+      primaryText="Request a quote"
+      primaryHref="/contact?service=website"
+      secondaryText="See sample work"
+      secondaryHref="/work"
+    />
+  </div>
+</BaseLayout>
+

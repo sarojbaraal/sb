@@ -1,0 +1,49 @@
+---
+title: "ERP/SCM material tracker (BOQ-based)"
+summary: "Reconciled engineering Bill of Quantities (BOQ) with ERP procurement and warehouse inventory records to eliminate material shortages."
+client_type: "Operations & Supply Chain Unit"
+year: 2024
+services: ["Project Coordination & Reporting", "MIS & Reporting Support"]
+tools: ["ERP / SCM Systems", "Excel Advanced", "BOQ Reconciliation"]
+result_metrics: ["Material shortage stockouts reduced to 0", "Weekly inventory reconciliation turnaround cut by 70%"]
+sample_file: "/samples/sample-mis-pack.txt"
+cover: "/og/default.png"
+confidential: true
+order: 3
+---
+import CTA from '../../components/CTA.astro';
+
+> **Note:** Illustrative case study with anonymized data.
+
+## Context
+A capital-intensive rollout required thousands of electrical and hardware components to be staged and deployed across dispersed field sites. Material requests were generated against design Bills of Quantities (BOQ), while procurement and warehouse movements were tracked in separate ERP modules.
+
+## Problem
+Field installation crews frequently faced site delays due to missing critical installation components, even though ERP records indicated material had been purchased.
+- Mismatched item codes between design BOQ lists and ERP stock keeping units (SKU).
+- In-transit materials were not distinguished from available on-hand warehouse inventory.
+- Project coordinators had to manually cross-reference 4 different system exports to determine site delivery readiness.
+
+## What I did
+- Built an automated BOQ-to-ERP reconciliation tracker mapping engineering item codes directly to warehouse SKUs.
+- Created clear visual staging stages: Required → Ordered → In-Transit → In-Warehouse → Dispatched → Installed.
+- Automated safety-stock threshold alerts for high-lead-time critical components.
+- Established a weekly operational review report with warehouse supervisors and procurement officers to close data gaps.
+
+## Result
+- Reduced site installation stoppages caused by component shortages to zero over two consecutive delivery quarters.
+- Decreased weekly inventory reconciliation overhead from 15 hours to 4 hours.
+- Established clean, audit-ready data alignment between engineering demand and ERP inventory balance.
+
+## What you can see
+The model connects BOQ line items with purchase orders, warehouse receipts, and dispatch waybills into a single status dashboard.
+
+<CTA
+  title="Struggling with inventory and ERP alignment?"
+  description="I can help you coordinate cross-functional data across sales, supply chain, and project operations."
+  primaryText="Discuss project coordination"
+  primaryHref="/contact?service=project-coordination"
+  secondaryText="See all services"
+  secondaryHref="/services"
+/>
+

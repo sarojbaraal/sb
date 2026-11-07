@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import profile from "../data/profile.json";
+---
+
+<BaseLayout
+  title="Contact"
+  description="Get in touch with Saroj Baral for MIS, business intelligence, project coordination, SME websites, or teaching inquiries."
+>
+  <div class="site-container section-padding">
+    <!-- Header -->
+    <div class="max-w-3xl mb-12">
+      <span
+        class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-2"
+      >
+        Let's Connect
+      </span>
+      <h1
+        class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-4"
+      >
+        Contact
+      </h1>
+      <p class="text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+        Tell me what you're working on. I reply within 1–2 business days.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <!-- Left Column: Contact Form (7 cols) -->
+      <div class="lg:col-span-7">
+        <ContactForm />
+      </div>
+
+      <!-- Right Column: Direct Channels & Booking (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <!-- Direct Channels Card -->
+        <div class="card-base p-6 md:p-8 bg-[var(--color-surface)]">
+          <h2 class="text-xl font-bold text-[var(--color-text)] mb-4">
+            Direct channels
+          </h2>
+
+          <div class="space-y-4 text-sm">
+            <div>
+              <span
+                class="text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider block"
+              >
+                Primary Email
+              </span>
+              <a
+                href={`mailto:${profile.email}`}
+                class="text-base font-medium text-[var(--color-accent)] hover:underline"
+              >
+                {profile.email}
+              </a>
+              <span class="text-xs text-[var(--color-muted)] block mt-0.5">
+                Fallback: {profile.emailFallback}
+              </span>
+            </div>
+
+            <div class="pt-2 border-t border-[var(--color-border)]">
+              <span
+                class="text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider block"
+              >
+                Phone / WhatsApp
+              </span>
+              <a
+                href={`tel:${profile.phone}`}
+                class="text-base font-medium text-[var(--color-text)] hover:text-[var(--color-accent)]"
+              >
+                {profile.phone}
+              </a>
+            </div>
+
+            <div class="pt-2 border-t border-[var(--color-border)]">
+              <span
+                class="text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider block"
+              >
+                LinkedIn
+              </span>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-base font-medium text-[var(--color-accent)] hover:underline inline-flex items-center gap-1"
+              >
+                Saroj Baral on LinkedIn &nearr;
+              </a>
+            </div>
+
+            <div class="pt-2 border-t border-[var(--color-border)]">
+              <span
+                class="text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider block"
+              >
+                Availability &amp; Location
+              </span>
+              <p class="text-sm text-[var(--color-text)] mt-1">
+                {profile.availability}. Based in {profile.location.city}, {
+                  profile.location.country
+                } ({profile.location.tzLabel}).
+              </p>
+            </div>
+
+            <div class="pt-2 border-t border-[var(--color-border)]">
+              <span
+                class="text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider block"
+              >
+                Guaranteed Response Time
+              </span>
+              <p class="text-sm text-[var(--color-text)] mt-1">
+                Within 1–2 business days.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Book a Call Card -->
+        <div
+          class="card-base p-6 md:p-8 bg-[var(--color-accent-soft)]/40 border border-[var(--color-accent)]/20"
+        >
+          <h3 class="text-lg font-bold text-[var(--color-text)] mb-2">
+            Prefer a direct conversation?
+          </h3>
+          <p class="text-sm text-[var(--color-muted)] mb-4">
+            Schedule a focused 20-minute video or phone consultation to discuss
+            your reporting or project needs.
+          </p>
+          <a
+            href="https://cal.com/sarojbaral"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-base btn-primary text-sm w-full text-center"
+          >
+            Book a 20-min call &rarr;
+          </a>
+          <span
+            class="text-[11px] text-[var(--color-muted)] block text-center mt-2"
+          >
+            Hosted via Cal.com · No signup required
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Service preselection script based on ?service= query param
+  document.addEventListener("DOMContentLoaded", () => {
+    const service = new URLSearchParams(window.location.search).get("service");
+    const select = document.getElementById("need") as HTMLSelectElement | null;
+    if (service && select) {
+      const match = Array.from(select.options).find((o) => o.value === service);
+      if (match) select.value = match.value;
+    }
+  });
+</script>

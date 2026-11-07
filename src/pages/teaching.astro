@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CTA from '../components/CTA.astro';
+import teaching from '../data/teaching.json';
+import profile from '../data/profile.json';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  jobTitle: 'Educator & Lecturer — MIS, Business Intelligence, Operations & Electronics',
+  hasOccupation: [
+    {
+      '@type': 'Occupation',
+      name: 'Visiting Faculty / Workshop Instructor',
+      occupationalCategory: '25-1000.00',
+      description: 'Instruction in Business Excel, MIS, Operations Management, and Electronics Fundamentals',
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Teaching & workshops"
+  description="Available for part-time faculty roles, guest lectures, and practical corporate workshops in Excel, MIS, operations, and electronics."
+  jsonLd={jsonLd}
+>
+  <div class="site-container section-padding">
+    <!-- Header -->
+    <div class="max-w-3xl mb-12">
+      <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-2">
+        Academic &amp; Training Engagements
+      </span>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-4">
+        Teaching &amp; workshops
+      </h1>
+      <p class="text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+        Available for part-time faculty, guest lectures and short workshops.
+      </p>
+    </div>
+
+    <!-- Topics Grid (Two Columns) -->
+    <div class="mb-16">
+      <SectionHeading
+        eyebrow="Curriculum Focus"
+        title="Subjects &amp; Topics"
+        intro="Practical, applied instruction connecting theoretical foundations with real-world industry execution."
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Column 1: Electronics -->
+        <div class="card-base p-6 md:p-8 bg-[var(--color-surface)]">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded bg-[var(--color-accent-soft)] text-[var(--color-accent)] flex items-center justify-center font-bold">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-[var(--color-text)]">
+              Electronics &amp; Communications
+            </h3>
+          </div>
+          <ul class="space-y-3 text-sm text-[var(--color-muted)]">
+            {teaching.topics.electronics.map((item) => (
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-[var(--color-accent)] mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-[var(--color-text)] font-medium">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Column 2: Management -->
+        <div class="card-base p-6 md:p-8 bg-[var(--color-surface)]">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-8 h-8 rounded bg-[var(--color-accent-soft)] text-[var(--color-accent)] flex items-center justify-center font-bold">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-[var(--color-text)]">
+              Management &amp; Data Operations
+            </h3>
+          </div>
+          <ul class="space-y-3 text-sm text-[var(--color-muted)]">
+            {teaching.topics.management.map((item) => (
+              <li class="flex items-start gap-2.5">
+                <svg class="w-4 h-4 text-[var(--color-accent)] mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-[var(--color-text)] font-medium">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formats & Credentials -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <!-- Formats -->
+      <div class="card-base p-6 md:p-8 bg-[var(--color-surface)]">
+        <h3 class="text-xl font-bold text-[var(--color-text)] mb-4">
+          Engagement Formats
+        </h3>
+        <ul class="space-y-3 text-sm">
+          {teaching.formats.map((format) => (
+            <li class="flex items-start gap-2.5">
+              <span class="text-[var(--color-accent)] font-bold shrink-0 mt-0.5">&bull;</span>
+              <span class="text-[var(--color-text)] font-medium leading-relaxed">{format}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Credentials -->
+      <div class="card-base p-6 md:p-8 bg-[var(--color-surface)]">
+        <h3 class="text-xl font-bold text-[var(--color-text)] mb-4">
+          Verified Credentials
+        </h3>
+        <ul class="space-y-3 text-sm">
+          {teaching.credentials.map((cred) => (
+            <li class="flex items-start gap-2.5">
+              <span class="text-[var(--color-accent)] font-bold shrink-0 mt-0.5">&check;</span>
+              <span class="text-[var(--color-text)] font-medium leading-relaxed">{cred}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <CTA
+      title="Discuss a teaching or training engagement"
+      description="Looking for an instructor or speaker with real engineering and corporate project operations experience?"
+      primaryText="Discuss a teaching role"
+      primaryHref="/contact?service=teaching"
+      secondaryText="Download CV"
+      secondaryHref="/cv"
+    />
+  </div>
+</BaseLayout>
+

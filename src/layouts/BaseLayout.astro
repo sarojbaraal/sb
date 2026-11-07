@@ -1,0 +1,66 @@
+---
+import SEO from "../components/SEO.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  type?: "website" | "article" | "profile";
+  jsonLd?: Record<string, any> | Array<Record<string, any>>;
+}
+
+const { title, description, ogImage, type, jsonLd } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SEO
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      type={type}
+      jsonLd={jsonLd}
+    />
+  </head>
+  <body
+    class="bg-[var(--color-bg)] text-[var(--color-text)] flex flex-col min-h-screen antialiased selection:bg-[var(--color-accent-soft)] selection:text-[var(--color-accent-hover)]"
+  >
+    <!-- Accessible Skip Link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--color-accent)] focus:text-white focus:rounded focus:shadow-md focus:outline-none"
+    >
+      Skip to main content
+    </a>
+
+    <Nav />
+
+    <main id="main-content" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <!--
+      ==========================================================================
+      CLOUDFLARE WEB ANALYTICS (PLACEHOLDER)
+      To activate:
+      1. Go to your Cloudflare Dashboard -> Analytics & Logs -> Web Analytics
+      2. Add site "sarojbaral.com.np" and copy your 'token'
+      3. Uncomment the script below and replace Cloudflare 'YOUR_CLOUDFLARE_ANALYTICS_TOKEN'
+      ==========================================================================
+      <script
+        defer
+        src='https://static.cloudflareinsights.com/beacon.min.js'
+        data-cf-beacon='{"token": "YOUR_CLOUDFLARE_ANALYTICS_TOKEN"}'
+      ></script>
+    -->
+  </body>
+</html>
