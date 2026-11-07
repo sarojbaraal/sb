@@ -2,29 +2,53 @@
 import { url } from "../utils/url";
 import profile from "../data/profile.json";
 import CareerSchedule from "./CareerSchedule.astro";
+import ProofStrip from "./ProofStrip.astro";
 ---
 
 <section class="pt-12 md:pt-20 pb-14 md:pb-20">
   <div class="site-container">
-    <p class="text-[15px] text-[var(--color-muted)] mb-5 flex items-center gap-2">
-      <span class="inline-block w-2 h-2 rounded-full bg-[var(--color-marigold)]" aria-hidden="true"></span>
-      {profile.availability}. Working from {profile.location.country} on {profile.location.tzLabel}.
-    </p>
+    <div class="hero-grid">
+      <div>
+        <p class="text-[15px] text-[var(--color-muted)] mb-5 flex items-center gap-2">
+          <span class="inline-block w-2 h-2 rounded-full bg-[var(--color-marigold)]" aria-hidden="true"></span>
+          {profile.availability}. Working from {profile.location.country} on {profile.location.tzLabel}.
+        </p>
 
-    <h1 class="max-w-[15ch] md:max-w-[17ch] mb-6">
-      Turning complex information into clear, useful decisions.
-    </h1>
+        <h1 class="max-w-[15ch] md:max-w-[17ch] mb-6">
+          Turning complex information into clear, useful decisions.
+        </h1>
 
-    <p class="text-lg md:text-xl text-[var(--color-muted)] prose-measure mb-8 leading-[1.6]">
-      I bring together <strong class="text-[var(--color-text)]">MIS, business intelligence and project coordination</strong> to turn complex information into accurate reports, reliable records and better-informed decisions. My background includes six years at Huawei Technologies Nepal, an engineering degree, an Executive MBA and independent freelance work.
-    </p>
+        <p class="text-lg md:text-xl text-[var(--color-muted)] prose-measure mb-8 leading-[1.6]">
+          I bring together <strong class="text-[var(--color-text)]">MIS, business intelligence and project coordination</strong> to turn complex information into accurate reports, reliable records and better-informed decisions. My background includes six years at Huawei Technologies Nepal, an engineering degree, an Executive MBA and independent freelance work.
+        </p>
 
-    <div class="flex flex-wrap items-center gap-3 mb-14 md:mb-20">
-      <a href={url("/cv")} class="btn-base btn-primary text-base px-5 py-2.5">View CV</a>
-      <a href={`mailto:${profile.email}`} class="btn-base btn-secondary text-base px-5 py-2.5">Email me</a>
-      <a href={url("/work")} class="link-quiet text-base ml-1">See sample work</a>
+        <div class="flex flex-wrap items-center gap-3 mb-8 md:mb-0">
+          <a href={`mailto:${profile.email}`} class="btn-base btn-primary text-base px-5 py-2.5">Discuss a project</a>
+          <a href={url("/cv")} class="btn-base btn-secondary text-base px-5 py-2.5">View CV</a>
+          <a href={url("/work")} class="link-quiet text-base ml-1">See sample work</a>
+        </div>
+      </div>
+
+      <div class="decision-preview" aria-label="A preview of a reporting workflow">
+        <div class="flex items-start justify-between gap-4 mb-8">
+          <div>
+            <p class="preview-kicker">Reporting system / 01</p>
+            <h2 class="text-2xl md:text-3xl text-white mb-0">From scattered inputs<br />to a clear next step.</h2>
+          </div>
+          <span class="preview-status">Ready</span>
+        </div>
+        <div class="space-y-3">
+          <div class="preview-row"><span>Branch inputs</span><strong>Validated</strong></div>
+          <div class="preview-row"><span>Monthly pack</span><strong>Consolidated</strong></div>
+          <div class="preview-row"><span>Management view</span><strong class="text-[var(--color-marigold)]">Actionable</strong></div>
+        </div>
+        <div class="preview-footer"><span>Reliable information</span><span>Clear reporting</span></div>
+      </div>
     </div>
 
     <CareerSchedule />
+    <div class="mt-10 md:mt-12">
+      <ProofStrip />
+    </div>
   </div>
 </section>
