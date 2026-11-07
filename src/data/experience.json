@@ -1,15 +1,16 @@
 [
   {
-    "role": "Freelance Consultant, IT Solutions & Business Operations",
-    "org": "Self-employed",
-    "location": "Kathmandu, Nepal",
+    "role": "Independent MIS, Reporting & Business Support Professional",
+    "org": "Self-employed | Freelance and project-based engagements",
+    "location": "Kathmandu, Nepal / Remote",
     "start": "2022",
     "end": "Present",
-    "summary": "Independent MIS and operations support for small and medium businesses.",
+    "summary": "Independent work across data research, information management, reporting and business support.",
     "bullets": [
-      "Advise SMEs on IT solutions and MIS, covering requirement analysis, workflow optimisation and data reporting.",
-      "Write technical documentation and project plans that a client team can run after handover.",
-      "Support business development with technical proposals and solution design."
+      "Complete freelance assignments involving online research, information gathering, data entry and data organisation.",
+      "Use Microsoft Excel to clean, structure and maintain data, prepare summaries and support reporting tasks.",
+      "Prepare business documents, reports and presentations based on client requirements.",
+      "Support project-based administrative, MIS and information-management tasks through direct clients, referrals and online platforms."
     ]
   },
   {
@@ -18,35 +19,30 @@
     "location": "Kathmandu, Nepal",
     "start": "2013",
     "end": "2019",
-    "summary": "Six years across technical solutions, project control and delivery coordination in a multinational operating environment.",
+    "summary": "Six years in a multinational environment, supporting technical solutions, project coordination, project control, MIS and cross-functional operations.",
     "groups": [
       {
-        "title": "Technical solution and strategy",
+        "title": "Technical solutions and sales support",
         "bullets": [
-          "Translated client business and technical requirements into scalable IT solutions, from design and integration through implementation.",
-          "Advised customers on information-systems strategy covering policy, security and service-delivery frameworks.",
-          "Ran technical feasibility studies, risk assessments and system-security evaluations.",
-          "Led solution design and forecasting against business trends and customer requirements.",
-          "Worked with sales, finance, supply chain and delivery teams to prepare technical bids and finalise solutions."
+          "Supported technical sales and solution activities by gathering client requirements and coordinating with relevant internal teams.",
+          "Contributed to technical and business reviews, proposal preparation and bid documentation.",
+          "Coordinated with sales, finance, supply chain, vendors and project delivery teams during bidding and implementation stages."
         ]
       },
       {
-        "title": "Project control and operations",
+        "title": "Project control, MIS and SCM coordination",
         "bullets": [
-          "Planned, executed and monitored projects to hold delivery dates and quality standards.",
-          "Set priorities, delegated work and enforced operating procedures and deadlines.",
-          "Oversaw budgeting, contracting and administration for project management.",
-          "Kept ERP data accurate and issued regular performance reports to senior management.",
-          "Led material planning and inventory coordination from BOQ and SCM systems.",
-          "Introduced change-control processes to keep execution on course."
+          "Coordinated project plans, schedules, milestones and follow-up to support timely project delivery.",
+          "Maintained MIS reports and ERP records, consolidated information from different functions and prepared regular status and performance reports.",
+          "Supported BOQ-based material planning, SCM coordination, vendor follow-up and project delivery tracking.",
+          "Supported change-control processes and maintained project records and documentation."
         ]
       },
       {
-        "title": "Leadership and coordination",
+        "title": "Cross-functional coordination",
         "bullets": [
-          "Guided vendors and internal teams to build capability and meet delivery timelines.",
-          "Aligned project outcomes with customer expectations through regular stakeholder coordination.",
-          "Supervised support staff and kept records and documentation orderly."
+          "Worked with internal departments and external vendors to resolve information gaps and keep project activities aligned.",
+          "Followed up on actions, documentation and reporting requirements for project teams and management."
         ]
       }
     ],
@@ -68,7 +64,7 @@
     "summary": "Site surveys of telecom base stations.",
     "bullets": [
       "Assessed power supply and network status at multiple BTS sites.",
-      "Wrote detailed technical reports and optimisation recommendations from each assessment."
+      "Wrote technical reports and optimisation recommendations from site assessments."
     ]
   },
   {
@@ -79,9 +75,9 @@
     "end": "Dec 2010",
     "summary": "Broadcast equipment maintenance and signal analysis.",
     "bullets": [
-      "Troubleshot, repaired and maintained broadcasting equipment.",
-      "Worked with the technical team to analyse signal quality and improve transmission performance.",
-      "Assisted in introducing new technology for broadcasting."
+      "Assisted with troubleshooting, repair and maintenance of broadcasting equipment.",
+      "Worked with the technical team on signal-quality analysis and transmission performance.",
+      "Supported the team during the introduction of broadcasting technology."
     ]
   }
 ]
