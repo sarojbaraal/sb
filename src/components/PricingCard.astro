@@ -1,4 +1,5 @@
 ---
+import { url } from "../utils/url";
 interface Props {
   name: string;
   price: string;
@@ -57,7 +58,7 @@ const {
   <!-- Action CTA -->
   <div>
     <a
-      href={ctaHref}
+      href={url(ctaHref)}
       class={`btn-base w-full text-center ${
         featured ? 'btn-primary' : 'btn-secondary'
       }`}

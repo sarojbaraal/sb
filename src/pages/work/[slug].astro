@@ -1,4 +1,5 @@
 ---
+import { url } from "../../utils/url";
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CTA from '../../components/CTA.astro';
@@ -39,7 +40,7 @@ const jsonLd = {
   <article class="site-container section-padding">
     <!-- Breadcrumb -->
     <nav class="mb-6 text-sm text-[var(--color-muted)]" aria-label="Breadcrumb">
-      <a href="/work" class="hover:text-[var(--color-accent)]">&larr; Back to all work samples</a>
+      <a href={url("/work")} class="hover:text-[var(--color-accent)]">&larr; Back to all work samples</a>
     </nav>
 
     <!-- Header -->
@@ -80,7 +81,7 @@ const jsonLd = {
           Download the illustrative data schema outline
         </div>
         <a
-          href={entry.data.sample_file}
+          href={url(entry.data.sample_file)}
           download
           class="btn-base btn-primary text-xs py-1.5 px-3.5"
         >

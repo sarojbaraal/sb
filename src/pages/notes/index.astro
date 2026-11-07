@@ -1,4 +1,5 @@
 ---
+import { url } from "../../utils/url";
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
@@ -36,7 +37,7 @@ const sortedNotes = notesEntries.sort((a, b) => b.data.pubDate.valueOf() - a.dat
         <p class="text-base text-[var(--color-muted)] mb-6">
           Notes will appear here. For now, see the case studies.
         </p>
-        <a href="/work" class="btn-base btn-primary text-sm px-5 py-2.5">
+        <a href={url("/work")} class="btn-base btn-primary text-sm px-5 py-2.5">
           See case studies &rarr;
         </a>
       </div>
@@ -48,14 +49,14 @@ const sortedNotes = notesEntries.sort((a, b) => b.data.pubDate.valueOf() - a.dat
               {note.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
             </span>
             <h2 class="text-xl font-bold text-[var(--color-text)] mb-2">
-              <a href={`/notes/${note.id}`} class="hover:text-[var(--color-accent)] transition-colors">
+              <a href={url(`/notes/${note.id}`)} class="hover:text-[var(--color-accent)] transition-colors">
                 {note.data.title}
               </a>
             </h2>
             <p class="text-sm text-[var(--color-muted)] leading-relaxed mb-4">
               {note.data.description}
             </p>
-            <a href={`/notes/${note.id}`} class="text-sm font-semibold text-[var(--color-accent)] hover:underline">
+            <a href={url(`/notes/${note.id}`)} class="text-sm font-semibold text-[var(--color-accent)] hover:underline">
               Read note &rarr;
             </a>
           </article>

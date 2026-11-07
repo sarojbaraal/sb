@@ -1,4 +1,5 @@
 ---
+import { url } from "../utils/url";
 import profile from "../data/profile.json";
 import ProofStrip from "./ProofStrip.astro";
 ---
@@ -42,15 +43,15 @@ import ProofStrip from "./ProofStrip.astro";
     <!-- 3 CTAs -->
     <div class="flex flex-wrap items-center gap-4 mb-14">
       <a
-        href="/cv"
+        href={url("/cv")}
         class="btn-base btn-primary text-base px-5 py-2.5 shadow-sm"
       >
         Download CV
       </a>
-      <a href="/work" class="btn-base btn-secondary text-base px-5 py-2.5">
+      <a href={url("/work")} class="btn-base btn-secondary text-base px-5 py-2.5">
         See sample work
       </a>
-      <a href="/contact" class="btn-base btn-ghost text-base px-5 py-2.5">
+      <a href={url("/contact")} class="btn-base btn-ghost text-base px-5 py-2.5">
         Contact me &rarr;
       </a>
     </div>

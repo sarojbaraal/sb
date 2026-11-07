@@ -1,4 +1,5 @@
 ---
+import { url } from "../utils/url";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import profile from '../data/profile.json';
 ---
@@ -35,7 +36,7 @@ import profile from '../data/profile.json';
       </div>
 
       <div class="mt-8">
-        <a href="/" class="btn-base btn-secondary text-sm">
+        <a href={url("/")} class="btn-base btn-secondary text-sm">
           &larr; Back to home
         </a>
       </div>

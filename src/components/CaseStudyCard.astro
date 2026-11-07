@@ -1,4 +1,5 @@
 ---
+import { url } from "../utils/url";
 interface Props {
   slug: string;
   title: string;
@@ -33,7 +34,7 @@ const {
 
     <!-- Title -->
     <h3 class="text-xl font-semibold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors mb-2.5">
-      <a href={`/work/${slug}`} class="focus-visible:outline-none focus-visible:underline">
+      <a href={url(`/work/${slug}`)} class="focus-visible:outline-none focus-visible:underline">
         {title}
       </a>
     </h3>
@@ -71,7 +72,7 @@ const {
   <!-- Footer Link -->
   <div class="pt-2">
     <a
-      href={`/work/${slug}`}
+      href={url(`/work/${slug}`)}
       class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-accent)] group-hover:text-[var(--color-accent-hover)] transition-colors"
     >
       <span>Read case study</span>
