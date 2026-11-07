@@ -1,0 +1,60 @@
+---
+import { url } from "../utils/url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "@fontsource/noto-serif-devanagari/400.css";
+import "@fontsource/noto-serif-devanagari/600.css";
+---
+
+<BaseLayout
+  title="Beyond work"
+  description="Saroj Baral is a devotee of Lord Shiva. A short note on the part of life that has nothing to do with deliverables."
+>
+  <div class="night">
+    <div class="site-container night-inner">
+      <svg class="kailash" viewBox="0 0 320 180" role="img" aria-label="A snow peak under a crescent moon">
+        <circle cx="244" cy="44" r="22" fill="#E8EAEE" />
+        <circle cx="254" cy="39" r="20" fill="#0B1424" />
+        <path d="M10 170 L120 62 L150 92 L186 30 L310 170 Z" fill="#1B2A44" />
+        <path d="M186 30 L214 66 L198 62 L186 78 L172 60 L160 70 Z" fill="#E8EAEE" />
+        <path d="M120 62 L134 76 L122 74 L110 84 L102 72 Z" fill="#C9CED6" />
+      </svg>
+
+      <p class="mantra" lang="sa">ॐ नमः शिवाय</p>
+      <h1 class="devotion-title">Shiva, quietly in the background.</h1>
+
+      <div class="devotion-text">
+        <p>
+          I am a devotee of Lord Shiva. It is the part of my life that has nothing to do with deliverables, and I would rather say so plainly than leave it out.
+        </p>
+        <p>
+          I live in the Kathmandu Valley, home to Pashupatinath, one of the most revered Shiva temples in the world.
+        </p>
+        <p>
+          I have also built a small web app for reading stotras, which tells you how those two worlds sometimes meet.
+        </p>
+        <p class="devotion-mantra-note">
+          Om Namah Shivaya.
+        </p>
+      </div>
+
+      <p class="devotion-back"><a href={url("/about")}>Back to About</a> &nbsp;&middot;&nbsp; <a href={url("/contact")}>Get in touch</a></p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .night { background: var(--color-night); color: #DDE1E8; }
+  .night-inner { padding-top: 64px; padding-bottom: 96px; max-width: 760px; }
+  .kailash { width: min(320px, 70vw); height: auto; display: block; margin-bottom: 40px; }
+  .mantra {
+    font-family: "Noto Serif Devanagari", var(--font-serif); font-weight: 600;
+    font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.3; color: var(--color-marigold); margin: 0 0 20px;
+  }
+  .devotion-title { color: #fff; margin-bottom: 32px; max-width: 16ch; }
+  .devotion-text { max-width: 60ch; font-size: 1.12rem; line-height: 1.75; }
+  .devotion-text p { margin-bottom: 1.1rem; }
+  .devotion-mantra-note { font-family: var(--font-serif); font-size: 1.4rem; color: #fff; margin-top: 2rem; }
+  .devotion-back { margin-top: 48px; font-size: 15px; }
+  .devotion-back a { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+  @media (min-width: 768px) { .night-inner { padding-top: 96px; } }
+</style>

@@ -1,9 +1,9 @@
 {
   "name": "Saroj Baral",
-  "headline": "MIS, Business Intelligence & Project Coordination",
+  "headline": "Project Control, MIS & Business Operations",
   "tagline": "Accurate data. Clear reports. Projects that stay on track.",
   "location": {
-    "city": "Bhaktapur",
+    "city": "Kathmandu",
     "country": "Nepal",
     "tz": "Asia/Kathmandu",
     "tzLabel": "NPT (UTC+5:45)"
@@ -29,20 +29,21 @@
   ],
   "proofStrip": [
     {
-      "value": "6 yrs",
+      "value": "6 years",
       "label": "Huawei Technologies Nepal"
     },
     {
       "value": "EMBA",
-      "label": "Himalayan WhiteHouse, 2022"
+      "label": "Strategic management, 2022"
     },
     {
-      "value": "Advanced Excel",
-      "label": "MIS & reporting"
+      "value": "B.E.",
+      "label": "Electronics & Communication"
     },
     {
-      "value": "Remote-ready",
-      "label": "NPT (UTC+5:45)"
+      "value": "UTC+5:45",
+      "label": "Remote-ready"
     }
-  ]
+  ],
+  "summary": "Engineer with six years of project implementation, technical sales and solution delivery at Huawei Technologies Nepal, followed by independent MIS and operations consulting for small and medium businesses. I turn scattered inputs from sales, finance, supply chain and vendors into one accurate, reportable picture, and I hold an Executive MBA in strategic management."
 }

@@ -1,0 +1,124 @@
+---
+// Print layout used only to render public/cv/Saroj-Baral-CV.pdf (see scripts/build-cv.sh).
+import "../styles/global.css";
+import profile from '../data/profile.json';
+import experience from '../data/experience.json';
+import education from '../data/education.json';
+import cv from '../data/cv.json';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <title>Saroj Baral, CV</title>
+  </head>
+  <body class="cvp">
+    <div class="cv-head">
+      <h1>{profile.name}</h1>
+      <p class="role">{profile.headline}</p>
+      <p class="contact">
+        {profile.location.city}, {profile.location.country}
+        <span>|</span> {profile.email}
+        <span>|</span> {profile.phone}
+        <span>|</span> linkedin.com/in/sarojbaraal
+      </p>
+    </div>
+
+    <section>
+      <h2>Summary</h2>
+      <p>{profile.summary}</p>
+      <ul class="two">
+        {cv.strengths.map((s) => <li>{s}</li>)}
+      </ul>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      {experience.map((job) => (
+        <div class="job">
+          <div class="row">
+            <h3>{job.role}</h3>
+            <span class="dates">{job.start} to {job.end}</span>
+          </div>
+          <p class="org">{job.org}, {job.location}</p>
+          {'groups' in job && job.groups ? (
+            job.groups.map((g) => (
+              <div class="grp">
+                <h4>{g.title}</h4>
+                <ul>{g.bullets.map((b) => <li>{b}</li>)}</ul>
+              </div>
+            ))
+          ) : (
+            <ul>{job.bullets.map((b) => <li>{b}</li>)}</ul>
+          )}
+          {job.awards && <p class="award">{job.awards.join(' ')}</p>}
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      {education.map((e) => (
+        <div class="job">
+          <div class="row">
+            <h3>{e.degree}</h3>
+            <span class="dates">{e.start} to {e.end}</span>
+          </div>
+          <p class="org">{e.institution}, {e.location}. {e.summary}</p>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>Tools and systems</h2>
+      <dl>
+        {cv.stack.map((s) => (<><dt>{s.label}</dt><dd>{s.value}</dd></>))}
+      </dl>
+    </section>
+
+    <section>
+      <h2>Volunteering</h2>
+      <div class="row"><h3>{cv.volunteer.title}, {cv.volunteer.place}</h3><span class="dates">{cv.volunteer.year}</span></div>
+      <p class="org">{cv.volunteer.text}</p>
+    </section>
+
+    <section>
+      <h2>Languages</h2>
+      <p>{profile.languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(', ')}. References available on request.</p>
+    </section>
+  </body>
+</html>
+
+<style is:global>
+  @page { size: A4; margin: 13mm 15mm; }
+  html { background: #fff !important; }
+  body.cvp {
+    display: block; min-height: 0; background: #fff; color: #0E1A2B;
+    font-family: "Hanken Grotesk Variable", system-ui, sans-serif; font-size: 9.6pt; line-height: 1.38;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .cvp h1 { font-size: 27pt; line-height: 1.05; font-weight: 500; margin: 0; letter-spacing: -0.02em; }
+  .cvp .role { font-family: var(--font-serif); font-size: 12.5pt; color: #234B6F; margin: 3pt 0 4pt; }
+  .cvp .contact { font-size: 9pt; color: #46546A; margin: 0 0 6pt; padding-bottom: 7pt; border-bottom: 1.5pt solid #E0A100; }
+  .cvp .contact span { color: #aab2bf; margin: 0 4pt; }
+  .cvp h2 { break-after: avoid; font-family: var(--font-serif); font-size: 13pt; font-weight: 600; color: #234B6F; margin: 11pt 0 4pt; padding-bottom: 2pt; border-bottom: 0.6pt solid #D5DAE1; letter-spacing: 0; }
+  .cvp h3, .cvp h4 { break-after: avoid; }
+  .cvp h3 { font-family: var(--font-sans, inherit); font-size: 10.3pt; font-weight: 650; margin: 0; line-height: 1.3; }
+  .cvp h4 { font-size: 9.4pt; font-weight: 650; margin: 4pt 0 1pt; color: #0E1A2B; }
+  .cvp p { margin: 0 0 3pt; }
+  .cvp .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
+  .cvp .dates { font-size: 9pt; color: #46546A; white-space: nowrap; }
+  .cvp .org { color: #46546A; margin-bottom: 2pt; }
+  .cvp ul { margin: 0 0 2pt; padding-left: 12pt; list-style: disc; }
+  .cvp li { margin: 0 0 1.4pt; }
+  .cvp ul.two { columns: 1; margin-top: 4pt; }
+  .cvp .job { margin-bottom: 7pt; break-inside: avoid-page; }
+  .cvp .grp { break-inside: avoid; }
+  .cvp .award { border-left: 2pt solid #E0A100; padding-left: 6pt; margin-top: 4pt; }
+  .cvp dl { display: grid; grid-template-columns: 38mm 1fr; gap: 1.5pt 8pt; margin: 0; }
+  .cvp dt { font-weight: 650; }
+  .cvp dd { margin: 0; color: #46546A; }
+  .cvp section { break-inside: auto; }
+</style>

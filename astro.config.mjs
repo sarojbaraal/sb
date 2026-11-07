@@ -10,7 +10,7 @@ export default defineConfig({
   // overrides these because the project page lives under /sb/.
   site: process.env.SITE_URL || 'https://sarojbaral.com.np',
   base: process.env.BASE_PATH || '/',
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap({ filter: (page) => !page.includes('/cv-print') })],
   vite: {
     plugins: [tailwindcss()],
   },

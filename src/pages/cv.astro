@@ -4,192 +4,115 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import profile from '../data/profile.json';
 import experience from '../data/experience.json';
 import education from '../data/education.json';
+import cv from '../data/cv.json';
 ---
 
 <BaseLayout
   title="Curriculum Vitae"
-  description="Curriculum Vitae for Saroj Baral: MIS, Business Intelligence & Project Coordination. 6 years at Huawei Technologies Nepal, EMBA, independent consulting."
+  description="Curriculum vitae of Saroj Baral: project control, MIS and business operations. Six years at Huawei Technologies Nepal, Executive MBA, independent consultant."
 >
-  <div class="site-container section-padding">
-    <!-- Action Controls (Hidden on Print) -->
-    <div class="no-print max-w-4xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-[var(--color-border)]">
+  <div class="site-container py-12 md:py-16">
+    <div class="no-print flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-6 border-b border-[var(--color-border)]">
       <div>
-        <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--color-text)]">
-          Curriculum Vitae
-        </h1>
-        <p class="text-sm text-[var(--color-muted)] mt-1">
-          Print-optimized layout or download the standalone PDF.
-        </p>
+        <h1 class="mb-2">Curriculum vitae</h1>
+        <p class="text-[var(--color-muted)] m-0">Read it here, or download the two-page PDF.</p>
       </div>
-
       <div class="flex items-center gap-3">
-        <a
-          href={url("/cv/Saroj-Baral-CV.pdf")}
-          download="Saroj-Baral-CV.pdf"
-          class="btn-base btn-primary text-sm px-4 py-2"
-        >
-          Download PDF &darr;
-        </a>
-        <button
-          type="button"
-          id="print-cv-btn"
-          onclick="window.print()"
-          class="btn-base btn-secondary text-sm px-4 py-2"
-        >
-          Print
-        </button>
+        <a href={url("/cv/Saroj-Baral-CV.pdf")} download="Saroj-Baral-CV.pdf" class="btn-base btn-primary px-4 py-2">Download PDF</a>
+        <button type="button" onclick="window.print()" class="btn-base btn-secondary px-4 py-2">Print</button>
       </div>
     </div>
 
-    <!-- Printable CV Sheet -->
-    <div class="max-w-4xl mx-auto card-base p-8 md:p-12 bg-[var(--color-surface)] shadow-sm print:p-0 print:border-none print:shadow-none">
-      <!-- CV Header -->
-      <header class="border-b border-[var(--color-border)] pb-6 mb-8">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <h2 class="text-3xl font-bold text-[var(--color-text)] tracking-tight">
-              {profile.name}
-            </h2>
-            <div class="text-lg font-semibold text-[var(--color-accent)] mt-1">
-              {profile.headline}
-            </div>
-            <p class="text-sm text-[var(--color-muted)] mt-1">
-              {profile.location.city}, {profile.location.country} ({profile.location.tzLabel})
-            </p>
-          </div>
-
-          <div class="text-xs md:text-sm text-[var(--color-muted)] space-y-1 md:text-right">
-            <div>
-              <a href={`mailto:${profile.email}`} class="hover:text-[var(--color-accent)] font-medium">
-                {profile.email}
-              </a>
-            </div>
-            <div>
-              <a href={`tel:${profile.phone}`} class="hover:text-[var(--color-accent)]">
-                {profile.phone}
-              </a>
-            </div>
-            <div>
-              <a href={profile.linkedin} class="hover:text-[var(--color-accent)]">
-                linkedin.com/in/saroj-baral
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <p class="text-sm text-[var(--color-text)] leading-relaxed mt-4 pt-4 border-t border-[var(--color-border)]/50">
-          {profile.tagline} Six years inside Huawei Technologies Nepal managing ERP data accuracy, project controls, and operational performance reporting for senior leadership. EMBA holder (2022) with a background in Electronics &amp; Communication Engineering and active independent consulting for SMEs.
+    <article class="max-w-[820px]">
+      <header class="mb-10">
+        <h2 class="text-[2.4rem] mb-1">{profile.name}</h2>
+        <p class="text-lg text-[var(--color-muted)] mb-3">{profile.headline}</p>
+        <p class="text-[15px] text-[var(--color-muted)] m-0">
+          {profile.location.city}, {profile.location.country} &nbsp;|&nbsp;
+          <a class="link-quiet" href={`mailto:${profile.email}`}>{profile.email}</a> &nbsp;|&nbsp;
+          <a class="link-quiet" href={`tel:${profile.phone}`}>{profile.phone}</a> &nbsp;|&nbsp;
+          <a class="link-quiet" href={profile.linkedin}>LinkedIn</a>
         </p>
       </header>
 
-      <!-- Key Specializations / Proof Stats -->
-      <section class="mb-8 page-break-avoid">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] mb-3 pb-1 border-b border-[var(--color-border)]">
-          Core Competencies
-        </h3>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
-          <div class="p-2.5 rounded bg-[var(--color-bg)] border border-[var(--color-border)] print:border-none">
-            <span class="font-bold text-[var(--color-text)] block">MIS &amp; Business Intelligence</span>
-            <span class="text-xs text-[var(--color-muted)]">Advanced Excel, Dashboards, Data Validation</span>
-          </div>
-          <div class="p-2.5 rounded bg-[var(--color-bg)] border border-[var(--color-border)] print:border-none">
-            <span class="font-bold text-[var(--color-text)] block">Project Control</span>
-            <span class="text-xs text-[var(--color-muted)]">Cost/Schedule Tracking, Change Logs</span>
-          </div>
-          <div class="p-2.5 rounded bg-[var(--color-bg)] border border-[var(--color-border)] print:border-none">
-            <span class="font-bold text-[var(--color-text)] block">ERP &amp; SCM</span>
-            <span class="text-xs text-[var(--color-muted)]">BOQ Reconciliation, Material Tracking</span>
-          </div>
-          <div class="p-2.5 rounded bg-[var(--color-bg)] border border-[var(--color-border)] print:border-none">
-            <span class="font-bold text-[var(--color-text)] block">Cross-Functional</span>
-            <span class="text-xs text-[var(--color-muted)]">Sales, Finance, SCM &amp; Vendor Follow-up</span>
-          </div>
-        </div>
+      <section class="mb-10 page-break-avoid">
+        <h3 class="mb-3">Summary</h3>
+        <p class="prose-measure mb-4">{profile.summary}</p>
+        <ul class="space-y-1.5 pl-5 list-disc text-[15px] prose-measure">
+          {cv.strengths.map((s) => <li>{s}</li>)}
+        </ul>
       </section>
 
-      <!-- Professional Experience Section -->
-      <section class="mb-8">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] mb-6 pb-1 border-b border-[var(--color-border)]">
-          Professional Experience
-        </h3>
-
-        <div class="space-y-8">
+      <section class="mb-10">
+        <h3 class="mb-5">Experience</h3>
+        <div class="space-y-9">
           {experience.map((job) => (
             <div class="page-break-avoid">
-              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1">
-                <h4 class="text-base font-bold text-[var(--color-text)]">
-                  {job.role}
-                </h4>
-                <span class="text-xs font-semibold text-[var(--color-accent)]">
-                  {job.start} &mdash; {job.end}
-                </span>
+              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                <h4 class="font-semibold text-[1.05rem] m-0">{job.role}</h4>
+                <span class="text-sm text-[var(--color-muted)]">{job.start} to {job.end}</span>
               </div>
-
-              <div class="text-xs text-[var(--color-muted)] font-medium mb-2">
-                {job.org} &bull; {job.location}
-              </div>
-
-              <p class="text-xs text-[var(--color-text)] mb-3 leading-relaxed">
-                {job.summary}
-              </p>
-
-              {job.bullets && job.bullets.length > 0 && (
-                <ul class="space-y-1 text-xs text-[var(--color-muted)] pl-4 list-disc mb-3">
-                  {job.bullets.map((b) => (
-                    <li>{b}</li>
-                  ))}
+              <p class="text-[15px] text-[var(--color-muted)] mb-2">{job.org}, {job.location}</p>
+              {'groups' in job && job.groups ? (
+                job.groups.map((g) => (
+                  <div class="mb-3">
+                    <p class="font-semibold text-[15px] mb-1">{g.title}</p>
+                    <ul class="space-y-1 pl-5 list-disc text-[15px] text-[var(--color-muted)]">
+                      {g.bullets.map((b) => <li>{b}</li>)}
+                    </ul>
+                  </div>
+                ))
+              ) : (
+                <ul class="space-y-1 pl-5 list-disc text-[15px] text-[var(--color-muted)]">
+                  {job.bullets.map((b) => <li>{b}</li>)}
                 </ul>
               )}
-
-              {job.awards && (
-                <div class="text-xs text-[var(--color-muted)] bg-[var(--color-bg)] p-2.5 rounded border border-[var(--color-border)] print:border-none">
-                  <span class="font-semibold text-[var(--color-text)]">Awards &amp; Recognition: </span>
-                  {job.awards.join('; ')}
-                </div>
-              )}
+              {job.awards && <p class="text-[15px] mt-3 border-l-2 border-[var(--color-marigold)] pl-3 mb-0">{job.awards.join(' ')}</p>}
             </div>
           ))}
         </div>
       </section>
 
-      <!-- Education Section -->
-      <section class="mb-8 page-break-avoid">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] mb-4 pb-1 border-b border-[var(--color-border)]">
-          Education
-        </h3>
+      <section class="mb-10 page-break-avoid">
+        <h3 class="mb-4">Education</h3>
         <div class="space-y-4">
-          {education.map((edu) => (
-            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-              <div>
-                <h4 class="text-sm font-bold text-[var(--color-text)]">
-                  {edu.degree}
-                </h4>
-                <div class="text-xs text-[var(--color-muted)]">
-                  {edu.institution} &bull; {edu.location}
-                </div>
+          {education.map((e) => (
+            <div>
+              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                <p class="font-semibold m-0">{e.degree}</p>
+                <span class="text-sm text-[var(--color-muted)]">{e.start} to {e.end}</span>
               </div>
-              <span class="text-xs font-semibold text-[var(--color-accent)]">
-                {edu.start} &mdash; {edu.end}
-              </span>
+              <p class="text-[15px] text-[var(--color-muted)] m-0">{e.institution}, {e.location}</p>
+              <p class="text-[15px] text-[var(--color-muted)] m-0">{e.summary}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <!-- Languages Section -->
-      <section class="page-break-avoid pt-2">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] mb-3 pb-1 border-b border-[var(--color-border)]">
-          Languages
-        </h3>
-        <div class="flex flex-wrap gap-4 text-xs text-[var(--color-text)]">
-          {profile.languages.map((l) => (
-            <div>
-              <span class="font-semibold">{l.name}:</span> <span class="text-[var(--color-muted)]">{l.level}</span>
+      <section class="mb-10 page-break-avoid">
+        <h3 class="mb-3">Tools and systems</h3>
+        <dl class="m-0 space-y-1.5 text-[15px]">
+          {cv.stack.map((s) => (
+            <div class="grid sm:grid-cols-[13rem_1fr] gap-x-4">
+              <dt class="font-semibold">{s.label}</dt>
+              <dd class="m-0 text-[var(--color-muted)]">{s.value}</dd>
             </div>
           ))}
-        </div>
+        </dl>
       </section>
-    </div>
+
+      <section class="mb-10 page-break-avoid">
+        <h3 class="mb-3">Volunteering</h3>
+        <p class="font-semibold m-0">{cv.volunteer.title}, {cv.volunteer.place} ({cv.volunteer.year})</p>
+        <p class="text-[15px] text-[var(--color-muted)] prose-measure m-0">{cv.volunteer.text}</p>
+      </section>
+
+      <section class="page-break-avoid">
+        <h3 class="mb-3">Languages</h3>
+        <p class="text-[15px] m-0">
+          {profile.languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(', ')}. References available on request.
+        </p>
+      </section>
+    </article>
   </div>
 </BaseLayout>
-
