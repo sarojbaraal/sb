@@ -1,0 +1,118 @@
+---
+const navLinks = [
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/websites', label: 'Websites' },
+  { href: '/teaching', label: 'Teaching' },
+  { href: '/work', label: 'Work' },
+  { href: '/notes', label: 'Notes' },
+  { href: '/cv', label: 'CV' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="sticky top-0 z-40 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]">
+  <div class="site-container flex items-center justify-between h-16">
+    <!-- Logo / Brand -->
+    <a href="/" class="text-xl font-bold tracking-tight text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded">
+      Saroj Baral
+    </a>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center gap-6" aria-label="Main Navigation">
+      {navLinks.map((link) => {
+        const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
+        return (
+          <a
+            href={link.href}
+            class={`text-[15px] font-medium transition-colors hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded py-1 px-1.5 ${
+              isActive ? 'text-[var(--color-accent)] font-semibold' : 'text-[var(--color-muted)]'
+            }`}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- Desktop Action Button -->
+    <div class="hidden md:flex items-center">
+      <a href="/contact" class="btn-base btn-primary text-sm py-2 px-3.5">
+        Contact me &rarr;
+      </a>
+    </div>
+
+    <!-- Mobile Hamburger Toggle -->
+    <div class="md:hidden flex items-center">
+      <button
+        type="button"
+        id="menu-toggle-btn"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu-dialog"
+        class="p-2 text-[var(--color-text)] hover:text-[var(--color-accent)] rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+      >
+        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Dialog / Overlay -->
+  <dialog
+    id="mobile-menu-dialog"
+    class="w-full max-w-none m-0 p-0 bg-[var(--color-bg)] text-[var(--color-text)] backdrop:bg-black/40 border-b border-[var(--color-border)] shadow-lg md:hidden"
+  >
+    <div class="site-container py-6 flex flex-col gap-4">
+      <nav class="flex flex-col gap-3" aria-label="Mobile Navigation">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="mobile-nav-link text-lg font-medium text-[var(--color-text)] hover:text-[var(--color-accent)] py-1.5 border-b border-[var(--color-border)]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a href="/contact" class="mobile-nav-link btn-base btn-primary mt-2 text-center">
+          Contact me &rarr;
+        </a>
+      </nav>
+    </div>
+  </dialog>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-toggle-btn');
+  const dialog = document.getElementById('mobile-menu-dialog') as HTMLDialogElement | null;
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  const links = document.querySelectorAll('.mobile-nav-link');
+
+  function toggleMenu(open?: boolean) {
+    if (!dialog || !btn) return;
+    const shouldOpen = open ?? !dialog.open;
+    if (shouldOpen) {
+      dialog.show();
+      btn.setAttribute('aria-expanded', 'true');
+      iconOpen?.classList.add('hidden');
+      iconClose?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    } else {
+      dialog.close();
+      btn.setAttribute('aria-expanded', 'false');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+
+  btn?.addEventListener('click', () => toggleMenu());
+  links.forEach(l => l.addEventListener('click', () => toggleMenu(false)));
+  dialog?.addEventListener('click', (e) => { if (e.target === dialog) toggleMenu(false); });
+</script>
+

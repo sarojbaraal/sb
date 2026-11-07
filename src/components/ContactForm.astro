@@ -1,0 +1,136 @@
+---
+
+---
+
+<form
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  class="card-base p-6 md:p-8 bg-[var(--color-surface)] space-y-5"
+>
+  <!-- Web3Forms Access Key  -->
+  <input
+    type="hidden"
+    name="access_key"
+    value="fbe622e7-0d4d-479d-9201-4b1ed9223f6a"
+  />
+
+  <!-- Hidden Redirect URL -->
+  <input
+    type="hidden"
+    name="redirect"
+    value="https://sarojbaral.com.np/thank-you"
+  />
+
+  <!-- Honeypot Spam Protection Field -->
+  <input
+    type="checkbox"
+    name="botcheck"
+    class="hidden"
+    style="display:none;"
+    tabindex="-1"
+    autocomplete="off"
+  />
+
+  <!-- Subject line for email notification -->
+  <input
+    type="hidden"
+    name="subject"
+    value="New Inquiry from sarojbaral.com.np"
+  />
+
+  <!-- Full Name -->
+  <div>
+    <label
+      for="name"
+      class="block text-sm font-semibold text-[var(--color-text)] mb-1.5"
+    >
+      Your Name <span class="text-red-600" aria-hidden="true">*</span>
+    </label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      placeholder="e.g. Ramesh Shrestha"
+      class="w-full px-3.5 py-2.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:border-[var(--color-accent)] transition-colors"
+    />
+  </div>
+
+  <!-- Email Address -->
+  <div>
+    <label
+      for="email"
+      class="block text-sm font-semibold text-[var(--color-text)] mb-1.5"
+    >
+      Email Address <span class="text-red-600" aria-hidden="true">*</span>
+    </label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      placeholder="name@company.com"
+      class="w-full px-3.5 py-2.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:border-[var(--color-accent)] transition-colors"
+    />
+  </div>
+
+  <!-- What do you need? -->
+  <div>
+    <label
+      for="need"
+      class="block text-sm font-semibold text-[var(--color-text)] mb-1.5"
+    >
+      What can I help you with? <span class="text-red-600" aria-hidden="true"
+        >*</span
+      >
+    </label>
+    <select
+      id="need"
+      name="need"
+      required
+      class="w-full px-3.5 py-2.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:border-[var(--color-accent)] transition-colors"
+    >
+      <option value="" disabled selected>Select an option...</option>
+      <option value="mis-reporting">MIS &amp; reporting</option>
+      <option value="doc-control">Data &amp; document control</option>
+      <option value="project-coordination">Project coordination</option>
+      <option value="website">Website for my business</option>
+      <option value="teaching">Teaching</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <!-- Message -->
+  <div>
+    <label
+      for="message"
+      class="block text-sm font-semibold text-[var(--color-text)] mb-1.5"
+    >
+      Project Details or Message <span class="text-red-600" aria-hidden="true"
+        >*</span
+      >
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      required
+      placeholder="Briefly describe what you are looking to solve, your timeline, or any specific questions..."
+      class="w-full px-3.5 py-2.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-text)] text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:border-[var(--color-accent)] transition-colors resize-y"
+    ></textarea>
+  </div>
+
+  <!-- Submit Button -->
+  <div>
+    <button
+      type="submit"
+      class="btn-base btn-primary w-full text-base py-3 px-6 shadow-sm hover:shadow transition-all"
+    >
+      Send message &rarr;
+    </button>
+  </div>
+
+  <p class="text-xs text-[var(--color-muted)] text-center">
+    Direct response guaranteed within 1–2 business days. No spam, ever.
+  </p>
+</form>

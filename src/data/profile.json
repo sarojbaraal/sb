@@ -1,0 +1,48 @@
+{
+  "name": "Saroj Baral",
+  "headline": "MIS, Business Intelligence & Project Coordination",
+  "tagline": "Accurate data. Clear reports. Projects that stay on track.",
+  "location": {
+    "city": "Bhaktapur",
+    "country": "Nepal",
+    "tz": "Asia/Kathmandu",
+    "tzLabel": "NPT (UTC+5:45)"
+  },
+  "email": "sarojbaraal@gmail.com",
+  "emailFallback": "sarojbaraal@gmail.com",
+  "phone": "+977-97010-83549",
+  "linkedin": "https://www.linkedin.com/in/sarojbaraal",
+  "availability": "Available for remote roles and consulting",
+  "languages": [
+    {
+      "name": "Nepali",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "Professional"
+    },
+    {
+      "name": "Hindi",
+      "level": "Conversational"
+    }
+  ],
+  "proofStrip": [
+    {
+      "value": "6 yrs",
+      "label": "Huawei Technologies Nepal"
+    },
+    {
+      "value": "EMBA",
+      "label": "Himalayan WhiteHouse, 2022"
+    },
+    {
+      "value": "Advanced Excel",
+      "label": "MIS & reporting"
+    },
+    {
+      "value": "Remote-ready",
+      "label": "NPT (UTC+5:45)"
+    }
+  ]
+}

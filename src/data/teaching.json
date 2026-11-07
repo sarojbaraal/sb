@@ -1,0 +1,28 @@
+{
+  "topics": {
+    "electronics": [
+      "Basic electronics",
+      "Communication systems",
+      "Networking fundamentals",
+      "Signal & transmission"
+    ],
+    "management": [
+      "Excel for business",
+      "MIS & reporting",
+      "Operations management",
+      "Project management"
+    ]
+  },
+  "formats": [
+    "Part-time / visiting faculty (college or management program)",
+    "Guest lectures (1–2 sessions)",
+    "Workshops (Excel for business, MIS basics, project reporting)",
+    "Corporate training (reporting and documentation discipline)"
+  ],
+  "credentials": [
+    "BE Electronics & Communication — Kathmandu Engineering College",
+    "EMBA — Himalayan WhiteHouse International College (2019–2022)",
+    "6 years at Huawei Technologies Nepal — project control and MIS"
+  ]
+}
+

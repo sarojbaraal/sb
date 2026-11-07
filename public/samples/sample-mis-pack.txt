@@ -1,0 +1,34 @@
+================================================================================
+SAROJ BARAL — MIS, BUSINESS INTELLIGENCE & PROJECT COORDINATION
+ILLUSTRATIVE SAMPLE STRUCTURE / REPORTING PACK OUTLINE
+================================================================================
+
+1. MASTER REGISTER LAYOUT
+--------------------------------------------------------------------------------
+- Unique ID Format: REC-YYYY-MM-XXXX
+- Required Columns: Date, Unit/Branch, Category, Description, Quantity, Unit Rate, 
+  Gross Amount, Tax/Discount, Net Payable, Status, Verified By, Action Date
+- Validation Rules: Data validation list on Category & Status; Auto-computed Net;
+  Locked formula columns to prevent accidental overwrite.
+
+2. CHANGE-CONTROL LOG HEADERS
+--------------------------------------------------------------------------------
+- Change ID: CR-[SiteCode]-[Number]
+- Originator: Engineering / Client / Vendor / SCM
+- Description & Justification
+- Impact Analysis: Cost Variance (NPR), Schedule Variance (Days)
+- Approval Gate: Project Manager / Lead Engineer / Finance Director
+- Status Lifecycle: Submitted -> Under Review -> Approved -> Rejected -> Implemented
+
+3. RECONCILIATION SUMMARY MODEL
+--------------------------------------------------------------------------------
+- Source A: Design BOQ Requirement
+- Source B: ERP Purchase Order & Goods Receipt Note (GRN)
+- Source C: Site Inward Waybill & Physical Verification
+- Automated Variance Formula: [BOQ Required] - [Physical On-Site] - [GRN In-Transit]
+- Alert Flags: Red for negative balance or missing critical items; Yellow for <7 days stock.
+
+--------------------------------------------------------------------------------
+Contact: sarojbaraal@gmail.com | https://sarojbaral.com.np
+================================================================================
+

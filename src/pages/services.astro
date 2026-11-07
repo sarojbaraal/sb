@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTA from '../components/CTA.astro';
+import services from '../data/services.json';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: services.map((s, index) => ({
+    '@type': 'Service',
+    position: index + 1,
+    name: s.title,
+    description: s.bullets.join(' '),
+    provider: {
+      '@type': 'Person',
+      name: 'Saroj Baral',
+    },
+    offers: {
+      '@type': 'Offer',
+      price: s.priceFrom,
+    },
+  })),
+};
+---
+
+<BaseLayout
+  title="Services"
+  description="Explore professional MIS, business intelligence, document control, and project coordination services offered by Saroj Baral."
+  jsonLd={jsonLd}
+>
+  <div class="site-container section-padding">
+    <!-- Header -->
+    <div class="max-w-3xl mb-12">
+      <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-2">
+        Core Offerings
+      </span>
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-4">
+        Services
+      </h1>
+      <p class="text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
+        Three ways I usually help — pick the one that matches your problem.
+      </p>
+    </div>
+
+    <!-- Service Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      {services.map((service) => (
+        <ServiceCard
+          id={service.id}
+          label={service.label}
+          title={service.title}
+          priceFrom={service.priceFrom}
+          engagement={service.engagement}
+          bullets={service.bullets}
+          ctaText="Request this →"
+          ctaHref={`/contact?service=${service.id}`}
+          detailed={true}
+        />
+      ))}
+    </div>
+
+    <!-- Bottom Advisory CTA -->
+    <CTA
+      title="Not sure which one?"
+      description="Send a short description of the mess — I'll tell you honestly if I can help and what it would take."
+      primaryText="Contact me"
+      primaryHref="/contact"
+      secondaryText="See website packages"
+      secondaryHref="/websites"
+    />
+  </div>
+</BaseLayout>
+

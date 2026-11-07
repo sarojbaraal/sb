@@ -1,0 +1,109 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CTA from '../../components/CTA.astro';
+
+export async function getStaticPaths() {
+  const workEntries = await getCollection('work');
+  return workEntries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: entry.data.title,
+  description: entry.data.summary,
+  author: {
+    '@type': 'Person',
+    name: 'Saroj Baral',
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Saroj Baral',
+  },
+};
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.summary}
+  type="article"
+  jsonLd={jsonLd}
+>
+  <article class="site-container section-padding">
+    <!-- Breadcrumb -->
+    <nav class="mb-6 text-sm text-[var(--color-muted)]" aria-label="Breadcrumb">
+      <a href="/work" class="hover:text-[var(--color-accent)]">&larr; Back to all work samples</a>
+    </nav>
+
+    <!-- Header -->
+    <header class="max-w-3xl mb-8 pb-8 border-b border-[var(--color-border)]">
+      <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-4">
+        {entry.data.title}
+      </h1>
+      
+      <!-- Meta line: client_type · year · services.join(' · ') -->
+      <div class="text-sm md:text-base font-medium text-[var(--color-accent)] mb-6 flex flex-wrap items-center gap-2">
+        <span>{entry.data.client_type}</span>
+        <span>&bull;</span>
+        <span>{entry.data.year}</span>
+        <span>&bull;</span>
+        <span>{entry.data.services.join(' · ')}</span>
+      </div>
+
+      <!-- Tools Used -->
+      <div class="flex flex-wrap gap-2 items-center">
+        <span class="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">Tools:</span>
+        {entry.data.tools.map((tool) => (
+          <span class="px-2.5 py-0.5 rounded text-xs font-medium bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)]">
+            {tool}
+          </span>
+        ))}
+      </div>
+    </header>
+
+    <!-- Mandatory Visible Notice -->
+    <div class="max-w-3xl mb-8 p-4 rounded-lg bg-[var(--color-surface)] border-l-4 border-[var(--color-accent)] text-sm text-[var(--color-muted)]">
+      <strong>Notice:</strong> Illustrative case study with anonymized data.
+    </div>
+
+    <!-- Optional Download Sample Link -->
+    {entry.data.sample_file && (
+      <div class="max-w-3xl mb-10 p-4 rounded-lg bg-[var(--color-accent-soft)]/50 border border-[var(--color-accent)]/20 flex items-center justify-between">
+        <div class="text-sm font-medium text-[var(--color-text)]">
+          Download the illustrative data schema outline
+        </div>
+        <a
+          href={entry.data.sample_file}
+          download
+          class="btn-base btn-primary text-xs py-1.5 px-3.5"
+        >
+          Download sample &darr;
+        </a>
+      </div>
+    )}
+
+    <!-- MDX Content Body -->
+    <div class="max-w-3xl prose prose-neutral text-[var(--color-text)] leading-relaxed space-y-6 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-[var(--color-text)] [&_p]:text-base [&_p]:text-[var(--color-muted)] [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ul]:text-[var(--color-muted)] [&_blockquote]:border-l-4 [&_blockquote]:border-[var(--color-accent)] [&_blockquote]:pl-4 [&_blockquote]:italic">
+      <Content />
+    </div>
+
+    <!-- Bottom CTA Block -->
+    <div class="max-w-3xl mt-12 pt-8 border-t border-[var(--color-border)]">
+      <CTA
+        title="Facing a similar operational challenge?"
+        description="Whether you need spreadsheet restructuring, document controls, or project coordination, let's talk through your setup."
+        primaryText="Discuss a similar project"
+        primaryHref="/contact"
+        secondaryText="All work samples"
+        secondaryHref="/work"
+      />
+    </div>
+  </article>
+</BaseLayout>
