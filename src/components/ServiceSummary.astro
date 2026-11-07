@@ -1,0 +1,27 @@
+---
+import { url } from "../utils/url";
+import Icon from "./Icon.astro";
+
+interface Props {
+  id: string;
+  icon: string;
+  title: string;
+  summary: string;
+  tags: string[];
+}
+
+const { id, icon, title, summary, tags } = Astro.props;
+---
+
+<article class="card-base card-hover service">
+  <span class="icon-tile"><Icon name={icon} size={22} /></span>
+  <h3>{title}</h3>
+  <p>{summary}</p>
+  <div class="tag-row">
+    {tags.slice(0, 3).map((tag) => <span class="tag">{tag}</span>)}
+  </div>
+  <a href={url(`/services#${id}`)} class="link-arrow stretched-link">
+    Learn more <span class="sr-only">about {title}</span>
+    <Icon name="arrow-right" size={16} />
+  </a>
+</article>

@@ -13,17 +13,11 @@ const sortedWork = workEntries.sort((a, b) => a.data.order - b.data.order);
 >
   <div class="site-container section-padding">
     <!-- Header -->
-    <div class="max-w-3xl mb-12">
-      <span class="text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] block mb-2">
-        Case Studies &amp; Sample Architecture
-      </span>
-      <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-4">
-        Work samples
-      </h1>
-      <p class="text-lg md:text-xl text-[var(--color-muted)] leading-relaxed">
-        Anonymized, fake-data samples. No client names.
-      </p>
-    </div>
+    <header class="page-head">
+      <span class="eyebrow">Case Studies &amp; Sample Architecture</span>
+      <h1>Work samples</h1>
+      <p>Anonymized, fake-data samples. No client names.</p>
+    </header>
 
     <!-- Case Studies Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -37,7 +31,7 @@ const sortedWork = workEntries.sort((a, b) => a.data.order - b.data.order);
           services={entry.data.services}
           tools={entry.data.tools}
           result_metrics={entry.data.result_metrics}
-          cover={entry.data.cover}
+          kpi={entry.data.kpi}
         />
       ))}
     </div>

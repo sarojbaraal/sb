@@ -11,6 +11,15 @@ const work = defineCollection({
     services: z.array(z.string()),
     tools: z.array(z.string()),
     result_metrics: z.array(z.string()),
+    // Headline figure shown as the visual hero of the case-study card.
+    // `from` is optional (use it for "5 days -> 4 hours" style results).
+    kpi: z
+      .object({
+        from: z.string().optional(),
+        to: z.string(),
+        label: z.string(),
+      })
+      .optional(),
     sample_file: z.string().optional(),
     cover: z.string(),
     confidential: z.boolean().default(true),
@@ -30,4 +39,3 @@ const notes = defineCollection({
 });
 
 export const collections = { work, notes };
-

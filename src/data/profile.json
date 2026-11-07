@@ -1,7 +1,7 @@
 {
   "name": "Saroj Baral",
   "headline": "MIS, Business Intelligence & Project Coordination",
-  "tagline": "Reliable information. Clear reporting. Better-coordinated work.",
+  "tagline": "Accurate data. Clear reports. Projects that stay on track.",
   "location": {
     "city": "Kathmandu",
     "country": "Nepal",
@@ -19,10 +19,11 @@
     { "name": "Hindi", "level": "Conversational" }
   ],
   "proofStrip": [
-    { "value": "6 years", "label": "Huawei Technologies Nepal" },
+    { "value": "6", "suffix": " yrs", "label": "Huawei Technologies Nepal" },
     { "value": "EMBA", "label": "Completed in 2022" },
-    { "value": "B.E.", "label": "Electronics & Communication" },
-    { "value": "UTC+5:45", "label": "Remote-ready from Nepal" }
+    { "value": "Advanced Excel", "label": "MIS and reporting" },
+    { "value": "Remote-ready", "label": "NPT, UTC+5:45" }
   ],
+  "tools": ["Microsoft Excel", "Power Query", "Pivot Tables", "ERP / SCM", "CRM"],
   "summary": "Electronics and Communication Engineer with six years of experience at Huawei Technologies Nepal across project coordination, project control, technical solutions, sales support and SCM-related operations. I completed an Executive MBA in 2022. Since 2022, I have taken on independent freelance and project-based assignments involving data research, Excel, data entry, reporting, business documentation and presentations. My focus is on accurate information, clear reporting and dependable coordination."
 }

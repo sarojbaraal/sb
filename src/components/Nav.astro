@@ -1,118 +1,63 @@
 ---
 import { url, stripBase } from "../utils/url";
+import Icon from "./Icon.astro";
+
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
-  { href: '/websites', label: 'Websites' },
-  { href: '/teaching', label: 'Teaching' },
   { href: '/work', label: 'Work' },
+  { href: '/notes', label: 'Notes' },
   { href: '/cv', label: 'CV' },
 ];
 
 const currentPath = stripBase(Astro.url.pathname).replace(/\/$/, '') || '/';
+const isActive = (href: string) => currentPath === href || currentPath.startsWith(`${href}/`);
 ---
 
-<header class="sticky top-0 z-40 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)]">
-  <div class="site-container flex items-center justify-between h-16">
-    <!-- Logo / Brand -->
-    <a href={url("/")} class="font-display text-[1.45rem] font-medium tracking-tight text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors">
-      Saroj Baral
+<header class="site-header" data-site-header>
+  <div class="site-container site-header__bar">
+    <!-- Brand -->
+    <a href={url("/")} class="brand" aria-label="Saroj Baral, home">
+      <span class="brand__mark" aria-hidden="true">SB</span>
+      <span>Saroj Baral</span>
     </a>
 
-    <!-- Desktop Navigation Links -->
-    <nav class="hidden md:flex items-center gap-6" aria-label="Main Navigation">
-      {navLinks.map((link) => {
-        const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href));
-        return (
-          <a
-            href={url(link.href)}
-            class={`text-[15px] font-medium transition-colors hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded py-1 px-1.5 ${
-              isActive ? 'text-[var(--color-text)] underline underline-offset-[10px] decoration-2 decoration-[var(--color-marigold)]' : 'text-[var(--color-muted)]'
-            }`}
-          >
-            {link.label}
-          </a>
-        );
-      })}
+    <!-- Desktop navigation -->
+    <nav class="nav-desktop" aria-label="Main">
+      {navLinks.map((link) => (
+        <a href={url(link.href)} class="nav-link" aria-current={isActive(link.href) ? 'page' : undefined}>
+          {link.label}
+        </a>
+      ))}
     </nav>
 
-    <!-- Desktop Action Button -->
-    <div class="hidden md:flex items-center">
-      <a href={url("/contact")} class="btn-base btn-primary text-sm py-2 px-3.5">
-        Contact me
-      </a>
-    </div>
+    <div class="header-actions">
+      <a href={url("/contact")} class="btn-base btn-primary btn-sm nav-cta">Contact me</a>
 
-    <!-- Mobile Hamburger Toggle -->
-    <div class="md:hidden flex items-center">
+      <!-- Mobile menu toggle -->
       <button
         type="button"
-        id="menu-toggle-btn"
-        aria-label="Toggle navigation menu"
+        class="menu-toggle"
+        data-menu-toggle
         aria-expanded="false"
-        aria-controls="mobile-menu-dialog"
-        class="p-2 text-[var(--color-text)] hover:text-[var(--color-accent)] rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+        aria-controls="mobile-menu"
+        aria-label="Open menu"
       >
-        <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        <span class="icon-open"><Icon name="menu" size={22} /></span>
+        <span class="icon-close"><Icon name="x" size={22} /></span>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Menu Dialog / Overlay -->
-  <dialog
-    id="mobile-menu-dialog"
-    class="w-full max-w-none m-0 p-0 bg-[var(--color-bg)] text-[var(--color-text)] backdrop:bg-black/40 border-b border-[var(--color-border)] shadow-lg md:hidden"
-  >
-    <div class="site-container py-6 flex flex-col gap-4">
-      <nav class="flex flex-col gap-3" aria-label="Mobile Navigation">
-        {navLinks.map((link) => (
-          <a
-            href={url(link.href)}
-            class="mobile-nav-link text-lg font-medium text-[var(--color-text)] hover:text-[var(--color-accent)] py-1.5 border-b border-[var(--color-border)]/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
-          >
-            {link.label}
-          </a>
-        ))}
-        <a href={url("/contact")} class="mobile-nav-link btn-base btn-primary mt-2 text-center">
-          Contact me
+  <!-- Mobile menu panel (toggled by src/scripts/site.ts) -->
+  <div id="mobile-menu" class="mobile-menu" data-mobile-menu hidden>
+    <nav class="site-container mobile-menu__inner" aria-label="Mobile">
+      {navLinks.map((link) => (
+        <a href={url(link.href)} class="mobile-link" aria-current={isActive(link.href) ? 'page' : undefined}>
+          {link.label}
         </a>
-      </nav>
-    </div>
-  </dialog>
+      ))}
+      <a href={url("/contact")} class="btn-base btn-primary" style="margin-top:16px">Contact me</a>
+    </nav>
+  </div>
 </header>
-
-<script>
-  const btn = document.getElementById('menu-toggle-btn');
-  const dialog = document.getElementById('mobile-menu-dialog') as HTMLDialogElement | null;
-  const iconOpen = document.getElementById('menu-icon-open');
-  const iconClose = document.getElementById('menu-icon-close');
-  const links = document.querySelectorAll('.mobile-nav-link');
-
-  function toggleMenu(open?: boolean) {
-    if (!dialog || !btn) return;
-    const shouldOpen = open ?? !dialog.open;
-    if (shouldOpen) {
-      dialog.show();
-      btn.setAttribute('aria-expanded', 'true');
-      iconOpen?.classList.add('hidden');
-      iconClose?.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    } else {
-      dialog.close();
-      btn.setAttribute('aria-expanded', 'false');
-      iconOpen?.classList.remove('hidden');
-      iconClose?.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-  }
-
-  btn?.addEventListener('click', () => toggleMenu());
-  links.forEach(l => l.addEventListener('click', () => toggleMenu(false)));
-  dialog?.addEventListener('click', (e) => { if (e.target === dialog) toggleMenu(false); });
-</script>

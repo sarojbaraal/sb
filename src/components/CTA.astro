@@ -1,5 +1,7 @@
 ---
 import { url } from "../utils/url";
+import Icon from "./Icon.astro";
+
 interface Props {
   title: string;
   description: string;
@@ -19,24 +21,18 @@ const {
 } = Astro.props;
 ---
 
-<div class="card-base p-8 md:p-10 bg-[var(--color-surface)] border border-[var(--color-border)] my-12 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-  <div class="max-w-xl">
-    <h3 class="text-2xl font-bold tracking-tight text-[var(--color-text)] mb-2">
-      {title}
-    </h3>
-    <p class="text-base text-[var(--color-muted)] leading-relaxed">
-      {description}
-    </p>
+<div class="card-base cta-card">
+  <div>
+    <h3>{title}</h3>
+    <p>{description}</p>
   </div>
-  <div class="flex flex-wrap items-center justify-center gap-3 shrink-0">
-    <a href={url(primaryHref)} class="btn-base btn-primary text-sm px-5 py-2.5">
-      {primaryText} &rarr;
+  <div class="cta-card__actions">
+    <a href={url(primaryHref)} class="btn-base btn-primary">
+      {primaryText}
+      <Icon name="arrow-right" size={16} />
     </a>
     {secondaryText && secondaryHref && (
-      <a href={url(secondaryHref)} class="btn-base btn-secondary text-sm px-4 py-2.5">
-        {secondaryText}
-      </a>
+      <a href={url(secondaryHref)} class="btn-base btn-secondary">{secondaryText}</a>
     )}
   </div>
 </div>
-
