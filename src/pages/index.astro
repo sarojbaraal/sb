@@ -45,64 +45,79 @@ const jsonLd = [
 >
   <Hero />
 
-  <!-- About / Experience / What I do -->
-  <section class="trio">
-    <div class="col about">
-      <p class="eyebrow">About me</p>
-      <h2>A blend of Engineering, Management &amp; Curiosity.</h2>
-      <p>
-        From electronics engineering to multinational project environments and business studies, my journey has shaped one core interest: making information reliable, meaningful and actionable.
-      </p>
-      <p>I enjoy solving problems, improving processes and turning complex data into clear decisions.</p>
-      <p class="signature" aria-hidden="true">Saroj Baral</p>
-    </div>
+  <!-- Navy band: About / Experience / What I do + values -->
+  <div class="navyband">
+    <svg class="divider" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,90 L0,60 L210,10 C330,-6 430,44 580,50 C740,57 830,12 990,22 C1090,28 1150,66 1230,60 L1440,18 L1440,90 Z" />
+    </svg>
 
-    <div class="col exp">
-      <p class="eyebrow">Experience</p>
-      <ol class="tl">
-        <li>
-          <span class="dot"><Icon name="briefcase" size={20} /></span>
-          <div>
-            <div class="row"><h3>Huawei Technologies Nepal</h3><span class="yrs">2013 &ndash; 2019</span></div>
-            <p class="role">Engineer / Manager, Project Control &amp; MIS</p>
-            <p class="desc">Project coordination, MIS reporting, ERP and SCM data, bid documentation and cross-functional delivery.</p>
-          </div>
-        </li>
-        <li>
-          <span class="dot alt"><Icon name="users" size={20} /></span>
-          <div>
-            <div class="row"><h3>Independent Professional</h3><span class="yrs">2022 &ndash; Present</span></div>
-            <p class="role">Freelance &amp; Consulting</p>
-            <p class="desc">MIS, reporting, research, business documentation and operational support for clients and businesses.</p>
-          </div>
-        </li>
-      </ol>
-      <a href={url("/experience")} class="btn-outline">View full experience <Icon name="arrow" size={16} /></a>
-    </div>
+    <section class="trio">
+      <div class="site-container trio-grid">
+        <div class="col glass about">
+          <p class="eyebrow">About me</p>
+          <h2>A blend of Engineering, Management &amp; Curiosity.</h2>
+          <p>
+            From electronics engineering to multinational project environments and business studies, my journey has shaped one core interest: making information reliable, meaningful and actionable.
+          </p>
+          <p>I enjoy solving problems, improving processes and turning complex data into clear decisions.</p>
+          <p class="signature" aria-hidden="true">Saroj Baral</p>
+        </div>
 
-    <div class="col what">
-      <p class="eyebrow">What I do</p>
-      <h2>I help businesses with</h2>
-      <ul class="tiles">
-        <li><span class="ti"><Icon name="chart" size={30} stroke={1.5} /></span><h3>MIS & Reporting</h3><p>Accurate reports and dashboards for decision making.</p></li>
-        <li><span class="ti"><Icon name="network" size={30} stroke={1.5} /></span><h3>Project Coordination</h3><p>Planning, tracking and delivering projects efficiently.</p></li>
-        <li><span class="ti"><Icon name="box" size={30} stroke={1.5} /></span><h3>ERP / SCM Support</h3><p>Data and documentation for supply chain and operations.</p></li>
-        <li><span class="ti"><Icon name="search" size={30} stroke={1.5} /></span><h3>Research & Analysis</h3><p>Information gathering and data-driven insights.</p></li>
-        <li><span class="ti"><Icon name="sheet" size={30} stroke={1.5} /></span><h3>Excel & Data Management</h3><p>Data organisation, analytics and reporting.</p></li>
-        <li><span class="ti"><Icon name="doc" size={30} stroke={1.5} /></span><h3>Business Documentation</h3><p>Reports, presentations and professional documentation.</p></li>
-      </ul>
-    </div>
-  </section>
+        <div class="col glass exp">
+          <p class="eyebrow">Experience</p>
+          <ol class="tl">
+            <li class="now">
+              <span class="dot"><Icon name="users" size={18} /></span>
+              <div>
+                <div class="row"><h3>Independent Professional</h3><span class="yrs">2022 &ndash; Present</span></div>
+                <p class="role">MIS, Reporting &amp; Business Support</p>
+                <p class="desc">Research, business documentation and operational support for clients and businesses.</p>
+              </div>
+            </li>
+            <li>
+              <span class="dot"><Icon name="briefcase" size={18} /></span>
+              <div>
+                <div class="row"><h3>Huawei Technologies Nepal</h3><span class="yrs">2013 &ndash; 2019</span></div>
+                <p class="role">Engineer / Manager, Project Control</p>
+                <p class="desc">Project controller for several clusters on the Ncell modernisation: 100 sites from installation to on-air in one night.</p>
+              </div>
+            </li>
+            <li>
+              <span class="dot"><Icon name="network" size={18} /></span>
+              <div>
+                <div class="row"><h3>Early career</h3><span class="yrs">2010 &ndash; 2012</span></div>
+                <p class="role">GTL Nepal, Radio Nepal</p>
+                <p class="desc">Telecom site surveys and broadcast equipment maintenance.</p>
+              </div>
+            </li>
+          </ol>
+          <a href={url("/experience")} class="btn-outline">View full experience <Icon name="arrow" size={16} /></a>
+        </div>
 
-  <!-- Values strip -->
-  <section class="values" aria-label="Working principles">
-    <div class="site-container values-grid">
-      <div class="val"><span class="vi"><Icon name="rocket" size={26} stroke={1.5} /></span><div><h3>Engineering Mindset</h3><p>Analytical, systematic and solution oriented.</p></div></div>
-      <div class="val"><span class="vi"><Icon name="users" size={26} stroke={1.5} /></span><div><h3>Business Perspective</h3><p>EMBA with a strong business understanding.</p></div></div>
-      <div class="val"><span class="vi"><Icon name="target" size={26} stroke={1.5} /></span><div><h3>Results Focused</h3><p>Committed to accuracy, efficiency and impact.</p></div></div>
-      <div class="val"><span class="vi"><Icon name="bulb" size={26} stroke={1.5} /></span><div><h3>Always Learning</h3><p>Curious, adaptable and open to new ideas.</p></div></div>
-    </div>
-  </section>
+        <div class="col glass what">
+          <p class="eyebrow">What I do</p>
+          <h2>I help businesses with</h2>
+          <ul class="tiles">
+            <li><span class="ti"><Icon name="chart" size={28} stroke={1.5} /></span><h3>MIS &amp; Reporting</h3><p>Accurate reports and dashboards for decision making.</p></li>
+            <li><span class="ti"><Icon name="network" size={28} stroke={1.5} /></span><h3>Project Coordination</h3><p>Planning, tracking and delivering projects efficiently.</p></li>
+            <li><span class="ti"><Icon name="box" size={28} stroke={1.5} /></span><h3>ERP / SCM Support</h3><p>Data and documentation for supply chain and operations.</p></li>
+            <li><span class="ti"><Icon name="search" size={28} stroke={1.5} /></span><h3>Research &amp; Analysis</h3><p>Information gathering and data-driven insights.</p></li>
+            <li><span class="ti"><Icon name="sheet" size={28} stroke={1.5} /></span><h3>Excel &amp; Data Management</h3><p>Data organisation, analytics and reporting.</p></li>
+            <li><span class="ti"><Icon name="doc" size={28} stroke={1.5} /></span><h3>Business Documentation</h3><p>Reports, presentations and professional documentation.</p></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="values" aria-label="Working principles">
+      <div class="site-container values-grid">
+        <div class="val"><span class="vi"><Icon name="rocket" size={26} stroke={1.5} /></span><div><h3>Engineering Mindset</h3><p>Analytical, systematic and solution oriented.</p></div></div>
+        <div class="val"><span class="vi"><Icon name="users" size={26} stroke={1.5} /></span><div><h3>Business Perspective</h3><p>EMBA with a strong business understanding.</p></div></div>
+        <div class="val"><span class="vi"><Icon name="target" size={26} stroke={1.5} /></span><div><h3>Results Focused</h3><p>Committed to accuracy, efficiency and impact.</p></div></div>
+        <div class="val"><span class="vi"><Icon name="bulb" size={26} stroke={1.5} /></span><div><h3>Always Learning</h3><p>Curious, adaptable and open to new ideas.</p></div></div>
+      </div>
+    </section>
+  </div>
 
   <!-- Recognition -->
   <section class="band">
@@ -193,43 +208,52 @@ const jsonLd = [
   .eyebrow { color: var(--color-accent); font-size: 12.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; margin: 0 0 18px; position: relative; padding-bottom: 12px; }
   .eyebrow::after { content: ""; position: absolute; left: 0; bottom: 0; width: 22px; height: 2px; background: var(--color-accent); }
 
-  .trio { display: grid; grid-template-columns: 1fr; }
-  .col { padding: 44px 24px; }
-  .about { background: var(--color-surface); }
-  .exp { background: var(--navy-900); color: #fff; }
-  .exp .eyebrow { color: var(--blue-bright); }
-  .exp .eyebrow::after { background: var(--blue-bright); }
-  .what { background: var(--color-surface); }
-  :global(:root[data-theme="dark"]) .about, :global(:root[data-theme="dark"]) .what { background: var(--color-bg); }
-  .col h2 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); line-height: 1.22; margin: 0 0 20px; color: var(--color-text); max-width: 20ch; }
-  .about p { font-size: 15px; line-height: 1.75; color: var(--color-muted); max-width: 40ch; }
-  .signature { font-family: var(--font-script); font-size: 3.1rem; line-height: 1; color: var(--color-accent); margin: 26px 0 0 !important; transform: rotate(-3deg); transform-origin: left; }
+  /* Navy band: one continuous gradient, both themes */
+  .navyband { position: relative; color: #fff; padding-top: 1px;
+    background:
+      radial-gradient(60% 45% at 18% 48%, rgba(47, 111, 237, 0.16), transparent 70%),
+      radial-gradient(50% 45% at 88% 70%, rgba(47, 111, 237, 0.12), transparent 70%),
+      linear-gradient(180deg, #0A1636 0%, #0B1D45 55%, #08122B 100%); }
+  .divider { position: absolute; left: 0; right: 0; top: -89px; width: 100%; height: 90px; display: block; fill: #0A1636; pointer-events: none; }
+  .navyband .eyebrow { color: var(--blue-bright); }
+  .navyband .eyebrow::after { background: var(--blue-bright); }
 
-  .tl { list-style: none; margin: 0 0 28px; padding: 0; position: relative; }
-  .tl::before { content: ""; position: absolute; left: 20px; top: 24px; bottom: 24px; width: 1px; background: rgba(91, 147, 255, 0.45); }
-  .tl li { display: grid; grid-template-columns: 42px 1fr; gap: 16px; padding: 0 0 26px; position: relative; }
-  .dot { width: 42px; height: 42px; border-radius: 50%; background: #fff; color: var(--navy-800); display: inline-flex; align-items: center; justify-content: center; z-index: 1; }
-  .dot.alt { background: var(--btn-bg); color: #fff; }
-  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .trio { padding: 36px 0 44px; }
+  .trio-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+  .glass { background: linear-gradient(155deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 55%, rgba(255,255,255,0.05) 100%);
+    border: 1px solid rgba(255,255,255,0.13); border-radius: 8px; box-shadow: 0 10px 30px rgba(2, 8, 24, 0.35), inset 0 1px 0 rgba(255,255,255,0.08); }
+  .col { padding: 32px 28px; }
+  .col h2 { font-size: clamp(1.45rem, 2.2vw, 1.8rem); line-height: 1.22; margin: 0 0 18px; color: #fff; max-width: 20ch; }
+  .about p:not(.eyebrow):not(.signature) { font-size: 15px; line-height: 1.75; color: #CBD5EA; max-width: 46ch; margin: 0 0 12px; }
+  .signature { font-family: var(--font-script); font-size: 3rem; line-height: 1; color: #7FB0FF; margin: 22px 0 0 !important; transform: rotate(-3deg); transform-origin: left; }
+
+  .exp { background: linear-gradient(155deg, rgba(47,111,237,0.20) 0%, rgba(255,255,255,0.05) 60%, rgba(255,255,255,0.05) 100%); border-color: rgba(127,176,255,0.30); }
+  .tl { list-style: none; margin: 0 0 26px; padding: 0; position: relative; }
+  .tl::before { content: ""; position: absolute; left: 17px; top: 20px; bottom: 28px; width: 2px; background: linear-gradient(180deg, rgba(127,176,255,0.9), rgba(127,176,255,0.15)); border-radius: 2px; }
+  .tl li { display: grid; grid-template-columns: 36px 1fr; gap: 16px; padding: 0 0 24px; position: relative; }
+  .tl li:last-child { padding-bottom: 0; }
+  .dot { width: 36px; height: 36px; border-radius: 50%; background: #11265A; border: 1.5px solid rgba(127,176,255,0.7); color: #A9CBFF; display: inline-flex; align-items: center; justify-content: center; z-index: 1; }
+  .tl li.now .dot { background: var(--btn-bg); border-color: #9FC2FF; color: #fff; box-shadow: 0 0 0 5px rgba(47,111,237,0.22); }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 12px; flex-wrap: wrap; }
   .exp h3 { color: #fff; font-size: 1rem; margin: 0; }
-  .yrs { font-size: 13px; color: #D3DBEA; white-space: nowrap; }
-  .role { color: var(--blue-bright); font-size: 14.5px; font-weight: 500; margin: 2px 0 6px; }
-  .desc { font-size: 13.5px; line-height: 1.6; color: #C5CEE0; margin: 0; }
+  .yrs { font-size: 12.5px; color: #C3D0EA; white-space: nowrap; }
+  .role { color: #8DBBFF; font-size: 14px; font-weight: 500; margin: 2px 0 5px; }
+  .desc { font-size: 13.5px; line-height: 1.6; color: #C5CFE6; margin: 0; max-width: 46ch; }
   .btn-outline { display: inline-flex; align-items: center; gap: 12px; padding: 12px 20px; border: 1px solid rgba(255,255,255,.35); border-radius: 3px; color: #fff; text-decoration: none; font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
   .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.08); }
 
-  .tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); }
-  .tiles li { padding: 22px 18px 22px 0; border-top: 1px solid var(--color-border); }
-  .ti { display: block; color: var(--color-accent); margin-bottom: 12px; }
-  .tiles h3 { font-size: 0.95rem; margin: 0 0 6px; color: var(--color-text); }
-  .tiles p { font-size: 13px; line-height: 1.55; color: var(--color-muted); margin: 0; }
+  .tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 18px; }
+  .tiles li { padding: 18px 0; border-top: 1px solid rgba(255,255,255,0.12); }
+  .ti { display: block; color: #7FB0FF; margin-bottom: 10px; }
+  .tiles h3 { font-size: 0.95rem; margin: 0 0 5px; color: #fff; }
+  .tiles p { font-size: 13px; line-height: 1.55; color: #BFCBE3; margin: 0; }
 
-  .values { background: var(--navy-950); color: #fff; padding: 28px 0; }
+  .values { padding: 26px 0 34px; border-top: 1px solid rgba(255,255,255,0.08); background: rgba(3, 9, 26, 0.35); }
   .values-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
   .val { display: flex; gap: 16px; align-items: center; }
-  .vi { flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--navy-700); color: #6EA2FF; display: inline-flex; align-items: center; justify-content: center; }
+  .vi { flex: none; width: 52px; height: 52px; border-radius: 50%; background: rgba(47,111,237,0.18); border: 1px solid rgba(127,176,255,0.35); color: #8DBBFF; display: inline-flex; align-items: center; justify-content: center; }
   .val h3 { color: #fff; font-size: .95rem; margin: 0 0 3px; }
-  .val p { color: #B9C4DA; font-size: 13px; line-height: 1.5; margin: 0; }
+  .val p { color: #BFCBE3; font-size: 13px; line-height: 1.5; margin: 0; }
 
   .band { padding: 64px 0; background: var(--color-bg); }
   .band.alt { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
@@ -263,13 +287,12 @@ const jsonLd = [
     .cta-in { grid-template-columns: 1fr auto; }
   }
   @media (min-width: 1100px) {
-    .trio { grid-template-columns: 0.95fr 1.02fr 1.25fr; }
-    .col { padding: 56px 40px; }
-    .about { padding-left: max(40px, calc((100vw - 1320px) / 2 + 40px)); }
-    .what { padding-right: max(40px, calc((100vw - 1320px) / 2 + 40px)); }
+    .trio-grid { grid-template-columns: 0.95fr 1.1fr 1.2fr; gap: 24px; align-items: stretch; }
+    .col { padding: 38px 34px; }
+    .divider { top: -119px; height: 120px; }
     .recs { grid-template-columns: repeat(4, 1fr); }
     .values-grid { grid-template-columns: repeat(4, 1fr); gap: 0; }
-    .val { padding: 0 24px; border-left: 1px solid var(--navy-line); }
+    .val { padding: 0 24px; border-left: 1px solid rgba(255,255,255,0.12); }
     .val:first-child { border-left: 0; padding-left: 0; }
   }
 </style>
