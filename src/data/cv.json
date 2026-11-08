@@ -33,5 +33,32 @@
     "place": "Nepal",
     "year": "2015",
     "text": "Supported relief and rehabilitation in affected districts: temporary shelters, reconstruction of homes, schools and community infrastructure, sanitation and hygiene awareness, health camps and livelihood assistance."
-  }
+  },
+  "highlight": {
+    "label": "Ncell network swap",
+    "value": "100",
+    "text": "swap sites delivered in a single day, Kathmandu, 2015"
+  },
+  "recognition": [
+    {
+      "icon": "star",
+      "title": "Employee of the Month",
+      "text": "Awarded several times at Huawei Technologies Nepal."
+    },
+    {
+      "icon": "award",
+      "title": "Customer satisfaction",
+      "text": "Recognised for customer satisfaction, with appreciation from Ncell."
+    },
+    {
+      "icon": "trophy",
+      "title": "Excellent team award",
+      "text": "WDM Golden Seeds Training Programme, Shenzhen, China (2019)."
+    },
+    {
+      "icon": "target",
+      "title": "Project Office skill",
+      "text": "Project Office Business Skill Authentication, Huawei."
+    }
+  ]
 }

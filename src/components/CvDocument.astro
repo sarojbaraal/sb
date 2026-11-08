@@ -1,0 +1,122 @@
+---
+// Single source for the CV: used by /cv (screen + print) and /cv-print (PDF render).
+import profile from '../data/profile.json';
+import experience from '../data/experience.json';
+import education from '../data/education.json';
+import cv from '../data/cv.json';
+---
+
+<article class="cv-doc">
+  <div class="cv-top">
+    <h1>{profile.name}</h1>
+    <p class="cv-role">{profile.headline}</p>
+    <p class="cv-contact">
+      <span>{profile.location.city}, {profile.location.country}</span>
+      <span>{profile.email}</span>
+      <span>{profile.phone}</span>
+      <span>linkedin.com/in/sarojbaraal</span>
+    </p>
+  </div>
+
+  <section>
+    <h2>Summary</h2>
+    <p>{profile.summary}</p>
+    <ul>
+      {cv.strengths.map((s) => <li>{s}</li>)}
+    </ul>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    {experience.map((job) => (
+      <div class="cv-job">
+        <div class="cv-row">
+          <h3>{job.role}</h3>
+          <span class="cv-dates">{job.start} to {job.end}</span>
+        </div>
+        <p class="cv-org">{job.org}, {job.location}</p>
+        {'groups' in job && job.groups ? (
+          job.groups.map((g) => (
+            <div class="cv-grp">
+              <h4>{g.title}</h4>
+              <ul>{g.bullets.map((b) => <li>{b}</li>)}</ul>
+            </div>
+          ))
+        ) : (
+          <ul>{job.bullets.map((b) => <li>{b}</li>)}</ul>
+        )}
+        {job.awards && (
+          <div class="cv-awards">
+            <h4>Recognition</h4>
+            <ul>{job.awards.map((a) => <li>{a}</li>)}</ul>
+          </div>
+        )}
+      </div>
+    ))}
+  </section>
+
+  <section class="cv-keep">
+    <h2>Education</h2>
+    {education.map((e) => (
+      <div class="cv-job">
+        <div class="cv-row">
+          <h3>{e.degree}</h3>
+          <span class="cv-dates">{e.start} to {e.end}</span>
+        </div>
+        <p class="cv-org">{e.institution}, {e.location}. {e.summary}</p>
+      </div>
+    ))}
+  </section>
+
+  <section class="cv-keep">
+    <h2>Tools and systems</h2>
+    <dl>
+      {cv.stack.map((s) => (<><dt>{s.label}</dt><dd>{s.value}</dd></>))}
+    </dl>
+  </section>
+
+  <section class="cv-keep">
+    <h2>Volunteering</h2>
+    <div class="cv-row"><h3>{cv.volunteer.title}, {cv.volunteer.place}</h3><span class="cv-dates">{cv.volunteer.year}</span></div>
+    <p class="cv-org">{cv.volunteer.text}</p>
+  </section>
+
+  <section class="cv-keep">
+    <h2>Languages</h2>
+    <p>{profile.languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(', ')}. References available on request.</p>
+  </section>
+</article>
+
+<style is:global>
+  .cv-doc {
+    --cv-ink: #0F1B33; --cv-muted: #4A5873; --cv-blue: #2F6FED; --cv-navy: #0C1B3A; --cv-line: #D5DCE8;
+    font-family: "Inter Variable", system-ui, sans-serif;
+    font-size: 9.6pt; line-height: 1.42; color: var(--cv-ink); background: #fff;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .cv-doc h1 { font-family: inherit; font-size: 25pt; line-height: 1.05; font-weight: 700; letter-spacing: -0.03em; margin: 0; color: var(--cv-navy); }
+  .cv-doc .cv-role { font-size: 12pt; font-weight: 500; color: var(--cv-blue); margin: 4pt 0 5pt; }
+  .cv-doc .cv-contact { display: flex; flex-wrap: wrap; gap: 2pt 14pt; font-size: 9pt; color: var(--cv-muted); margin: 0 0 4pt; padding-bottom: 8pt; border-bottom: 2pt solid var(--cv-blue); }
+  .cv-doc h2 { font-family: inherit; font-size: 10pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cv-navy); margin: 12pt 0 5pt; padding-bottom: 2pt; border-bottom: 0.6pt solid var(--cv-line); break-after: avoid; }
+  .cv-doc h3 { font-family: inherit; font-size: 10.2pt; font-weight: 650; letter-spacing: 0; margin: 0; line-height: 1.3; break-after: avoid; }
+  .cv-doc h4 { font-size: 9.3pt; font-weight: 650; margin: 5pt 0 1.5pt; break-after: avoid; }
+  .cv-doc p { margin: 0 0 3pt; }
+  .cv-doc .cv-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; flex-wrap: wrap; }
+  .cv-doc .cv-dates { font-size: 9pt; color: var(--cv-muted); white-space: nowrap; }
+  .cv-doc .cv-org { color: var(--cv-muted); margin-bottom: 2pt; break-after: avoid; }
+  .cv-doc ul { margin: 0 0 2pt; padding-left: 12pt; list-style: disc; }
+  .cv-doc li { margin: 0 0 1.5pt; }
+  .cv-doc li::marker { color: var(--cv-blue); }
+  .cv-doc .cv-job { margin-bottom: 8pt; }
+  .cv-doc .cv-grp { break-inside: avoid; }
+  .cv-doc .cv-awards { border-left: 2pt solid var(--cv-blue); padding-left: 7pt; margin-top: 5pt; break-inside: avoid; }
+  .cv-doc .cv-awards h4 { margin-top: 0; }
+  .cv-doc .cv-keep { break-inside: avoid; }
+  .cv-doc dl { display: grid; grid-template-columns: 40mm 1fr; gap: 2pt 10pt; margin: 0; }
+  .cv-doc dt { font-weight: 650; }
+  .cv-doc dd { margin: 0; color: var(--cv-muted); }
+  @media (max-width: 560px) {
+    .cv-doc dl { grid-template-columns: 1fr; }
+    .cv-doc dd { margin-bottom: 4pt; }
+  }
+</style>
