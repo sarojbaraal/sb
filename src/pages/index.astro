@@ -218,13 +218,13 @@ const jsonLd = [
   .navyband .eyebrow { color: var(--blue-bright); }
   .navyband .eyebrow::after { background: var(--blue-bright); }
 
-  .trio { padding: 36px 0 44px; }
+  .trio { padding: 0 0 40px; margin-top: -22px; position: relative; }
   .trio-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
   .glass { background: linear-gradient(155deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 55%, rgba(255,255,255,0.05) 100%);
     border: 1px solid rgba(255,255,255,0.13); border-radius: 8px; box-shadow: 0 10px 30px rgba(2, 8, 24, 0.35), inset 0 1px 0 rgba(255,255,255,0.08); }
   .col { padding: 32px 28px; }
   .col h2 { font-size: clamp(1.45rem, 2.2vw, 1.8rem); line-height: 1.22; margin: 0 0 18px; color: #fff; max-width: 20ch; }
-  .about p:not(.eyebrow):not(.signature) { font-size: 15px; line-height: 1.75; color: #CBD5EA; max-width: 46ch; margin: 0 0 12px; }
+  .about p:not(.eyebrow):not(.signature) { font-size: 14.5px; line-height: 1.75; color: #CBD5EA; max-width: 46ch; margin: 0 0 12px; text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; hyphenate-limit-chars: 6 3 3; }
   .signature { font-family: var(--font-script); font-size: 3rem; line-height: 1; color: #7FB0FF; margin: 22px 0 0 !important; transform: rotate(-3deg); transform-origin: left; }
 
   .exp { background: linear-gradient(155deg, rgba(47,111,237,0.20) 0%, rgba(255,255,255,0.05) 60%, rgba(255,255,255,0.05) 100%); border-color: rgba(127,176,255,0.30); }
@@ -290,6 +290,7 @@ const jsonLd = [
     .trio-grid { grid-template-columns: 0.95fr 1.1fr 1.2fr; gap: 24px; align-items: stretch; }
     .col { padding: 38px 34px; }
     .divider { top: -119px; height: 120px; }
+    .trio { margin-top: -34px; }
     .recs { grid-template-columns: repeat(4, 1fr); }
     .values-grid { grid-template-columns: repeat(4, 1fr); gap: 0; }
     .val { padding: 0 24px; border-left: 1px solid rgba(255,255,255,0.12); }
