@@ -35,9 +35,12 @@ import experience from '../data/experience.json';
         )}
 
         {item.awards && item.awards.length > 0 && (
-          <p class="mt-5 text-[15px] text-[var(--color-text)] prose-measure border-l-2 border-[var(--color-marigold)] pl-3">
-            {item.awards.join(' ')}
-          </p>
+          <div class="mt-5 border-l-2 border-[var(--color-accent)] pl-3">
+            <p class="font-semibold text-[15px] mb-1">Recognition</p>
+            <ul class="space-y-1 text-[15px] text-[var(--color-muted)] pl-5 list-disc">
+              {item.awards.map((a) => <li>{a}</li>)}
+            </ul>
+          </div>
         )}
       </div>
     </li>

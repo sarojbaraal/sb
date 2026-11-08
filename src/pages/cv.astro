@@ -1,118 +1,55 @@
 ---
 import { url } from "../utils/url";
 import BaseLayout from '../layouts/BaseLayout.astro';
-import profile from '../data/profile.json';
-import experience from '../data/experience.json';
-import education from '../data/education.json';
-import cv from '../data/cv.json';
+import CvDocument from '../components/CvDocument.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <BaseLayout
   title="Curriculum Vitae"
   description="Curriculum vitae of Saroj Baral: project control, MIS and business operations. Six years at Huawei Technologies Nepal, Executive MBA, independent consultant."
 >
-  <div class="site-container py-12 md:py-16">
-    <div class="no-print flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-6 border-b border-[var(--color-border)]">
+  <section class="page-head no-print">
+    <div class="site-container cv-bar">
       <div>
-        <h1 class="mb-2">Curriculum vitae</h1>
-        <p class="text-[var(--color-muted)] m-0">Read it here, or download the two-page PDF.</p>
+        <p class="kicker">Curriculum vitae</p>
+        <h1>My CV</h1>
+        <p>Read it here, print it from this page, or download the two-page PDF.</p>
       </div>
-      <div class="flex items-center gap-3">
-        <a href={url("/cv/Saroj-Baral-CV.pdf")} download="Saroj-Baral-CV.pdf" class="btn-base btn-primary px-4 py-2">Download PDF</a>
-        <button type="button" onclick="window.print()" class="btn-base btn-secondary px-4 py-2">Print</button>
+      <div class="cv-actions">
+        <a href={url("/cv/Saroj-Baral-CV.pdf")} download="Saroj-Baral-CV.pdf" class="btn-base btn-primary"><Icon name="download" size={16} />&nbsp; Download PDF</a>
+        <button type="button" class="btn-base cv-print-btn" onclick="window.print()"><Icon name="print" size={16} />&nbsp; Print</button>
       </div>
     </div>
+  </section>
 
-    <article class="max-w-[820px]">
-      <header class="mb-10">
-        <h2 class="text-[2.4rem] mb-1">{profile.name}</h2>
-        <p class="text-lg text-[var(--color-muted)] mb-3">{profile.headline}</p>
-        <p class="text-[15px] text-[var(--color-muted)] m-0">
-          {profile.location.city}, {profile.location.country} &nbsp;|&nbsp;
-          <a class="link-quiet" href={`mailto:${profile.email}`}>{profile.email}</a> &nbsp;|&nbsp;
-          <a class="link-quiet" href={`tel:${profile.phone}`}>{profile.phone}</a> &nbsp;|&nbsp;
-          <a class="link-quiet" href={profile.linkedin}>LinkedIn</a>
-        </p>
-      </header>
-
-      <section class="mb-10 page-break-avoid">
-        <h3 class="mb-3">Summary</h3>
-        <p class="prose-measure mb-4">{profile.summary}</p>
-        <ul class="space-y-1.5 pl-5 list-disc text-[15px] prose-measure">
-          {cv.strengths.map((s) => <li>{s}</li>)}
-        </ul>
-      </section>
-
-      <section class="mb-10">
-        <h3 class="mb-5">Experience</h3>
-        <div class="space-y-9">
-          {experience.map((job) => (
-            <div class="page-break-avoid">
-              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                <h4 class="font-semibold text-[1.05rem] m-0">{job.role}</h4>
-                <span class="text-sm text-[var(--color-muted)]">{job.start} to {job.end}</span>
-              </div>
-              <p class="text-[15px] text-[var(--color-muted)] mb-2">{job.org}, {job.location}</p>
-              {'groups' in job && job.groups ? (
-                job.groups.map((g) => (
-                  <div class="mb-3">
-                    <p class="font-semibold text-[15px] mb-1">{g.title}</p>
-                    <ul class="space-y-1 pl-5 list-disc text-[15px] text-[var(--color-muted)]">
-                      {g.bullets.map((b) => <li>{b}</li>)}
-                    </ul>
-                  </div>
-                ))
-              ) : (
-                <ul class="space-y-1 pl-5 list-disc text-[15px] text-[var(--color-muted)]">
-                  {job.bullets.map((b) => <li>{b}</li>)}
-                </ul>
-              )}
-              {job.awards && <p class="text-[15px] mt-3 border-l-2 border-[var(--color-marigold)] pl-3 mb-0">{job.awards.join(' ')}</p>}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="mb-10 page-break-avoid">
-        <h3 class="mb-4">Education</h3>
-        <div class="space-y-4">
-          {education.map((e) => (
-            <div>
-              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                <p class="font-semibold m-0">{e.degree}</p>
-                <span class="text-sm text-[var(--color-muted)]">{e.start} to {e.end}</span>
-              </div>
-              <p class="text-[15px] text-[var(--color-muted)] m-0">{e.institution}, {e.location}</p>
-              <p class="text-[15px] text-[var(--color-muted)] m-0">{e.summary}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="mb-10 page-break-avoid">
-        <h3 class="mb-3">Tools and systems</h3>
-        <dl class="m-0 space-y-1.5 text-[15px]">
-          {cv.stack.map((s) => (
-            <div class="grid sm:grid-cols-[13rem_1fr] gap-x-4">
-              <dt class="font-semibold">{s.label}</dt>
-              <dd class="m-0 text-[var(--color-muted)]">{s.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      <section class="mb-10 page-break-avoid">
-        <h3 class="mb-3">Volunteering</h3>
-        <p class="font-semibold m-0">{cv.volunteer.title}, {cv.volunteer.place} ({cv.volunteer.year})</p>
-        <p class="text-[15px] text-[var(--color-muted)] prose-measure m-0">{cv.volunteer.text}</p>
-      </section>
-
-      <section class="page-break-avoid">
-        <h3 class="mb-3">Languages</h3>
-        <p class="text-[15px] m-0">
-          {profile.languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(', ')}. References available on request.
-        </p>
-      </section>
-    </article>
+  <div class="cv-stage">
+    <div class="cv-paper">
+      <CvDocument />
+    </div>
   </div>
 </BaseLayout>
+
+<style is:global>
+  .cv-bar { display: grid; gap: 20px; align-items: end; }
+  .cv-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .cv-print-btn { background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, 0.4); }
+  .cv-print-btn:hover { background: rgba(255, 255, 255, 0.08); border-color: #fff; }
+  @media (min-width: 760px) { .cv-bar { grid-template-columns: 1fr auto; } }
+
+  .cv-stage { padding: 32px 16px 56px; background: var(--color-bg); }
+  .cv-paper {
+    width: 100%; max-width: 210mm; margin: 0 auto; padding: 14mm 16mm;
+    background: #fff; border: 1px solid var(--color-border); border-radius: 4px;
+    box-shadow: 0 6px 24px rgba(8, 19, 42, 0.08);
+  }
+  @media (max-width: 640px) { .cv-paper { padding: 22px 18px; } }
+
+  @page { size: A4; margin: 13mm 15mm; }
+  @media print {
+    html, body { background: #fff !important; }
+    .cv-stage { padding: 0 !important; background: #fff !important; }
+    .cv-paper { max-width: none !important; padding: 0 !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important; }
+    .cv-doc { color: #0F1B33; }
+  }
+</style>

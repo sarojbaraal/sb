@@ -1,0 +1,48 @@
+---
+import { url } from "../utils/url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CareerSchedule from "../components/CareerSchedule.astro";
+import Timeline from "../components/Timeline.astro";
+import Icon from "../components/Icon.astro";
+import cv from "../data/cv.json";
+---
+
+<BaseLayout
+  title="Experience"
+  description="Career history of Saroj Baral: Huawei Technologies Nepal (2013 to 2019), independent consulting since 2022, GTL Nepal and Radio Nepal. Awards and recognition."
+>
+  <section class="page-head">
+    <div class="site-container">
+      <p class="kicker">Experience</p>
+      <h1>Fifteen years in engineering, operations and business.</h1>
+      <p>Field engineering first, then six years of project control and solutions at Huawei, an Executive MBA, and independent work with small and medium businesses.</p>
+    </div>
+  </section>
+
+  <div class="site-container py-14 md:py-16">
+    <CareerSchedule />
+
+    <div class="mt-14">
+      <h2 class="mb-2">Career history</h2>
+      <Timeline />
+    </div>
+
+    <section class="mt-14">
+      <h2 class="mb-6">Recognition</h2>
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 list-none p-0 m-0">
+        {cv.recognition.map((r) => (
+          <li class="card-base p-5">
+            <span class="inline-flex w-11 h-11 rounded-full items-center justify-center bg-[var(--color-accent-soft)] text-[var(--color-accent)] mb-3"><Icon name={r.icon} size={22} /></span>
+            <h3 class="mb-1">{r.title}</h3>
+            <p class="text-sm text-[var(--color-muted)] m-0">{r.text}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <div class="mt-12 flex flex-wrap gap-3">
+      <a href={url("/cv")} class="btn-base btn-primary px-5 py-2.5">View CV</a>
+      <a href={url("/contact")} class="btn-base btn-secondary px-5 py-2.5">Contact me</a>
+    </div>
+  </div>
+</BaseLayout>

@@ -2,9 +2,10 @@
 import { url } from "../utils/url";
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
+import cv from '../data/cv.json';
 import CaseStudyCard from '../components/CaseStudyCard.astro';
 import profile from '../data/profile.json';
-import services from '../data/services.json';
 import { getCollection } from 'astro:content';
 
 const workEntries = await getCollection('work');
@@ -38,50 +39,123 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title={`${profile.name} — ${profile.headline}`}
+  title={`${profile.name} | MIS, Project Control & Business Operations`}
   description={`${profile.name}: ${profile.headline}. ${profile.tagline} Six years at Huawei Technologies Nepal, Executive MBA 2022, open to remote roles.`}
   jsonLd={jsonLd}
 >
-  <!-- Hero Section -->
   <Hero />
 
-  <!-- What I Do -->
-  <section class="border-t border-[var(--color-border)] py-16 md:py-24">
-    <div class="site-container">
-      <h2 class="mb-2">What I do</h2>
-      <p class="text-[var(--color-muted)] text-lg prose-measure mb-10">
-        Reporting systems, document control and cross-functional project tracking for teams that have outgrown spreadsheets passed around by email.
+  <!-- About / Experience / What I do -->
+  <section class="trio">
+    <div class="col about">
+      <p class="eyebrow">About me</p>
+      <h2>A blend of Engineering, Management &amp; Curiosity.</h2>
+      <p>
+        From electronics engineering to multinational project environments and business studies, my journey has shaped one core interest: making information reliable, meaningful and actionable.
       </p>
+      <p>I enjoy solving problems, improving processes and turning complex data into clear decisions.</p>
+      <p class="signature" aria-hidden="true">Saroj Baral</p>
+    </div>
 
-      <div>
-        {services.map((service) => (
-          <div class="rule-row">
-            <div>
-              <h3 class="mb-1">{service.title}</h3>
-              <p class="text-sm text-[var(--color-muted)] m-0">{service.priceFrom}</p>
-              <p class="text-sm text-[var(--color-muted)] m-0">{service.engagement}</p>
-            </div>
-            <div>
-              <ul class="space-y-2 pl-5 list-disc text-[var(--color-text)] prose-measure mb-4">
-                {service.bullets.map((b) => <li>{b}</li>)}
-              </ul>
-              <a href={url(`/services#${service.id}`)} class="link-quiet text-[15px]">About {service.title}</a>
-            </div>
+    <div class="col exp">
+      <p class="eyebrow">Experience</p>
+      <ol class="tl">
+        <li>
+          <span class="dot"><Icon name="briefcase" size={20} /></span>
+          <div>
+            <div class="row"><h3>Huawei Technologies Nepal</h3><span class="yrs">2013 &ndash; 2019</span></div>
+            <p class="role">Engineer / Manager, Project Control &amp; MIS</p>
+            <p class="desc">Project coordination, MIS reporting, ERP and SCM data, bid documentation and cross-functional delivery.</p>
           </div>
+        </li>
+        <li>
+          <span class="dot alt"><Icon name="users" size={20} /></span>
+          <div>
+            <div class="row"><h3>Independent Professional</h3><span class="yrs">2022 &ndash; Present</span></div>
+            <p class="role">Freelance &amp; Consulting</p>
+            <p class="desc">MIS, reporting, workflow optimisation and business support for small and medium businesses.</p>
+          </div>
+        </li>
+      </ol>
+      <a href={url("/experience")} class="btn-outline">View full experience <Icon name="arrow" size={16} /></a>
+    </div>
+
+    <div class="col what">
+      <p class="eyebrow">What I do</p>
+      <h2>I help businesses with</h2>
+      <ul class="tiles">
+        <li><span class="ti"><Icon name="chart" size={30} stroke={1.5} /></span><h3>MIS & Reporting</h3><p>Accurate reports and dashboards for decision making.</p></li>
+        <li><span class="ti"><Icon name="network" size={30} stroke={1.5} /></span><h3>Project Coordination</h3><p>Planning, tracking and delivering projects efficiently.</p></li>
+        <li><span class="ti"><Icon name="box" size={30} stroke={1.5} /></span><h3>ERP / SCM Support</h3><p>Data and documentation for supply chain and operations.</p></li>
+        <li><span class="ti"><Icon name="search" size={30} stroke={1.5} /></span><h3>Research & Analysis</h3><p>Information gathering and data-driven insights.</p></li>
+        <li><span class="ti"><Icon name="sheet" size={30} stroke={1.5} /></span><h3>Excel & Data Management</h3><p>Data organisation, analytics and reporting.</p></li>
+        <li><span class="ti"><Icon name="doc" size={30} stroke={1.5} /></span><h3>Business Documentation</h3><p>Reports, presentations and professional documentation.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Values strip -->
+  <section class="values" aria-label="Working principles">
+    <div class="site-container values-grid">
+      <div class="val"><span class="vi"><Icon name="rocket" size={26} stroke={1.5} /></span><div><h3>Engineering Mindset</h3><p>Analytical, systematic and solution oriented.</p></div></div>
+      <div class="val"><span class="vi"><Icon name="users" size={26} stroke={1.5} /></span><div><h3>Business Perspective</h3><p>EMBA with a strong business understanding.</p></div></div>
+      <div class="val"><span class="vi"><Icon name="target" size={26} stroke={1.5} /></span><div><h3>Results Focused</h3><p>Committed to accuracy, efficiency and impact.</p></div></div>
+      <div class="val"><span class="vi"><Icon name="bulb" size={26} stroke={1.5} /></span><div><h3>Always Learning</h3><p>Curious, adaptable and open to new ideas.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Recognition -->
+  <section class="band">
+    <div class="site-container">
+      <p class="eyebrow">Recognition</p>
+      <h2 class="band-title">Awards and appreciation from six years at Huawei</h2>
+      <ul class="recs">
+        {cv.recognition.map((r) => (
+          <li class="rec">
+            <span class="ri"><Icon name={r.icon} size={24} stroke={1.6} /></span>
+            <h3>{r.title}</h3>
+            <p>{r.text}</p>
+          </li>
         ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Other ways to work together -->
+  <section class="band alt">
+    <div class="site-container">
+      <p class="eyebrow">Beyond a full-time role</p>
+      <h2 class="band-title">Other ways to work with me</h2>
+      <div class="ways">
+        <article class="way">
+          <span class="ri"><Icon name="lectern" size={24} stroke={1.6} /></span>
+          <h3>Lectures and workshops</h3>
+          <p>Engineering and management courses: electronics, communication, operations, project management, MIS and Excel for business. Visiting faculty, guest lectures and corporate training.</p>
+          <a class="more" href={url("/teaching")}>Teaching details <Icon name="arrow" size={15} /></a>
+        </article>
+        <article class="way">
+          <span class="ri"><Icon name="link" size={24} stroke={1.6} /></span>
+          <h3>Business partnership</h3>
+          <p>Open to partnerships where I contribute skills and time in return for a share in the business (sweat-equity). Operations, MIS, reporting and project control are what I can bring.</p>
+          <a class="more" href={url("/contact?service=partnership")}>Discuss a partnership <Icon name="arrow" size={15} /></a>
+        </article>
+        <article class="way">
+          <span class="ri"><Icon name="globe" size={24} stroke={1.6} /></span>
+          <h3>Simple business websites</h3>
+          <p>Clean, fast, mobile-friendly sites for local businesses, delivered in 7 to 10 days.</p>
+          <a class="more" href={url("/websites")}>See packages <Icon name="arrow" size={15} /></a>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Illustrative samples -->
-  <section class="bg-[var(--color-surface)] border-t border-[var(--color-border)] py-16 md:py-24">
+  <!-- Sample work -->
+  <section class="band">
     <div class="site-container">
-      <h2 class="mb-2">Sample work</h2>
-      <p class="text-[var(--color-muted)] text-lg prose-measure mb-10">
-        Worked examples built on dummy data. They show how I structure a reporting pack, a register or a tracker. They are samples of method, not client results.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <p class="eyebrow">Projects</p>
+      <h2 class="band-title">Sample work</h2>
+      <p class="band-sub">Worked examples on dummy data that show how I structure a reporting pack, register or tracker. They are samples of method, not client results.</p>
+      <div class="cards">
         {sortedWork.map((entry) => (
           <CaseStudyCard
             slug={entry.id}
@@ -96,49 +170,106 @@ const jsonLd = [
           />
         ))}
       </div>
-      <a href={url("/work")} class="link-quiet">All sample work</a>
-    </div>
-  </section>
-
-  <!-- Two more ways -->
-  <section class="border-t border-[var(--color-border)] py-16 md:py-24">
-    <div class="site-container">
-      <h2 class="mb-10">Also available</h2>
-      <div>
-        <div class="rule-row">
-          <h3 class="m-0">Simple business websites</h3>
-          <div>
-            <p class="text-[var(--color-muted)] prose-measure mb-3">
-              Clean, fast, mobile-friendly sites for local businesses. From NPR 15,000, 7 to 10 days. AI-assisted build, human-reviewed delivery.
-            </p>
-            <a href={url("/websites")} class="link-quiet text-[15px]">See website packages</a>
-          </div>
-        </div>
-        <div class="rule-row">
-          <h3 class="m-0">Workshops</h3>
-          <div>
-            <p class="text-[var(--color-muted)] prose-measure mb-3">
-              Practical sessions on Excel for business, MIS, operations and project management, for teams and training programmes.
-            </p>
-            <a href={url("/teaching")} class="link-quiet text-[15px]">Workshop details</a>
-          </div>
-        </div>
-      </div>
+      <a href={url("/work")} class="more">All sample work <Icon name="arrow" size={15} /></a>
     </div>
   </section>
 
   <!-- Contact -->
-  <section class="bg-[var(--color-text)] text-white py-16 md:py-24">
-    <div class="site-container">
-      <h2 class="text-white mb-4 max-w-[20ch]">Hiring for a remote project or MIS role?</h2>
-      <p class="text-lg text-[var(--color-ash)] prose-measure mb-8">
-        Open to remote roles in MIS, project control, data operations and project coordination. Based in Nepal (NPT, UTC+5:45), with working overlap for Gulf, European and Asia-Pacific hours.
-      </p>
-      <div class="flex flex-wrap items-center gap-3">
-        <a href={`mailto:${profile.email}`} class="btn-base bg-[var(--color-marigold)] text-[var(--color-text)] border border-[var(--color-marigold)] hover:brightness-95 px-5 py-2.5 font-semibold">Email me</a>
-        <a href={url("/cv/Saroj-Baral-CV.pdf")} download class="btn-base border border-white/40 text-white hover:bg-white/10 px-5 py-2.5">Download CV (PDF)</a>
-        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="btn-base text-white underline underline-offset-4 px-3 py-2.5">LinkedIn</a>
+  <section class="cta">
+    <div class="site-container cta-in">
+      <div>
+        <h2>Hiring for a remote project or MIS role?</h2>
+        <p>Open to remote roles in MIS, project control, data operations and project coordination. Based in Nepal (NPT, UTC+5:45).</p>
+      </div>
+      <div class="cta-actions">
+        <a href={`mailto:${profile.email}`} class="btn-solid"><Icon name="mail" size={16} /> Email me</a>
+        <a href={url("/cv/Saroj-Baral-CV.pdf")} download class="btn-line"><Icon name="download" size={16} /> Download CV</a>
       </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .eyebrow { color: var(--color-accent); font-size: 12.5px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; margin: 0 0 18px; position: relative; padding-bottom: 12px; }
+  .eyebrow::after { content: ""; position: absolute; left: 0; bottom: 0; width: 22px; height: 2px; background: var(--color-accent); }
+
+  .trio { display: grid; grid-template-columns: 1fr; }
+  .col { padding: 44px 24px; }
+  .about { background: var(--color-surface); }
+  .exp { background: var(--navy-900); color: #fff; }
+  .exp .eyebrow { color: var(--blue-bright); }
+  .exp .eyebrow::after { background: var(--blue-bright); }
+  .what { background: var(--color-surface); }
+  :global(:root[data-theme="dark"]) .about, :global(:root[data-theme="dark"]) .what { background: var(--color-bg); }
+  .col h2 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); line-height: 1.22; margin: 0 0 20px; color: var(--color-text); max-width: 20ch; }
+  .about p { font-size: 15px; line-height: 1.75; color: var(--color-muted); max-width: 40ch; }
+  .signature { font-family: var(--font-script); font-size: 3.1rem; line-height: 1; color: var(--color-accent); margin: 26px 0 0 !important; transform: rotate(-3deg); transform-origin: left; }
+
+  .tl { list-style: none; margin: 0 0 28px; padding: 0; position: relative; }
+  .tl::before { content: ""; position: absolute; left: 20px; top: 24px; bottom: 24px; width: 1px; background: rgba(91, 147, 255, 0.45); }
+  .tl li { display: grid; grid-template-columns: 42px 1fr; gap: 16px; padding: 0 0 26px; position: relative; }
+  .dot { width: 42px; height: 42px; border-radius: 50%; background: #fff; color: var(--navy-800); display: inline-flex; align-items: center; justify-content: center; z-index: 1; }
+  .dot.alt { background: var(--btn-bg); color: #fff; }
+  .row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .exp h3 { color: #fff; font-size: 1rem; margin: 0; }
+  .yrs { font-size: 13px; color: #D3DBEA; white-space: nowrap; }
+  .role { color: var(--blue-bright); font-size: 14.5px; font-weight: 500; margin: 2px 0 6px; }
+  .desc { font-size: 13.5px; line-height: 1.6; color: #C5CEE0; margin: 0; }
+  .btn-outline { display: inline-flex; align-items: center; gap: 12px; padding: 12px 20px; border: 1px solid rgba(255,255,255,.35); border-radius: 3px; color: #fff; text-decoration: none; font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+
+  .tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); }
+  .tiles li { padding: 22px 18px 22px 0; border-top: 1px solid var(--color-border); }
+  .ti { display: block; color: var(--color-accent); margin-bottom: 12px; }
+  .tiles h3 { font-size: 0.95rem; margin: 0 0 6px; color: var(--color-text); }
+  .tiles p { font-size: 13px; line-height: 1.55; color: var(--color-muted); margin: 0; }
+
+  .values { background: var(--navy-950); color: #fff; padding: 28px 0; }
+  .values-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+  .val { display: flex; gap: 16px; align-items: center; }
+  .vi { flex: none; width: 56px; height: 56px; border-radius: 50%; background: var(--navy-700); color: #6EA2FF; display: inline-flex; align-items: center; justify-content: center; }
+  .val h3 { color: #fff; font-size: .95rem; margin: 0 0 3px; }
+  .val p { color: #B9C4DA; font-size: 13px; line-height: 1.5; margin: 0; }
+
+  .band { padding: 64px 0; background: var(--color-bg); }
+  .band.alt { background: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+  .band-title { margin: 0 0 12px; }
+  .band-sub { color: var(--color-muted); max-width: 62ch; margin: 0 0 28px; }
+  .recs, .ways, .cards { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: 1fr; gap: 18px; }
+  .cards { margin-top: 0; margin-bottom: 26px; }
+  .rec, .way { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 8px; padding: 24px; }
+  .band.alt .way { background: var(--color-bg); }
+  .ri { display: inline-flex; width: 46px; height: 46px; border-radius: 50%; align-items: center; justify-content: center; background: var(--color-accent-soft); color: var(--color-accent); margin-bottom: 14px; }
+  .rec h3, .way h3 { font-size: 1.02rem; margin: 0 0 8px; }
+  .rec p, .way p { font-size: 14px; line-height: 1.65; color: var(--color-muted); margin: 0 0 12px; }
+  .rec p { margin: 0; }
+  .more { display: inline-flex; align-items: center; gap: 8px; color: var(--color-accent); font-weight: 600; font-size: 14px; text-decoration: none; }
+  .more:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  .cta { background: linear-gradient(100deg, var(--navy-950), var(--navy-800)); color: #fff; padding: 56px 0; }
+  .cta-in { display: grid; gap: 24px; align-items: center; }
+  .cta h2 { color: #fff; margin: 0 0 10px; }
+  .cta p { color: #C5CEE0; margin: 0; max-width: 56ch; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn-solid, .btn-line { display: inline-flex; align-items: center; gap: 10px; padding: 13px 20px; border-radius: 3px; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+  .btn-solid { background: var(--btn-bg); color: #fff; border: 1px solid var(--btn-bg); }
+  .btn-solid:hover { background: var(--btn-bg-hover); }
+  .btn-line { border: 1px solid rgba(255,255,255,.4); color: #fff; }
+  .btn-line:hover { background: rgba(255,255,255,.08); border-color: #fff; }
+
+  @media (min-width: 640px) { .recs { grid-template-columns: repeat(2, 1fr); } .values-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 900px) {
+    .ways, .cards { grid-template-columns: repeat(3, 1fr); }
+    .cta-in { grid-template-columns: 1fr auto; }
+  }
+  @media (min-width: 1100px) {
+    .trio { grid-template-columns: 0.95fr 1.02fr 1.25fr; }
+    .col { padding: 56px 40px; }
+    .about { padding-left: max(40px, calc((100vw - 1320px) / 2 + 40px)); }
+    .what { padding-right: max(40px, calc((100vw - 1320px) / 2 + 40px)); }
+    .recs { grid-template-columns: repeat(4, 1fr); }
+    .values-grid { grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .val { padding: 0 24px; border-left: 1px solid var(--navy-line); }
+    .val:first-child { border-left: 0; padding-left: 0; }
+  }
+</style>

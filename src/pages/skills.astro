@@ -1,0 +1,72 @@
+---
+import { url } from "../utils/url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import cv from "../data/cv.json";
+import profile from "../data/profile.json";
+
+const offers = [
+  ['chart', 'MIS & reporting', 'Reporting packs, trackers and dashboards in Excel that people can trust.', '/services'],
+  ['network', 'Project coordination', 'Plans, schedules, change control and stakeholder follow-up.', '/services'],
+  ['lectern', 'Lectures and workshops', 'Engineering and management courses, guest lectures, corporate training.', '/teaching'],
+  ['globe', 'Simple websites', 'Clean business sites for local companies.', '/websites'],
+];
+---
+
+<BaseLayout
+  title="Skills"
+  description="Skills and tools of Saroj Baral: project control, MIS and reporting, technical solutions, advanced Excel, ERP and SCM exposure, lectures and workshops."
+>
+  <section class="page-head">
+    <div class="site-container">
+      <p class="kicker">Skills</p>
+      <h1>What I can do for a team on day one.</h1>
+      <p>Strengths built across field engineering, project control and business operations.</p>
+    </div>
+  </section>
+
+  <div class="site-container py-14 md:py-16 grid gap-12 lg:grid-cols-2">
+    <section>
+      <h2 class="mb-5">Core strengths</h2>
+      <ul class="list-none p-0 m-0">
+        {cv.strengths.map((s) => (
+          <li class="flex gap-3 py-3 border-t border-[var(--color-border)]">
+            <span class="text-[var(--color-accent)] mt-0.5"><Icon name="target" size={20} /></span>
+            <span>{s}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="mb-5">Tools and systems</h2>
+      <dl class="m-0">
+        {cv.stack.map((s) => (
+          <div class="py-3 border-t border-[var(--color-border)]">
+            <dt class="font-semibold">{s.label}</dt>
+            <dd class="m-0 text-[var(--color-muted)]">{s.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <p class="text-sm text-[var(--color-muted)] mt-4">
+        Languages: {profile.languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(', ')}.
+      </p>
+    </section>
+  </div>
+
+  <section class="border-t border-[var(--color-border)] bg-[var(--color-surface)]">
+    <div class="site-container py-14">
+      <h2 class="mb-6">Where I apply them</h2>
+      <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 list-none p-0 m-0">
+        {offers.map(([icon, title, text, href]) => (
+          <li class="card-base p-5 bg-[var(--color-bg)]">
+            <span class="inline-flex w-11 h-11 rounded-full items-center justify-center bg-[var(--color-accent-soft)] text-[var(--color-accent)] mb-3"><Icon name={icon} size={22} /></span>
+            <h3 class="mb-1">{title}</h3>
+            <p class="text-sm text-[var(--color-muted)] mb-3">{text}</p>
+            <a href={url(href)} class="text-sm font-semibold text-[var(--color-accent)] no-underline hover:underline">Learn more</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

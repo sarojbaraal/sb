@@ -1,31 +1,118 @@
 ---
 import { url } from "../utils/url";
-import profile from "../data/profile.json";
-import CareerSchedule from "./CareerSchedule.astro";
+import Icon from "./Icon.astro";
+import cv from "../data/cv.json";
+
+const stat = cv.highlight;
 ---
 
-<section class="pt-12 md:pt-20 pb-14 md:pb-20">
-  <div class="site-container">
-    <p class="text-[15px] text-[var(--color-muted)] mb-5 flex items-center gap-2">
-      <span class="inline-block w-2 h-2 rounded-full bg-[var(--color-marigold)]" aria-hidden="true"></span>
-      {profile.availability}. Working from {profile.location.country} on {profile.location.tzLabel}.
-    </p>
+<section class="hero">
+  <svg class="rings" viewBox="0 0 800 600" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+    <g fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1">
+      <circle cx="640" cy="300" r="180" /><circle cx="640" cy="300" r="260" /><circle cx="640" cy="300" r="340" /><circle cx="640" cy="300" r="420" />
+    </g>
+  </svg>
 
-    <h1 class="max-w-[15ch] md:max-w-[17ch] mb-6">
-      One reliable picture of every project.
-    </h1>
+  <div class="site-container hero-grid">
+    <div class="copy">
+      <p class="eyebrow">MIS <i>•</i> Project Control <i>•</i> Business Operations</p>
+      <h1>Turning information<br />into <span>clarity.</span></h1>
+      <p class="lede">
+        Engineer by background. Business professional by experience. <br class="lg" />
+        I help teams and businesses make sense of data, streamline processes and deliver results.
+      </p>
 
-    <p class="text-lg md:text-xl text-[var(--color-muted)] prose-measure mb-8 leading-[1.6]">
-      I am {profile.name}: project control, MIS and business operations. Six years inside Huawei Technologies Nepal,
-      an engineering degree, an Executive MBA, and independent work with small and medium businesses.
-    </p>
+      <ul class="meta">
+        <li><Icon name="pin" size={18} /> Kathmandu, Nepal</li>
+        <li><Icon name="briefcase" size={18} /> 6+ Years Experience</li>
+        <li><Icon name="cap" size={18} /> EMBA</li>
+      </ul>
 
-    <div class="flex flex-wrap items-center gap-3 mb-14 md:mb-20">
-      <a href={url("/cv")} class="btn-base btn-primary text-base px-5 py-2.5">View CV</a>
-      <a href={`mailto:${profile.email}`} class="btn-base btn-secondary text-base px-5 py-2.5">Email me</a>
-      <a href={url("/work")} class="link-quiet text-base ml-1">See sample work</a>
+      <div class="actions">
+        <a href={url("/cv")} class="btn-hero primary">View my CV <Icon name="download" size={16} /></a>
+        <a href={url("/contact")} class="btn-hero ghost">Contact me <Icon name="arrow" size={16} /></a>
+      </div>
     </div>
 
-    <CareerSchedule />
+    <div class="photo">
+      <img
+        src={url("/images/saroj-cutout.webp")}
+        alt="Portrait of Saroj Baral in a navy blazer and white shirt"
+        width="900"
+        height="1117"
+        fetchpriority="high"
+      />
+      <aside class="glass" aria-label="Career highlight">
+        <span class="chip"><Icon name="chart" size={20} /></span>
+        <p class="label">{stat.label}</p>
+        <p class="big">{stat.value}</p>
+        <p class="small">{stat.text}</p>
+      </aside>
+    </div>
   </div>
 </section>
+
+<style>
+  .hero {
+    position: relative; overflow: hidden; color: #fff;
+    background:
+      radial-gradient(55% 85% at 78% 38%, #55585F 0%, #2B2E36 40%, rgba(20, 22, 29, 0) 75%),
+      linear-gradient(100deg, #050B18 0%, #07112A 52%, #15171E 100%);
+  }
+  .rings { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .hero-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
+  .copy { padding: 56px 0 24px; z-index: 2; }
+
+  .eyebrow { color: var(--blue-bright); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 22px; }
+  .eyebrow i { font-style: normal; margin: 0 6px; opacity: 0.9; }
+  h1 { color: #fff; font-size: clamp(2.4rem, 3.7vw, 3.55rem); line-height: 1.1; letter-spacing: -0.035em; font-weight: 700; margin: 0 0 24px; }
+  h1 span { color: var(--blue-bright); }
+  .lede { font-size: 1.08rem; line-height: 1.7; color: #D8DFEC; max-width: 34rem; margin: 0 0 26px; }
+  .lg { display: none; }
+
+  .meta { list-style: none; display: flex; flex-wrap: wrap; gap: 14px 30px; padding: 0; margin: 0 0 30px; font-size: 14.5px; color: #E3E8F3; }
+  .meta li { display: inline-flex; align-items: center; gap: 9px; }
+  .meta :global(svg) { color: var(--blue-bright); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .btn-hero {
+    display: inline-flex; align-items: center; gap: 12px; text-decoration: none;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 14px 22px; border-radius: 3px; transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-hero.primary { background: var(--btn-bg); color: #fff; border: 1px solid var(--btn-bg); }
+  .btn-hero.primary:hover { background: var(--btn-bg-hover); border-color: var(--btn-bg-hover); }
+  .btn-hero.ghost { color: #fff; border: 1px solid rgba(255, 255, 255, 0.45); }
+  .btn-hero.ghost:hover { border-color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+  .photo { position: relative; display: flex; flex-direction: column; align-items: center; margin-top: 8px; }
+  .photo img { display: block; width: min(86%, 380px); height: auto; filter: saturate(0.92) contrast(1.03);
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); }
+  .glass {
+    margin: -64px 0 28px; width: min(100%, 260px); padding: 20px 22px;
+    background: rgba(22, 31, 54, 0.62); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 8px;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    position: relative;
+  }
+  .chip { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 50%; background: #1E3C78; color: #7FB0FF; margin-bottom: 14px; }
+  .label { font-size: 15px; font-weight: 500; margin: 0 0 4px; color: #fff; }
+  .big { font-size: 2.6rem; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 6px; color: #fff; }
+  .small { font-size: 13.5px; line-height: 1.45; margin: 0; color: #C5CEE0; }
+
+  @media (min-width: 960px) {
+    .lg { display: inline; }
+    .hero { min-height: 540px; }
+    .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); min-height: 540px; }
+    .copy { padding: 72px 0 64px; }
+    .photo { position: static; display: block; margin: 0; }
+    .photo img {
+      position: absolute; right: max(0px, calc((100vw - 1320px) / 2 + 60px)); bottom: 0;
+      height: 104%; width: auto; max-width: none;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 88%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 88%, transparent 100%);
+    }
+    .glass { position: absolute; margin: 0; width: 200px; left: calc(50% + 12px); bottom: 44px; z-index: 3; }
+  }
+  @media (min-width: 1280px) { .glass { left: calc(50% + 44px); } }
+</style>
