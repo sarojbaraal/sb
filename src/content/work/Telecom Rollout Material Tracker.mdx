@@ -1,0 +1,48 @@
+---
+title: "Telecom Rollout Material Tracker (BOQ-based)"
+summary: "Reconciled engineering Bill of Quantities (BOQ) for the NT GSM 10M project with ERP procurement and warehouse inventory records to eliminate site installation delays."
+client_type: "Telecom Operations & Supply Chain Unit"
+year: 2024
+services: ["Project Coordination & Reporting", "MIS & Reporting Support"]
+tools: ["ERP / SCM Systems", "Excel Advanced", "BOQ Reconciliation"]
+result_metrics: ["Site material shortages reduced to 0", "Weekly inventory reconciliation overhead cut by 73%"]
+sample_file: "/samples/sample-mis-pack.txt"
+cover: "/og/default.png"
+confidential: true
+order: 3
+---
+import CTA from '../../components/CTA.astro';
+
+> **Note:** Illustrative case study with anonymized data based on telecom infrastructure rollout operations.
+
+## Context
+The NT GSM 10M project required thousands of critical electrical, transmission, and hardware components (including antennas, BTS equipment, feeder cables, and grounding kits) to be staged and deployed across highly dispersed, remote field sites. Material requests were generated against design Bills of Quantities (BOQ), while procurement and warehouse movements were tracked in separate ERP modules.
+
+## Problem
+Field installation crews frequently faced costly site deployment delays due to missing critical installation accessories, even though central ERP records indicated materials had been purchased.
+- Mismatched item codes between telecom design BOQ lists and warehouse stock keeping units (SKUs).
+- In-transit logistics and custom-clearance materials were conflated with available on-hand warehouse inventory.
+- Project coordinators had to manually cross-reference 4 different system exports (Engineering, Procurement, Warehouse, Logistics) to check site delivery readiness.
+
+## What I did
+- Built an automated BOQ-to-ERP reconciliation tracker mapping engineering telecom item codes directly to warehouse SKUs.
+- Created clear visual staging milestones: Required → Ordered → In-Transit → In-Warehouse → Dispatched → Installed on Site.
+- Automated safety-stock threshold alerts for high-lead-time critical components like specialized cables and connectors.
+- Established a weekly operational review framework with warehouse supervisors and procurement officers to close data gaps.
+
+## Result
+- **Reduced site installation stoppages** caused by component shortages to zero over two consecutive deployment quarters.
+- **Decreased weekly inventory reconciliation overhead** from 15 hours to 4 hours, cutting manual data turnaround by over 70%.
+- **Established clean, audit-ready data alignment** between engineering engineering demands and central ERP inventory balances.
+
+## What you can see
+The model connects BOQ line items with purchase orders, warehouse receipts, and site dispatch waybills into a single live status dashboard.
+
+<CTA
+  title="Struggling with telecom inventory and ERP alignment?"
+  description="I can help you coordinate cross-functional data across engineering, supply chain, and telecom project operations."
+  primaryText="Discuss project coordination"
+  primaryHref="/contact?service=project-coordination"
+  secondaryText="See all services"
+  secondaryHref="/services"
+/>
