@@ -3,72 +3,61 @@ import { url } from "../utils/url";
 import profile from "../data/profile.json";
 import Icon from "./Icon.astro";
 
-// Mirrors the first case study so the hero card and the work section agree.
-const kpi = { label: "Monthly reporting cycle", from: "5 days", to: "4 hours" };
+const kpi = { label: "Reporting workflow", from: "5 days", to: "4 hours" };
 ---
 
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero hero--showcase" aria-labelledby="hero-title">
   <div class="site-container hero__grid">
-    <!-- Copy -->
     <div class="hero__copy">
-      <p class="badge hero-in" style="--d:0ms">
-        <span class="badge__dot" aria-hidden="true"></span>
-        Available for remote roles
+      <p class="hero__eyebrow hero-in" style="--d:0ms">
+        <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+        MIS · BUSINESS INTELLIGENCE · PROJECT COORDINATION
       </p>
 
-      <h1 id="hero-title" class="hero__title hero-in" style="--d:60ms">{profile.name}</h1>
+      <h1 id="hero-title" class="hero__title hero-in" style="--d:60ms">
+        Turning information<br />into <span>clarity.</span>
+      </h1>
       <p class="hero__role hero-in" style="--d:110ms">{profile.headline}</p>
       <p class="hero__summary hero-in" style="--d:160ms">
-        I turn scattered operational data into reports people trust, records teams can hand over and actions managers can see.
+        Engineer by background. Business professional by experience. I help teams make sense of information, streamline processes and keep projects moving with dependable reporting and coordination.
       </p>
 
-      <div class="hero__actions hero-in" style="--d:210ms">
-        <a href={url("/contact")} class="btn-base btn-primary">
-          Contact me <Icon name="arrow-right" size={16} />
+      <div class="hero__proof hero-in" style="--d:190ms">
+        <span><Icon name="map-pin" size={15} /> {profile.location.city}, {profile.location.country}</span>
+        <span><Icon name="briefcase-business" size={15} /> 6 years at Huawei</span>
+        <span><Icon name="graduation-cap" size={15} /> Executive MBA</span>
+      </div>
+
+      <div class="hero__actions hero-in" style="--d:230ms">
+        <a href={url("/cv")} class="btn-base btn-primary">
+          View my CV <Icon name="arrow-right" size={16} />
         </a>
-        <a href={url("/cv/Saroj-Baral-CV.pdf")} download="Saroj-Baral-CV.pdf" class="btn-base btn-secondary">
-          <Icon name="download" size={16} /> Download CV
+        <a href={url("/contact")} class="btn-base hero__contact">
+          Contact me <Icon name="arrow-up-right" size={16} />
         </a>
       </div>
     </div>
 
-    <!-- Faded portrait + floating KPI card -->
     <div class="hero__visual">
-      <!-- Faded portrait. Dark mode swaps in a version with an oval studio-light fade,
-           so the light photo backdrop never sits as a hard box on the dark page. -->
-      <picture>
-        <source
-          media="(prefers-color-scheme: dark)"
-          srcset={`${url("/images/saroj-hero-dark-sm.webp")} 406w, ${url("/images/saroj-hero-dark.webp")} 678w`}
-          sizes="(min-width: 800px) 46vw, 340px"
-        />
-        <img
-          class="hero__photo"
-          src={url("/images/saroj-hero.webp")}
-          srcset={`${url("/images/saroj-hero-sm.webp")} 406w, ${url("/images/saroj-hero.webp")} 678w`}
-          sizes="(min-width: 800px) 46vw, 340px"
-          width="678"
-          height="848"
-          alt="Portrait of Saroj Baral, smiling, in a navy blazer and white shirt"
-          fetchpriority="high"
-          decoding="async"
-        />
-      </picture>
-
-      <aside class="kpi-card" aria-label="Illustrative reporting improvement">
+      <div class="hero__portrait-glow" aria-hidden="true"></div>
+      <img
+        class="hero__photo"
+        src={url("/images/saroj-portrait.webp")}
+        width="720"
+        height="900"
+        alt="Saroj Baral smiling in a navy blazer and white shirt"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <aside class="kpi-card" aria-label="Illustrative reporting workflow example">
+        <span class="kpi-card__icon"><Icon name="chart-no-axes-combined" size={18} /></span>
         <p class="kpi-card__label">{kpi.label}</p>
         <p class="kpi-card__value">
           <span class="from">{kpi.from}</span>
           <Icon name="arrow-right" size={14} class="arrow" />
           <span class="to">{kpi.to}</span>
         </p>
-        <div class="kpi-card__bars" aria-hidden="true">
-          <span style="--h:100%"></span>
-          <span style="--h:78%"></span>
-          <span style="--h:52%"></span>
-          <span class="is-active" style="--h:20%"></span>
-        </div>
-        <p class="kpi-card__note">Illustrative sample, not a client result</p>
+        <p class="kpi-card__note">Illustrative workflow example</p>
       </aside>
     </div>
   </div>
