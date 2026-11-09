@@ -6,55 +6,526 @@ import "@fontsource/noto-serif-devanagari/600.css";
 ---
 
 <BaseLayout
-  title="Beyond work"
-  description="Saroj Baral is a devotee of Lord Shiva. A short note on the part of life that has nothing to do with deliverables."
+  title="The Inner Journey | Saroj Baral"
+  description="A personal reflection on Shiva Bhakti, spiritual inquiry, Sanatana Dharma and the lifelong journey towards self-understanding."
 >
-  <div class="night">
-    <div class="site-container night-inner">
-      <svg class="kailash" viewBox="0 0 320 180" role="img" aria-label="A snow peak under a crescent moon">
-        <circle cx="244" cy="44" r="22" fill="#E8EAEE" />
-        <circle cx="254" cy="39" r="20" fill="#0B1424" />
-        <path d="M10 170 L120 62 L150 92 L186 30 L310 170 Z" fill="#1B2A44" />
-        <path d="M186 30 L214 66 L198 62 L186 78 L172 60 L160 70 Z" fill="#E8EAEE" />
-        <path d="M120 62 L134 76 L122 74 L110 84 L102 72 Z" fill="#C9CED6" />
-      </svg>
+  <main class="spiritual-page">
+    <section class="spiritual-hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="site-container hero-inner">
+        <div class="hero-art" aria-hidden="true">
+          <svg class="kailash" viewBox="0 0 520 300" role="presentation">
+            <defs>
+              <linearGradient id="mountainShade" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#7186A5" />
+                <stop offset="1" stop-color="#263954" />
+              </linearGradient>
+              <linearGradient id="snowShade" x1="0" y1="0" x2="0.8" y2="1">
+                <stop offset="0" stop-color="#F4F1E9" />
+                <stop offset="1" stop-color="#AEBBCB" />
+              </linearGradient>
+            </defs>
+            <circle cx="395" cy="65" r="37" fill="#E9D7A6" opacity=".9" />
+            <circle cx="410" cy="53" r="34" fill="#101B2D" />
+            <path d="M18 275 147 132l45 48L278 48l74 106 42-43 108 164Z" fill="url(#mountainShade)" />
+            <path d="m278 48 31 45-25-10-19 23-17-18-22 20Z" fill="url(#snowShade)" />
+            <path d="m147 132 29 31-26-8-19 19-14-18Z" fill="#D6DDE5" opacity=".9" />
+            <path d="m352 154 29-43 24 31-23-10-15 17Z" fill="#D6DDE5" opacity=".75" />
+            <path d="M0 276h520" stroke="#D6B878" stroke-width="1" opacity=".45" />
+          </svg>
+          <span class="art-caption">A quiet symbol of stillness · मौन र स्थिरताको प्रतीक</span>
+        </div>
 
-      <p class="mantra" lang="sa">ॐ नमः शिवाय</p>
-      <h1 class="devotion-title">Shiva, quietly in the background.</h1>
+        <p class="eyebrow">A PERSONAL SPIRITUAL JOURNEY</p>
+        <p class="hero-mantra" lang="sa">ॐ नमः शिवाय</p>
+        <h1 class="hero-title">The journey within.</h1>
+        <p class="hero-subtitle" lang="ne">भक्ति, जिज्ञासा र आत्मबोधतर्फको निरन्तर यात्रा।</p>
+        <p class="hero-intro">
+          I am a seeker on a path shaped by devotion to Shiva, curiosity about the wisdom of Sanatana Dharma,
+          and the quiet pursuit of self-understanding. This is not a declaration of spiritual attainment;
+          it is a reflection of a journey that continues to unfold.
+        </p>
+        <p class="hero-intro nepali" lang="ne">
+          शिवभक्तिको आधार, सनातन दर्शनप्रतिको जिज्ञासा र आत्मचिन्तनको अभ्याससँगै अघि बढिरहेको एउटा व्यक्तिगत यात्रा।
+          यो कुनै सिद्धि वा उपलब्धिको घोषणा होइन; सिक्दै, बुझ्दै र आफूलाई चिन्दै अघि बढ्ने निरन्तर प्रयास हो।
+        </p>
+        <a class="scroll-cue" href="#foundation">Explore the journey <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
 
-      <div class="devotion-text">
-        <p>
-          I am a devotee of Lord Shiva. It is the part of my life that has nothing to do with deliverables, and I would rather say so plainly than leave it out.
-        </p>
-        <p>
-          I live in the Kathmandu Valley, home to Pashupatinath, one of the most revered Shiva temples in the world.
-        </p>
-        <p>
-          I have also built a small web app for reading stotras, which tells you how those two worlds sometimes meet.
-        </p>
-        <p class="devotion-mantra-note">
-          Om Namah Shivaya.
+    <section class="content-section" id="foundation">
+      <div class="site-container narrow">
+        <p class="section-index">01 / THE FOUNDATION</p>
+        <h2>Shiva at the centre.</h2>
+        <p class="section-nepali" lang="ne">आराध्य शिव, दृष्टिकोणमा समन्वय।</p>
+        <div class="prose">
+          <p>
+            Lord Shiva is at the heart of my devotional outlook. I am drawn to the stillness, depth and
+            many-sided symbolism associated with Shiva — the ascetic and the householder, the dissolver
+            and the source of renewal, the silence beyond words and the presence felt within life.
+          </p>
+          <p lang="ne">
+            मेरो उपासनाको केन्द्रमा भगवान् शिव हुनुहुन्छ। वैराग्य र गृहस्थ जीवन, संहार र पुनःसृजन,
+            मौन र चेतना — शिवतत्त्वका यी विविध आयामले मलाई भक्ति मात्र होइन, चिन्तन र आत्मअन्वेषणतर्फ पनि प्रेरित गर्छन्।
+          </p>
+          <p>
+            My approach is Shiva-centred, while remaining respectful of the wider devotional traditions
+            of Sanatana Dharma. I see the reverence offered to the Divine in its many forms as an invitation
+            to understand unity without dismissing the richness of different paths.
+          </p>
+          <p lang="ne">
+            मेरो दृष्टि शिवकेन्द्रित भए पनि सनातन परम्पराका अन्य देवस्वरूप र उपासना पद्धतिप्रति श्रद्धा राख्छु।
+            विविध मार्गको मौलिकतालाई सम्मान गर्दै तिनमा निहित आध्यात्मिक एकत्व बुझ्ने प्रयास नै मेरो दृष्टिकोण हो।
+          </p>
+        </div>
+        <div class="principle-line">
+          <span lang="sa">शिवोऽहम्</span>
+          <p>A contemplative expression to explore — not a claim of personal realisation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section alternate">
+      <div class="site-container">
+        <div class="section-heading">
+          <p class="section-index">02 / THE WAY OF PRACTICE</p>
+          <h2>Devotion as a daily orientation.</h2>
+          <p class="section-nepali" lang="ne">भक्ति केवल कर्मकाण्ड होइन, जीवनलाई हेर्ने एउटा भाव पनि हो।</p>
+        </div>
+        <div class="practice-grid">
+          <article class="practice-card">
+            <span class="card-symbol" aria-hidden="true">ॐ</span>
+            <h3>Bhakti <span lang="ne">भक्ति</span></h3>
+            <p>
+              Cultivating a sincere relationship with the Divine through remembrance, prayer, reverence
+              and gratitude. The value lies not in display, but in the inward attitude behind the practice.
+            </p>
+          </article>
+          <article class="practice-card">
+            <span class="card-symbol" aria-hidden="true">जप</span>
+            <h3>Sadhana <span lang="ne">साधना</span></h3>
+            <p>
+              Returning to a chosen discipline with patience and consistency. A practice is meaningful
+              when it gradually shapes attention, conduct and the way one meets everyday life.
+            </p>
+          </article>
+          <article class="practice-card">
+            <span class="card-symbol" aria-hidden="true">ధ్యान</span>
+            <h3>Contemplation <span lang="ne">आत्मचिन्तन</span></h3>
+            <p>
+              Making room for silence, observation and honest self-questioning — looking beyond habit
+              and appearance towards a clearer understanding of the self.
+            </p>
+          </article>
+        </div>
+        <p class="privacy-note">
+          The details of personal worship and routine are kept private. What is shared here is the
+          direction and meaning of the journey, not a public account of private practice.
         </p>
       </div>
+    </section>
 
-      <p class="devotion-back"><a href={url("/about")}>Back to About</a> &nbsp;&middot;&nbsp; <a href={url("/contact")}>Get in touch</a></p>
-    </div>
-  </div>
+    <section class="content-section">
+      <div class="site-container narrow">
+        <p class="section-index">03 / THE FIELD OF INQUIRY</p>
+        <h2>Learning is part of the path.</h2>
+        <p class="section-nepali" lang="ne">श्रद्धासँगै प्रश्न, अध्ययन र विवेक पनि आवश्यक छन्।</p>
+        <div class="prose">
+          <p>
+            Devotion and inquiry need not stand apart. I am interested in exploring the philosophical
+            foundations of Sanatana Dharma: reading, comparing interpretations, understanding context
+            and asking what a teaching means beyond its familiar words.
+          </p>
+          <p lang="ne">
+            मेरो लागि श्रद्धा र जिज्ञासा एकअर्काका विरोधी होइनन्। सनातन धर्मका दार्शनिक आधारहरू अध्ययन गर्ने,
+            विभिन्न व्याख्यालाई बुझ्ने, सन्दर्भ खोज्ने र शास्त्रीय वचनको गहिरो अर्थमाथि विचार गर्ने रुचि छ।
+          </p>
+        </div>
+        <div class="study-list">
+          <div class="study-item">
+            <span class="study-number">01</span>
+            <div>
+              <h3>Shaiva thought <span lang="ne">शैव दर्शन</span></h3>
+              <p>Shiva's nature, symbolism, worship traditions and the philosophical visions within Shaiva thought.</p>
+            </div>
+          </div>
+          <div class="study-item">
+            <span class="study-number">02</span>
+            <div>
+              <h3>Vedanta and self-inquiry <span lang="ne">वेदान्त र आत्मविचार</span></h3>
+              <p>Exploring questions of self, consciousness, reality and liberation through different Vedantic perspectives.</p>
+            </div>
+          </div>
+          <div class="study-item">
+            <span class="study-number">03</span>
+            <div>
+              <h3>Cosmology and the Tattvas <span lang="ne">सृष्टि र तत्त्वचिन्तन</span></h3>
+              <p>Learning about creation, the five divine acts and the frameworks through which Indian philosophies describe existence.</p>
+            </div>
+          </div>
+          <div class="study-item">
+            <span class="study-number">04</span>
+            <div>
+              <h3>Scripture, stotra and meaning <span lang="ne">शास्त्र, स्तोत्र र भावार्थ</span></h3>
+              <p>Approaching Sanskrit verses through their language, context, devotional feeling and philosophical meaning.</p>
+            </div>
+          </div>
+        </div>
+        <p class="caution-note">
+          I approach these subjects as a learner. Different schools of thought have their own foundations
+          and interpretations; understanding them requires patience rather than forcing every teaching
+          into a single conclusion.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-section alternate">
+      <div class="site-container">
+        <div class="section-heading">
+          <p class="section-index">04 / SOURCES OF INSPIRATION</p>
+          <h2>Learning from those who walked before.</h2>
+          <p class="section-nepali" lang="ne">सन्त, आचार्य र साधकका जीवन तथा शिक्षाबाट प्रेरणा।</p>
+          <p class="section-intro">
+            The lives and teachings of saints, philosophers and spiritual teachers offer different
+            windows into devotion, discipline and the search for truth. I approach them as sources
+            of reflection and learning, not as a claim of belonging to a particular lineage.
+          </p>
+        </div>
+        <div class="inspiration-grid">
+          <article class="inspiration-card">
+            <h3>Adi Shankaracharya</h3>
+            <p class="native-name" lang="ne">आदि शङ्कराचार्य</p>
+            <p>For the inquiry into non-duality, discernment and the relationship between knowledge and liberation.</p>
+          </article>
+          <article class="inspiration-card">
+            <h3>Goswami Tulsidas</h3>
+            <p class="native-name" lang="ne">गोस्वामी तुलसीदास</p>
+            <p>For the depth of devotional poetry and the way sacred stories can shape the heart and character.</p>
+          </article>
+          <article class="inspiration-card">
+            <h3>Sant Tukaram</h3>
+            <p class="native-name" lang="ne">सन्त तुकाराम</p>
+            <p>For simplicity, humility and the directness of heartfelt devotion.</p>
+          </article>
+          <article class="inspiration-card">
+            <h3>Gorakhnath</h3>
+            <p class="native-name" lang="ne">गोरखनाथ</p>
+            <p>For the contemplative and yogic traditions that explore discipline, awareness and inner transformation.</p>
+          </article>
+          <article class="inspiration-card">
+            <h3>Machhindranath</h3>
+            <p class="native-name" lang="ne">मच्छिन्द्रनाथ</p>
+            <p>For the heritage and spiritual imagination of the Nath tradition.</p>
+          </article>
+          <article class="inspiration-card">
+            <h3>Premanand Maharaj</h3>
+            <p class="native-name" lang="ne">प्रेमानन्द महाराज</p>
+            <p>For contemporary reflections on devotion, remembrance and the sincerity of spiritual life.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="site-container narrow">
+        <p class="section-index">05 / WHERE WORLDS MEET</p>
+        <h2>When learning becomes creation.</h2>
+        <p class="section-nepali" lang="ne">अध्ययन, प्रविधि र भक्तिको एउटा सानो संगम।</p>
+        <div class="prose">
+          <p>
+            My background is in engineering and technology, and I enjoy bringing structure to ideas.
+            That inclination has also found a place in my spiritual interests: organising prayers and
+            stotras, studying their meanings, and creating a digital space where devotional material
+            can be approached with clarity and care.
+          </p>
+          <p lang="ne">
+            मेरो इन्जिनियरिङ र प्रविधिसँगको पृष्ठभूमिले विचारलाई व्यवस्थित गर्ने बानी दिएको छ।
+            यही रुचि आध्यात्मिक अध्ययनमा पनि जोडिएको छ — प्रार्थना र स्तोत्रलाई सङ्ग्रह गर्ने,
+            तिनको भावार्थ बुझ्ने र अध्ययन सामग्रीलाई सरल तथा व्यवस्थित रूपमा प्रस्तुत गर्ने प्रयासमा।
+          </p>
+          <p>
+            It is a small personal undertaking, not a religious institution or a source of spiritual
+            authority. Its purpose is simply to support learning, remembrance and thoughtful engagement
+            with the traditions that inspire me.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-section">
+      <div class="site-container closing-inner">
+        <div class="closing-mark" aria-hidden="true">ॐ</div>
+        <p class="section-index">THE JOURNEY CONTINUES</p>
+        <h2>Not a destination.<br />A lifelong unfolding.</h2>
+        <p class="closing-nepali" lang="ne">सिकाइ जारी छ। खोज जारी छ। यात्रा जारी छ।</p>
+        <p>
+          I do not present myself as a guru, an authority or someone who has arrived at the end
+          of the path. I am a learner — trying to bring devotion, discernment and sincerity into
+          the same journey. There is always more to understand, more to question and more room to grow.
+        </p>
+        <p class="closing-verse" lang="sa">असतो मा सद्गमय । तमसो मा ज्योतिर्गमय । मृत्योर्माऽमृतं गमय ॥</p>
+        <p class="verse-translation">Lead me from the unreal to the real, from darkness to light, from mortality to immortality.</p>
+        <p class="closing-signoff" lang="ne">ॐ शान्तिः शान्तिः शान्तिः</p>
+        <nav class="page-links" aria-label="Page navigation">
+          <a href={url("/about")}>Back to About</a>
+          <span aria-hidden="true">·</span>
+          <a href={url("/contact")}>Get in touch</a>
+        </nav>
+      </div>
+    </section>
+  </main>
 </BaseLayout>
 
 <style>
-  .night { background: var(--color-night); color: #DDE1E8; }
-  .night-inner { padding-top: 64px; padding-bottom: 96px; max-width: 760px; }
-  .kailash { width: min(320px, 70vw); height: auto; display: block; margin-bottom: 40px; }
-  .mantra {
-    font-family: "Noto Serif Devanagari", var(--font-serif); font-weight: 600;
-    font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.3; color: var(--color-marigold); margin: 0 0 20px;
+  .spiritual-page {
+    --sp-bg: #0b1424;
+    --sp-panel: #111e31;
+    --sp-panel-soft: #15243a;
+    --sp-text: #dce3ec;
+    --sp-muted: #aab6c6;
+    --sp-gold: #d9b978;
+    --sp-line: rgba(217, 185, 120, .23);
+    background: var(--sp-bg);
+    color: var(--sp-text);
+    overflow: hidden;
   }
-  .devotion-title { color: #fff; margin-bottom: 32px; max-width: 16ch; }
-  .devotion-text { max-width: 60ch; font-size: 1.12rem; line-height: 1.75; }
-  .devotion-text p { margin-bottom: 1.1rem; }
-  .devotion-mantra-note { font-family: var(--font-serif); font-size: 1.4rem; color: #fff; margin-top: 2rem; }
-  .devotion-back { margin-top: 48px; font-size: 15px; }
-  .devotion-back a { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
-  @media (min-width: 768px) { .night-inner { padding-top: 96px; } }
+
+  .site-container {
+    width: min(1120px, calc(100% - 48px));
+    margin-inline: auto;
+  }
+
+  .narrow { max-width: 790px; }
+
+  .spiritual-hero {
+    position: relative;
+    isolation: isolate;
+    min-height: 760px;
+    display: flex;
+    align-items: center;
+    background:
+      radial-gradient(ellipse at 50% 12%, rgba(56, 78, 111, .32), transparent 48%),
+      linear-gradient(180deg, #0b1424 0%, #101d31 70%, #0b1424 100%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    z-index: -1;
+    width: 620px;
+    height: 620px;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: rgba(217, 185, 120, .07);
+    filter: blur(70px);
+  }
+
+  .hero-inner {
+    max-width: 850px;
+    padding-block: 82px 76px;
+    text-align: center;
+  }
+
+  .hero-art { margin: 0 auto 24px; }
+  .kailash { display: block; width: min(440px, 86vw); height: auto; margin-inline: auto; }
+  .art-caption {
+    display: block;
+    margin-top: 5px;
+    color: #8291a6;
+    font-size: .72rem;
+    letter-spacing: .08em;
+  }
+
+  .eyebrow, .section-index {
+    color: var(--sp-gold);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .19em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow { margin: 0 0 20px; }
+  .hero-mantra {
+    margin: 0 0 14px;
+    color: var(--sp-gold);
+    font-family: "Noto Serif Devanagari", var(--font-serif, Georgia), serif;
+    font-size: clamp(2.3rem, 7vw, 4.3rem);
+    line-height: 1.45;
+  }
+
+  .hero-title {
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-serif, Georgia), serif;
+    font-size: clamp(2.8rem, 7vw, 5.1rem);
+    font-weight: 500;
+    letter-spacing: -.045em;
+    line-height: 1.08;
+  }
+
+  .hero-subtitle, .section-nepali, .closing-nepali {
+    color: var(--sp-gold);
+    font-family: "Noto Serif Devanagari", var(--font-serif, Georgia), serif;
+    line-height: 1.8;
+  }
+
+  .hero-subtitle { margin: 20px 0 22px; font-size: clamp(1rem, 2.3vw, 1.22rem); }
+  .hero-intro {
+    max-width: 690px;
+    margin: 0 auto 13px;
+    color: #c2ccda;
+    font-size: 1.04rem;
+    line-height: 1.85;
+  }
+  .hero-intro.nepali { color: #aeb9c9; font-family: "Noto Serif Devanagari", var(--font-serif, Georgia), serif; font-size: .98rem; }
+  .scroll-cue {
+    display: inline-flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 30px;
+    color: var(--sp-gold);
+    font-size: .82rem;
+    letter-spacing: .06em;
+    text-decoration: none;
+  }
+  .scroll-cue span { font-size: 1.1rem; transition: transform .2s ease; }
+  .scroll-cue:hover span { transform: translateY(4px); }
+
+  .content-section { padding: 104px 0; background: var(--sp-bg); }
+  .content-section.alternate { background: #0e192a; }
+  .section-index { margin: 0 0 19px; }
+  .content-section h2, .closing-section h2 {
+    margin: 0;
+    color: #f5f3ee;
+    font-family: var(--font-serif, Georgia), serif;
+    font-size: clamp(2rem, 4.8vw, 3.35rem);
+    font-weight: 500;
+    letter-spacing: -.035em;
+    line-height: 1.16;
+  }
+  .section-nepali { margin: 14px 0 30px; font-size: 1rem; }
+  .prose { color: #c1ccda; font-size: 1.04rem; line-height: 1.9; }
+  .prose p { margin: 0 0 20px; }
+  .prose p[lang="ne"] { color: #b8c3d1; font-family: "Noto Serif Devanagari", var(--font-serif, Georgia), serif; font-size: .98rem; line-height: 2; }
+
+  .principle-line {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: 38px;
+    padding: 21px 24px;
+    border-left: 2px solid var(--sp-gold);
+    background: rgba(255, 255, 255, .035);
+  }
+  .principle-line span {
+    color: var(--sp-gold);
+    font-family: "Noto Serif Devanagari", serif;
+    font-size: 1.65rem;
+    white-space: nowrap;
+  }
+  .principle-line p { margin: 0; color: var(--sp-muted); font-size: .9rem; line-height: 1.6; }
+
+  .section-heading { max-width: 760px; margin-bottom: 38px; }
+  .section-intro { max-width: 700px; color: #b9c5d4; font-size: 1rem; line-height: 1.8; }
+  .practice-grid, .inspiration-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .practice-card, .inspiration-card {
+    padding: 27px 25px;
+    border: 1px solid rgba(190, 204, 224, .12);
+    border-radius: 13px;
+    background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+  }
+  .card-symbol { display: inline-block; margin-bottom: 18px; color: var(--sp-gold); font-family: "Noto Serif Devanagari", serif; font-size: 1.8rem; }
+  .practice-card h3, .inspiration-card h3, .study-item h3 {
+    margin: 0 0 12px;
+    color: #f0eee8;
+    font-family: var(--font-serif, Georgia), serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .practice-card h3 span { margin-left: 5px; color: var(--sp-gold); font-family: "Noto Serif Devanagari", serif; font-size: .9rem; }
+  .practice-card p, .inspiration-card p:not(.native-name) { margin: 0; color: #aebaca; font-size: .91rem; line-height: 1.75; }
+  .privacy-note, .caution-note {
+    margin: 25px 0 0;
+    padding: 16px 19px;
+    border: 1px solid var(--sp-line);
+    border-radius: 8px;
+    color: #b8c3d1;
+    font-size: .88rem;
+    line-height: 1.75;
+  }
+
+  .study-list { margin-top: 35px; border-top: 1px solid rgba(190, 204, 224, .13); }
+  .study-item { display: grid; grid-template-columns: 48px 1fr; gap: 18px; padding: 25px 0; border-bottom: 1px solid rgba(190, 204, 224, .13); }
+  .study-number { color: var(--sp-gold); font-family: var(--font-serif, Georgia), serif; font-size: 1.15rem; }
+  .study-item h3 { margin-bottom: 8px; }
+  .study-item h3 span { color: var(--sp-gold); font-family: "Noto Serif Devanagari", serif; font-size: .9rem; }
+  .study-item p { margin: 0; color: #aebaca; font-size: .94rem; line-height: 1.75; }
+  .caution-note { border-color: rgba(190, 204, 224, .12); background: rgba(255,255,255,.025); }
+
+  .inspiration-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .inspiration-card { min-height: 190px; }
+  .inspiration-card h3 { margin-bottom: 5px; }
+  .native-name { margin: 0 0 13px; color: var(--sp-gold); font-family: "Noto Serif Devanagari", serif; font-size: .9rem; }
+
+  .closing-section {
+    position: relative;
+    padding: 105px 0 75px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(74, 91, 119, .22), transparent 55%),
+      #091220;
+  }
+  .closing-inner { max-width: 760px; }
+  .closing-mark {
+    margin-bottom: 25px;
+    color: var(--sp-gold);
+    font-family: "Noto Serif Devanagari", serif;
+    font-size: 3.4rem;
+  }
+  .closing-section h2 { font-size: clamp(2.3rem, 5vw, 3.7rem); }
+  .closing-nepali { margin: 20px 0 25px; font-size: 1.08rem; }
+  .closing-section p:not(.section-index):not(.closing-nepali):not(.closing-verse):not(.verse-translation):not(.closing-signoff) {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #b8c4d3;
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+  .closing-verse {
+    margin: 43px 0 9px;
+    color: var(--sp-gold);
+    font-family: "Noto Serif Devanagari", serif;
+    font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+    line-height: 2;
+  }
+  .verse-translation { margin: 0 auto; color: #8f9caf; font-size: .84rem; line-height: 1.7; }
+  .closing-signoff { margin: 25px 0 0; color: var(--sp-gold); font-family: "Noto Serif Devanagari", serif; font-size: 1.2rem; }
+  .page-links { display: flex; justify-content: center; gap: 15px; margin-top: 55px; color: #718096; font-size: .86rem; }
+  .page-links a { color: #d7c08e; text-decoration: none; text-underline-offset: 5px; }
+  .page-links a:hover { text-decoration: underline; }
+
+  @media (max-width: 760px) {
+    .site-container { width: min(100% - 36px, 620px); }
+    .spiritual-hero { min-height: auto; }
+    .hero-inner { padding-block: 66px 62px; }
+    .content-section { padding: 76px 0; }
+    .practice-grid, .inspiration-grid { grid-template-columns: 1fr; }
+    .practice-card { padding: 23px; }
+    .inspiration-card { min-height: 0; }
+    .closing-section { padding: 78px 0 58px; }
+  }
+
+  @media (max-width: 420px) {
+    .site-container { width: calc(100% - 30px); }
+    .hero-title { font-size: 2.65rem; }
+    .hero-intro { font-size: .96rem; }
+    .principle-line { align-items: flex-start; flex-direction: column; gap: 8px; }
+    .study-item { grid-template-columns: 32px 1fr; gap: 12px; }
+    .page-links { flex-wrap: wrap; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-cue span { transition: none; }
+  }
 </style>
