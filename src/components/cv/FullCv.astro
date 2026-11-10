@@ -1,40 +1,35 @@
 ---
-// Single source for the CV: used by /cv (screen + print) and /cv-print (PDF render).
-import profile from '../data/profile.json';
-import experience from '../data/experience.json';
-import education from '../data/education.json';
-import cv from '../data/cv.json';
+// Full CV: every fact, in order. Data comes from src/lib/cv.ts only.
+import { person, jobs, edu, recognition, strengths, stack, volunteer } from '../../lib/cv';
 ---
 
-<article class="cv-doc">
+<article class="cv-doc cvx" aria-label="Full CV">
   <div class="cv-top">
-    <h1>{profile.name}</h1>
-    <p class="cv-role">{profile.headline}</p>
+    <h1>{person.name}</h1>
+    <p class="cv-role">{person.headline}</p>
     <p class="cv-contact">
-      <span>{profile.location.city}, {profile.location.country}</span>
-      <span>{profile.email}</span>
-      <span>{profile.phone}</span>
-      <span>linkedin.com/in/sarojbaraal</span>
+      <span>{person.city}, {person.country}</span>
+      <span>{person.email}</span>
+      <span>{person.phone}</span>
+      <span>{person.linkedin}</span>
     </p>
   </div>
 
   <section>
     <h2>Summary</h2>
-    <p>{profile.summary}</p>
-    <ul>
-      {cv.strengths.map((s) => <li>{s}</li>)}
-    </ul>
+    <p>{person.summary}</p>
+    <ul>{strengths.map((s) => <li>{s}</li>)}</ul>
   </section>
 
   <section>
     <h2>Experience</h2>
-    {experience.map((job) => (
+    {jobs.map((job) => (
       <div class="cv-job">
         <div class="cv-row">
           <h3>{job.role}</h3>
-          <span class="cv-dates">{job.start} to {job.end}</span>
+          <span class="cv-dates">{job.period}</span>
         </div>
-        <p class="cv-org">{job.org}, {job.location}</p>
+        <p class="cv-org">{job.org}, {job.location}{job.titles ? `. Roles held: ${job.titleLine}.` : ''}</p>
         {'groups' in job && job.groups ? (
           job.groups.map((g) => (
             <div class="cv-grp">
@@ -45,10 +40,10 @@ import cv from '../data/cv.json';
         ) : (
           <ul>{job.bullets.map((b) => <li>{b}</li>)}</ul>
         )}
-        {job.awards && (
+        {job.kind === 'core' && (
           <div class="cv-awards">
             <h4>Recognition</h4>
-            <ul>{job.awards.map((a) => <li>{a}</li>)}</ul>
+            <ul>{recognition.map((r) => <li><strong>{r.title}.</strong> {r.text}</li>)}</ul>
           </div>
         )}
       </div>
@@ -57,12 +52,9 @@ import cv from '../data/cv.json';
 
   <section class="cv-keep">
     <h2>Education</h2>
-    {education.map((e) => (
+    {edu.map((e) => (
       <div class="cv-job">
-        <div class="cv-row">
-          <h3>{e.degree}</h3>
-          <span class="cv-dates">{e.start} to {e.end}</span>
-        </div>
+        <div class="cv-row"><h3>{e.degree}</h3><span class="cv-dates">{e.period}</span></div>
         <p class="cv-org">{e.institution}, {e.location}. {e.summary}</p>
       </div>
     ))}
@@ -70,20 +62,18 @@ import cv from '../data/cv.json';
 
   <section class="cv-keep">
     <h2>Tools and systems</h2>
-    <dl>
-      {cv.stack.map((s) => (<><dt>{s.label}</dt><dd>{s.value}</dd></>))}
-    </dl>
+    <dl>{stack.map((s) => (<><dt>{s.label}</dt><dd>{s.value}</dd></>))}</dl>
   </section>
 
   <section class="cv-keep">
     <h2>Volunteering</h2>
-    <div class="cv-row"><h3>{cv.volunteer.title}, {cv.volunteer.place}</h3><span class="cv-dates">{cv.volunteer.year}</span></div>
-    <p class="cv-org">{cv.volunteer.text}</p>
+    <div class="cv-row"><h3>{volunteer.title}, {volunteer.place}</h3><span class="cv-dates">{volunteer.year}</span></div>
+    <p class="cv-org">{volunteer.text}</p>
   </section>
 
   <section class="cv-keep">
     <h2>Languages</h2>
-    <p>{profile.languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(', ')}. References available on request.</p>
+    <p>{person.languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(', ')}. References available on request.</p>
   </section>
 </article>
 

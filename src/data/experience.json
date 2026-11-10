@@ -12,10 +12,13 @@
       "Business documentation: business reports, presentations, spreadsheets and supporting documents.",
       "Project and operational support: assignment-based coordination, progress tracking and documentation.",
       "ERP and SCM support: data and documentation assignments involving enterprise resource planning and supply chain processes."
-    ]
+    ],
+    "fromYear": 2022,
+    "toYear": null,
+    "kind": "now"
   },
   {
-    "role": "Engineer / Manager",
+    "role": "Engineer and Product Manager",
     "org": "Huawei Technologies Nepal Co., Pvt. Ltd.",
     "location": "Kathmandu, Nepal",
     "start": "2013",
@@ -53,12 +56,13 @@
         ]
       }
     ],
-    "awards": [
-      "Employee of the Month, awarded several times.",
-      "Customer satisfaction recognition, with appreciation from Ncell.",
-      "Project Office Business Skill Authentication.",
-      "Certificate of Merit, Top Performing Team, WDM Golden Seeds Training Programme, Shenzhen, China (2019)."
-    ]
+    "fromYear": 2013,
+    "toYear": 2019,
+    "titles": [
+      "Engineer",
+      "Product Manager"
+    ],
+    "kind": "core"
   },
   {
     "role": "Survey Engineer",
@@ -70,7 +74,10 @@
     "bullets": [
       "Assessed power supply and network status at multiple BTS sites.",
       "Wrote detailed technical reports and optimisation recommendations from each assessment."
-    ]
+    ],
+    "fromYear": 2011.833,
+    "toYear": 2012.417,
+    "kind": "field"
   },
   {
     "role": "Intern",
@@ -83,6 +90,9 @@
       "Troubleshot, repaired and maintained broadcasting equipment.",
       "Worked with the technical team to analyse signal quality and improve transmission performance.",
       "Assisted in introducing new technology for broadcasting."
-    ]
+    ],
+    "fromYear": 2010.667,
+    "toYear": 2011.0,
+    "kind": "field"
   }
 ]

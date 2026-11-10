@@ -1,0 +1,30 @@
+---
+// Print layout used only to render the PDFs (see scripts/build-cv.sh). One static page per format.
+import "../../styles/global.css";
+import CvFormat from '../../components/cv/CvFormat.astro';
+import { formats } from '../../lib/cv';
+
+export function getStaticPaths() {
+  return formats.map((f) => ({ params: { format: f.id }, props: { label: f.label } }));
+}
+const { format } = Astro.params;
+const { label } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <title>Saroj Baral, {label}</title>
+  </head>
+  <body class="cv-pdf">
+    <CvFormat id={format as any} />
+  </body>
+</html>
+
+<style is:global>
+  @page { size: A4; margin: 13mm 15mm; }
+  html { background: #fff !important; }
+  body.cv-pdf { display: block; min-height: 0; background: #fff; }
+</style>

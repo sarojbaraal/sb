@@ -1,34 +1,87 @@
 ---
 import { url } from "../utils/url";
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CvDocument from '../components/CvDocument.astro';
+import CvFormat from '../components/cv/CvFormat.astro';
 import Icon from '../components/Icon.astro';
+import { formats } from '../lib/cv';
 ---
 
 <BaseLayout
   title="Curriculum Vitae"
-  description="Curriculum vitae of Saroj Baral: project control, MIS and business operations. Six years at Huawei Technologies Nepal, Executive MBA, independent consultant."
+  description="Curriculum vitae of Saroj Baral in four formats: professional snapshot, modern resume, Europass-style CV and full CV. Download or print any of them."
 >
   <section class="page-head no-print">
     <div class="site-container cv-bar">
       <div>
         <p class="kicker">Curriculum vitae</p>
         <h1>My CV</h1>
-        <p>Read it here, print it from this page, or download the two-page PDF.</p>
+        <p>Four formats, one set of facts. Pick one, then download or print it.</p>
       </div>
       <div class="cv-actions">
-        <a href={url("/cv/Saroj-Baral-CV.pdf")} download="Saroj-Baral-CV.pdf" class="btn-base btn-primary"><Icon name="download" size={16} />&nbsp; Download PDF</a>
-        <button type="button" class="btn-base cv-print-btn" onclick="window.print()"><Icon name="print" size={16} />&nbsp; Print</button>
+        <a id="cv-dl" href={url(`/cv/${formats[0].file}`)} download={formats[0].file} class="btn-base btn-primary"><Icon name="download" size={16} />&nbsp; <span>Download PDF</span></a>
+        <button type="button" id="cv-print" class="btn-base cv-print-btn"><Icon name="print" size={16} />&nbsp; Print</button>
       </div>
     </div>
   </section>
 
   <div class="cv-stage">
-    <div class="cv-paper">
-      <CvDocument />
+    <div class="cv-tabwrap no-print">
+      <div role="tablist" aria-label="CV format" class="cv-tabs">
+        {formats.map((f, i) => (
+          <button role="tab" type="button" id={`tab-${f.id}`} aria-controls={`panel-${f.id}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-id={f.id} data-file={f.file}>
+            {f.label}
+          </button>
+        ))}
+      </div>
+      <p class="cv-blurb" id="cv-blurb" aria-live="polite">{formats[0].blurb}</p>
     </div>
+
+    {formats.map((f, i) => (
+      <div role="tabpanel" id={`panel-${f.id}`} aria-labelledby={`tab-${f.id}`} tabindex="0" class="cv-panel" hidden={i !== 0} data-blurb={f.blurb}>
+        <div class="cv-paper"><CvFormat id={f.id} /></div>
+      </div>
+    ))}
+    <noscript><style>.cv-panel[hidden] { display: block !important; } .cv-tabwrap { display: none; }</style></noscript>
   </div>
 </BaseLayout>
+
+<script>
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('.cv-tabs [role="tab"]'));
+  const panels = Array.from(document.querySelectorAll<HTMLElement>('.cv-panel'));
+  const dl = document.getElementById('cv-dl') as HTMLAnchorElement;
+  const blurb = document.getElementById('cv-blurb')!;
+  const ids = tabs.map((t) => t.dataset.id!);
+
+  function show(id: string) {
+    if (!ids.includes(id)) id = ids[0];
+    const i = ids.indexOf(id);
+    tabs.forEach((t, k) => { t.setAttribute('aria-selected', String(k === i)); t.tabIndex = k === i ? 0 : -1; });
+    panels.forEach((p, k) => { p.hidden = k !== i; });
+    blurb.textContent = panels[i].dataset.blurb || '';
+    const file = tabs[i].dataset.file!;
+    dl.href = dl.href.replace(/[^/]+\.pdf$/, file);
+    dl.setAttribute('download', file);
+    dl.querySelector('span')!.textContent = `Download ${tabs[i].textContent!.trim()} PDF`;
+    document.title = `${tabs[i].textContent!.trim()} | CV | Saroj Baral`;
+  }
+  const fromHash = () => location.hash.slice(1);
+  function go(id: string) { if (fromHash() !== id) location.hash = id; else show(id); }
+
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => go(t.dataset.id!));
+    t.addEventListener('keydown', (e) => {
+      const k = e.key;
+      const n = k === 'ArrowRight' ? (i + 1) % tabs.length : k === 'ArrowLeft' ? (i - 1 + tabs.length) % tabs.length : k === 'Home' ? 0 : k === 'End' ? tabs.length - 1 : -1;
+      if (n < 0) return;
+      e.preventDefault();
+      tabs[n].focus();
+      go(tabs[n].dataset.id!);
+    });
+  });
+  window.addEventListener('hashchange', () => show(fromHash()));
+  document.getElementById('cv-print')!.addEventListener('click', () => window.print());
+  show(fromHash());
+</script>
 
 <style is:global>
   .cv-bar { display: grid; gap: 20px; align-items: end; }
@@ -37,19 +90,25 @@ import Icon from '../components/Icon.astro';
   .cv-print-btn:hover { background: rgba(255, 255, 255, 0.08); border-color: #fff; }
   @media (min-width: 760px) { .cv-bar { grid-template-columns: 1fr auto; } }
 
-  .cv-stage { padding: 32px 16px 56px; background: var(--color-bg); }
-  .cv-paper {
-    width: 100%; max-width: 210mm; margin: 0 auto; padding: 14mm 16mm;
-    background: #fff; border: 1px solid var(--color-border); border-radius: 4px;
-    box-shadow: 0 6px 24px rgba(8, 19, 42, 0.08);
-  }
-  @media (max-width: 640px) { .cv-paper { padding: 22px 18px; } }
+  .cv-stage { padding: 24px 16px 56px; background: var(--color-bg); }
+  .cv-tabwrap { max-width: 210mm; margin: 0 auto 16px; }
+  .cv-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin; padding: 4px; background: var(--color-surface, rgba(127,127,127,.1)); border: 1px solid var(--color-border); border-radius: 12px; }
+  .cv-tabs [role="tab"] { flex: 1 1 0; min-width: max-content; padding: 10px 16px; border: 0; border-radius: 9px; background: transparent; color: var(--color-muted); font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; white-space: nowrap; }
+  .cv-tabs [role="tab"]:hover { color: var(--color-text); }
+  .cv-tabs [role="tab"][aria-selected="true"] { background: var(--color-accent, #2f6fed); color: #fff; box-shadow: 0 1px 4px rgba(8, 19, 42, .25); }
+  .cv-tabs [role="tab"]:focus-visible, .cv-panel:focus-visible { outline: 3px solid var(--color-accent, #2f6fed); outline-offset: 2px; }
+  .cv-blurb { margin: 10px 4px 0; font-size: 14px; color: var(--color-muted); }
+
+  .cv-panel[hidden] { display: none; }
+  .cv-paper { width: 100%; max-width: 210mm; margin: 0 auto; padding: 14mm 16mm; background: #fff; border: 1px solid var(--color-border); border-radius: 4px; box-shadow: 0 6px 24px rgba(8, 19, 42, 0.08); }
+  .cv-paper:has(.rs) { padding: 0; overflow: hidden; }
+  @media (max-width: 640px) { .cv-paper { padding: 22px 18px; } .cv-paper:has(.rs) { padding: 0; } }
 
   @page { size: A4; margin: 13mm 15mm; }
   @media print {
     html, body { background: #fff !important; }
     .cv-stage { padding: 0 !important; background: #fff !important; }
     .cv-paper { max-width: none !important; padding: 0 !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important; }
-    .cv-doc { color: #0F1B33; }
+    .cv-panel[hidden] { display: none !important; }
   }
 </style>

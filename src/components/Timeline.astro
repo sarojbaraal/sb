@@ -1,5 +1,6 @@
 ---
 import experience from '../data/experience.json';
+import cv from '../data/cv.json';
 ---
 
 <ol class="list-none p-0 m-0">
@@ -34,11 +35,11 @@ import experience from '../data/experience.json';
           )
         )}
 
-        {item.awards && item.awards.length > 0 && (
+        {item.kind === 'core' && (
           <div class="mt-5 border-l-2 border-[var(--color-accent)] pl-3">
             <p class="font-semibold text-[15px] mb-1">Recognition</p>
             <ul class="space-y-1 text-[15px] text-[var(--color-muted)] pl-5 list-disc">
-              {item.awards.map((a) => <li>{a}</li>)}
+              {cv.recognition.map((r) => <li>{r.title}</li>)}
             </ul>
           </div>
         )}

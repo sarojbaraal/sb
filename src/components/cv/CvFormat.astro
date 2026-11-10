@@ -1,0 +1,12 @@
+---
+import Snapshot from './Snapshot.astro';
+import Resume from './Resume.astro';
+import Europass from './Europass.astro';
+import FullCv from './FullCv.astro';
+import type { FormatId } from '../../lib/cv';
+const { id } = Astro.props as { id: FormatId };
+---
+{id === 'snapshot' && <Snapshot />}
+{id === 'resume' && <Resume />}
+{id === 'europass' && <Europass />}
+{id === 'full-cv' && <FullCv />}

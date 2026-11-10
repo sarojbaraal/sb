@@ -5,7 +5,9 @@ import cv from "../data/cv.json";
 
 // 'a' borderless glow (default) | 'b' vertical rail | 'c' index list.  Change here to switch.
 const variant = (process.env.HERO_VARIANT ?? 'a') as 'a' | 'b' | 'c';
-const stat = cv.highlight;
+const n = cv.ncell;
+const sw = `${n.swappedSites}${n.plus ? '+' : ''}`;
+const stat = { label: 'Ncell Network Modernization', value: sw, text: `Project controller for several clusters in the Ncell modernisation, which moved ${n.totalSites} Kathmandu BTS sites to Huawei equipment. Swapped ${sw} sites to live on-air in a single night (${n.year}).` };
 const slides = [
   { kind: 'Career highlight', icon: 'chart', title: stat.label, short: `Ncell: ${stat.value} sites in one night`, big: stat.value, text: stat.text },
   ...cv.recognition.map((r) => ({ kind: 'Recognition', icon: r.icon, title: r.title, short: r.title, big: '', text: r.text })),

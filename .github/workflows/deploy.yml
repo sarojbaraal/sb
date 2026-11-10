@@ -37,6 +37,9 @@ jobs:
           SITE_URL: https://sarojbaraal.github.io
           BASE_PATH: /sb
 
+      - name: Generate CV PDFs
+        run: bash scripts/build-cv.sh dist /sb
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
