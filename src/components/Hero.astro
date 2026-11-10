@@ -88,7 +88,9 @@ const slides = [
       linear-gradient(100deg, #050B18 0%, #07112A 52%, #15171E 100%);
   }
   .rings { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .hero { --gx: clamp(16px, 5vw, 24px); }
   .hero-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
+  @media (max-width: 767px) { .hero-grid { padding-inline: var(--gx); } }
   .copy { padding: 56px 0 24px; z-index: 2; }
   .hero { padding-bottom: 28px; }
 
@@ -114,12 +116,13 @@ const slides = [
   .btn-hero.ghost { color: #fff; border: 1px solid rgba(255, 255, 255, 0.45); }
   .btn-hero.ghost:hover { border-color: #fff; background: rgba(255, 255, 255, 0.08); }
 
-  .photo { position: relative; display: flex; flex-direction: column; align-items: center; margin-top: 8px; }
-  .photo img { display: block; width: min(86%, 380px); height: auto; filter: saturate(0.92) contrast(1.03);
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%); }
+  /* Mobile: portrait runs edge to edge and fades into the page at the bottom */
+  .photo { position: relative; display: flex; flex-direction: column; align-items: stretch; margin: 8px calc(-1 * var(--gx)) 0; }
+  .photo img { display: block; width: 100%; max-width: 460px; height: auto; margin-inline: auto; filter: saturate(0.92) contrast(1.03);
+    -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 68%, transparent 100%); }
   /* ---- Recognition block: borderless, no card ---- */
-  .recog { position: relative; margin: -36px auto 28px; width: min(100%, 300px); padding: 8px 4px 0; isolation: isolate; }
+  .recog { position: relative; margin: -24px 0 28px; width: 100%; max-width: 360px; padding: 8px var(--gx) 0; isolation: isolate; }
   .glow { position: absolute; z-index: -1; inset: -70px -80px -50px -80px; pointer-events: none;
     background: radial-gradient(closest-side, rgba(66, 120, 235, 0.30), rgba(66, 120, 235, 0.11) 55%, transparent 100%); filter: blur(10px); }
   .slides { display: grid; }
@@ -171,6 +174,30 @@ const slides = [
 
   @media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; transform: none; } .pause { display: none; } }
 
+  /* Large phones: compact hero, headline left and portrait right, details below (below 360px stays one column) */
+  @media (min-width: 360px) and (max-width: 767px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); align-items: end; }
+    .copy, .photo { display: contents; }
+    .eyebrow { grid-column: 1 / -1; grid-row: 1; margin: 26px 0 12px; font-size: 12px; }
+    h1 { grid-column: 1; grid-row: 2; align-self: center; font-size: 2.05rem; margin: 0 0 20px; position: relative; z-index: 2; }
+    .photo img { grid-column: 2; grid-row: 2; width: calc(100% + var(--gx)); max-width: none; margin: 0 calc(-1 * var(--gx)) 0 0; align-self: end;
+      -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%); mask-image: linear-gradient(to bottom, #000 80%, transparent 100%); }
+    .lede { grid-column: 1 / -1; grid-row: 3; margin: 8px 0 18px; font-size: 1rem; position: relative; z-index: 2; }
+    .meta { grid-column: 1 / -1; grid-row: 4; margin: 0 0 22px; }
+    .actions { grid-column: 1 / -1; grid-row: 5; margin-bottom: 10px; }
+    .recog { grid-column: 1 / -1; grid-row: 6; margin: 12px 0 28px; max-width: none; padding-inline: 0; }
+  }
+
+  /* Tablet: two columns, copy left, portrait right */
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); column-gap: 24px; align-items: end; }
+    .copy { padding: 64px 0 36px; }
+    .photo { margin: 0; }
+    .photo img { max-width: 440px; margin: 0 0 0 auto; }
+    .recog { padding: 8px 0 0; max-width: 340px; margin-left: auto; }
+    .hero { padding-bottom: 8px; }
+  }
+
   @media (min-width: 1200px) {
     .lg { display: inline; }
     .hero { min-height: 570px; }
@@ -179,7 +206,7 @@ const slides = [
     .photo { position: static; display: block; margin: 0; }
     .photo img {
       position: absolute; right: max(-30px, calc((100vw - 1320px) / 2 + 20px)); bottom: 0;
-      height: 104%; width: auto; max-width: none;
+      height: 104%; width: auto; max-width: none; margin: 0;
       -webkit-mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 88%, transparent 100%);
       mask-image: linear-gradient(to right, transparent 0, #000 16%, #000 88%, transparent 100%);
     }

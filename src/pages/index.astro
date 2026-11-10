@@ -287,6 +287,11 @@ const jsonLd = [
     .ways, .cards { grid-template-columns: repeat(3, 1fr); }
     .cta-in { grid-template-columns: 1fr auto; }
   }
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .trio-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .exp { grid-column: 1 / -1; order: 3; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+  }
   @media (min-width: 1100px) {
     .trio-grid { grid-template-columns: 0.95fr 1.1fr 1.2fr; gap: 24px; align-items: stretch; }
     .col { padding: 38px 34px; }
