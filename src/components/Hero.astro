@@ -174,6 +174,20 @@ const slides = [
 
   @media (prefers-reduced-motion: reduce) { .slide, .slide.on { transition: none; transform: none; } .pause { display: none; } }
 
+  /* Large phones: compact hero, headline left and portrait right, details below (below 360px stays one column) */
+  @media (min-width: 360px) and (max-width: 767px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); align-items: end; }
+    .copy, .photo { display: contents; }
+    .eyebrow { grid-column: 1 / -1; grid-row: 1; margin: 26px 0 12px; font-size: 12px; }
+    h1 { grid-column: 1; grid-row: 2; align-self: center; font-size: 2.05rem; margin: 0 0 20px; position: relative; z-index: 2; }
+    .photo img { grid-column: 2; grid-row: 2; width: calc(100% + var(--gx)); max-width: none; margin: 0 calc(-1 * var(--gx)) 0 0; align-self: end;
+      -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%); mask-image: linear-gradient(to bottom, #000 80%, transparent 100%); }
+    .lede { grid-column: 1 / -1; grid-row: 3; margin: 8px 0 18px; font-size: 1rem; position: relative; z-index: 2; }
+    .meta { grid-column: 1 / -1; grid-row: 4; margin: 0 0 22px; }
+    .actions { grid-column: 1 / -1; grid-row: 5; margin-bottom: 10px; }
+    .recog { grid-column: 1 / -1; grid-row: 6; margin: 12px 0 28px; max-width: none; padding-inline: 0; }
+  }
+
   /* Tablet: two columns, copy left, portrait right */
   @media (min-width: 768px) and (max-width: 1199px) {
     .hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); column-gap: 24px; align-items: end; }
