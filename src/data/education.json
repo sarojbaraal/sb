@@ -5,7 +5,11 @@
     "location": "Kathmandu, Nepal",
     "start": "2019",
     "end": "2022",
-    "summary": "Focus: strategic management, business operations and leadership."
+    "summary": "Focus: strategic management, business operations and leadership.",
+    "fromYear": 2019,
+    "toYear": 2022,
+    "kind": "edu",
+    "short": "Executive MBA"
   },
   {
     "degree": "Bachelor of Engineering, Electronics and Communication",
@@ -13,6 +17,10 @@
     "location": "Kathmandu, Nepal",
     "start": "2005",
     "end": "2010",
-    "summary": "Final-year project: Smart Home Security System. Electives: Mobile Communication, Optical Fibre Communication."
+    "summary": "Final-year project: Smart Home Security System. Electives: Mobile Communication, Optical Fibre Communication.",
+    "fromYear": 2005,
+    "toYear": 2010,
+    "kind": "edu",
+    "short": "B.E. Electronics & Communication"
   }
 ]

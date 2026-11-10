@@ -1,0 +1,89 @@
+---
+// Modern two-column resume: sidebar for facts, main column for impact.
+import { person, jobs, edu, recognition, stack, strengths, ncell } from '../../lib/cv';
+---
+
+<article class="rs cvx" aria-label="Modern resume">
+  <aside class="rs-side">
+    <h1>{person.name}</h1>
+    <p class="rs-role">{person.headline}</p>
+    <section>
+      <h2>Contact</h2>
+      <ul class="rs-list">
+        <li>{person.city}, {person.country}</li><li>{person.email}</li><li>{person.phone}</li><li>{person.linkedin}</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Strengths</h2>
+      <ul class="rs-list">{strengths.map((s) => <li>{s}</li>)}</ul>
+    </section>
+    <section>
+      <h2>Tools</h2>
+      <ul class="rs-list">{stack.map((s) => <li><b>{s.label}</b><br />{s.value}</li>)}</ul>
+    </section>
+    <section>
+      <h2>Languages</h2>
+      <ul class="rs-list">{person.languages.map((l) => <li>{l.name}, {l.level.toLowerCase()}</li>)}</ul>
+    </section>
+  </aside>
+
+  <div class="rs-main">
+    <section>
+      <h2>Profile</h2>
+      <p>{person.summary}</p>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      {jobs.map((j) => (
+        <div class="rs-job">
+          <div class="rs-row"><h3>{j.role}</h3><span>{j.period}</span></div>
+          <p class="rs-org">{j.org}</p>
+          {'groups' in j && j.groups ? (
+            <ul>
+              <li><b>Ncell modernisation:</b> project controller for several clusters, end to end. {ncell.totalSites} Kathmandu sites moved to Huawei equipment; {ncell.swapped} swapped live in one night.</li>
+              {j.groups.map((g) => <li><b>{g.title}:</b> {g.bullets[g.bullets[0].startsWith('Project controller') ? 1 : 0].replace(/\.$/, '')}.</li>)}
+            </ul>
+          ) : (
+            <ul>{j.bullets.slice(0, j.kind === 'now' ? 5 : 2).map((b) => <li>{b}</li>)}</ul>
+          )}
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>Recognition</h2>
+      <ul class="rs-plain">{recognition.map((r) => <li><b>{r.title}.</b> {r.text}</li>)}</ul>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      {edu.map((e) => (
+        <div class="rs-job"><div class="rs-row"><h3>{e.degree}</h3><span>{e.period}</span></div><p class="rs-org">{e.institution}</p></div>
+      ))}
+    </section>
+  </div>
+</article>
+
+<style is:global>
+  .rs { --ink:#14203a; --mut:#5a667d; --acc:#2f6fed; --navy:#0c1b3a; --line:#dde3ee;
+    font-family:"Inter Variable",system-ui,sans-serif; color:var(--ink); background:#fff; font-size:9.2pt; line-height:1.42;
+    display:grid; grid-template-columns:58mm 1fr; gap:0 14pt; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .rs h1 { font-family:inherit; font-size:21pt; line-height:1.05; letter-spacing:-.03em; font-weight:700; margin:0; color:#fff; }
+  .rs h2 { font-family:inherit; font-size:9.5pt; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin:12pt 0 4pt; color:var(--navy); border-bottom:.6pt solid var(--line); padding-bottom:2pt; break-after:avoid; }
+  .rs h3 { font-family:inherit; font-size:10pt; font-weight:650; margin:0; letter-spacing:0; }
+  .rs p { margin:0 0 3pt; }
+  .rs-side { background:var(--navy); color:#dbe5f7; padding:14pt 12pt; margin:-1px 0; }
+  .rs-side h2 { color:#fff; border-color:rgba(255,255,255,.25); }
+  .rs-role { color:#8fb2f5; font-weight:500; margin:5pt 0 4pt !important; }
+  .rs-list { list-style:none; margin:0; padding:0; display:grid; gap:4pt; font-size:8.4pt; overflow-wrap:anywhere; }
+  .rs-list b { color:#fff; font-weight:600; }
+  .rs-main { padding:4pt 0; }
+  .rs-main section:first-child h2 { margin-top:8pt; }
+  .rs-row { display:flex; justify-content:space-between; gap:10pt; align-items:baseline; flex-wrap:wrap; } .rs-row span { color:var(--mut); font-size:8.6pt; white-space:nowrap; }
+  .rs-org { color:var(--acc); font-weight:500; font-size:8.8pt; }
+  .rs-job { margin-bottom:7pt; break-inside:avoid; }
+  .rs-main ul { margin:2pt 0 0; padding-left:11pt; list-style:disc; } .rs-main li { margin-bottom:2pt; } .rs-main li::marker { color:var(--acc); }
+  .rs-plain { list-style:none !important; padding-left:0 !important; }
+  @media (max-width:640px){ .rs { grid-template-columns:1fr; font-size:10pt; } .rs-main { padding:10pt 4pt 0; } }
+</style>

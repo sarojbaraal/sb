@@ -97,10 +97,9 @@ All structured data lives in JSON files within `src/data/`:
 3. When `draft: false`, the note automatically populates `/notes`, `/notes/[slug]`, and `/rss.xml`.
 
 ### How to Update the CV PDF
-Place your updated resume file at:
-`public/cv/Saroj-Baral-CV.pdf`
-
-Both `/cv` and the redirect `/cv.pdf` link directly to this file.
+Nothing to upload. Edit `src/data/*.json` (profile, experience, education, cv) and push.
+GitHub Actions rebuilds all four PDFs (`dist/cv/`) on every deploy from the same data.
+Locally: `npm run build && bash scripts/build-cv.sh dist` (needs Chrome). `/cv.pdf` redirects to the Modern Resume PDF.
 
 ---
 
@@ -138,5 +137,4 @@ Before officially publishing to production, ensure these placeholders are update
 - [ ] **Web3Forms Key**: Replace `YOUR_WEB3FORMS_KEY` in `src/components/http://192.sarojbaral.com.np/contact`.
 - [ ] **Cal.com Meeting Link**: Replace `https://cal.com/sarojbaral` in `src/pages/contact.astro`.
 - [ ] **Cloudflare Analytics Token**: Uncomment and insert your token in `src/layouts/BaseLayout.astro`.
-- [ ] **CV PDF**: Replace the placeholder `public/cv/Saroj-Baral-CV.pdf` with the official signed copy if needed.
 - [ ] **Custom Domain**: Connect `sarojbaral.com.np` in the Cloudflare Pages custom domain manager.

@@ -34,11 +34,6 @@
     "year": "2015",
     "text": "Supported relief and rehabilitation in affected districts: temporary shelters, reconstruction of homes, schools and community infrastructure, sanitation and hygiene awareness, health camps and livelihood assistance."
   },
-  "highlight": {
-    "label": "Ncell Network Modernization",
-    "value": "100",
-    "text": "Successfully managed the rapid migration of 100+ BTS sites to Huawei equipment - executing full installation to live on-air deployment within a single-night window (2015)."
-  },
   "recognition": [
     {
       "icon": "star",
@@ -60,5 +55,12 @@
       "title": "Project Management Credentials",
       "text": "Successfully achieved the formal Project Office Business Skill Authentication, validating advanced capabilities in global project governance and operations."
     }
-  ]
+  ],
+  "ncell": {
+    "totalSites": 423,
+    "swappedSites": 100,
+    "plus": true,
+    "year": 2015,
+    "place": "Kathmandu"
+  }
 }
