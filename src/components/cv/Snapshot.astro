@@ -1,54 +1,78 @@
 ---
-// One-page visual summary. Same facts as the other formats, drawn instead of listed.
+// One-page snapshot: who, why hire, capabilities, proof. Facts come from src/lib/cv.ts.
 import { url } from '../../utils/url';
 import Icon from '../Icon.astro';
-import { volunteer, person, careerYears, huaweiYears, edu, recognition, stack, strengths, strands, scheduleRows, ncell, nowYear, huawei } from '../../lib/cv';
+import { person, huaweiYears, edu, recognition, capabilities, scheduleRows, ncell, nt, nowYear } from '../../lib/cv';
 
 const AXIS_START = 2005;
 const AXIS_END = Math.ceil(nowYear) + 1;
 const span = AXIS_END - AXIS_START;
 const pct = (y: number) => ((y - AXIS_START) / span) * 100;
 const ticks = [2005, 2010, 2015, 2020, 2025];
-const facts = [
-  { v: `${careerYears}`, u: 'years', l: 'since first field role, 2010' },
-  { v: `${huaweiYears}`, u: 'years', l: 'at Huawei Technologies Nepal' },
-  { v: 'EMBA', u: '', l: `${edu[0].end}, strategic management` },
-  { v: 'B.E.', u: '', l: `${edu[1].end}, electronics and communication` },
-];
+const rows = scheduleRows.filter((r) => r.show);
+const seed = recognition.find((r) => r.title.includes('Golden'))!;
+const others = recognition.filter((r) => r !== seed);
 ---
 
 <article class="snap cvx" aria-label="Professional snapshot">
   <header class="sn-head">
     <div>
       <h1>{person.name}</h1>
-      <p class="sn-role">{person.headline}</p>
-      <p class="sn-tag">{person.tagline}</p>
+      <p class="sn-id">{person.identity}</p>
+      <p class="sn-loc"><Icon name="pin" size={11} /> {person.city}, {person.country} &nbsp;·&nbsp; Open to remote roles and consulting</p>
     </div>
     <img class="sn-photo" src={url('/images/saroj-cutout.webp')} alt="" width="96" height="96" />
   </header>
 
-  <ul class="sn-facts">
-    {facts.map((f) => (
-      <li><b>{f.v}{f.u && <small> {f.u}</small>}</b><span>{f.l}</span></li>
-    ))}
-  </ul>
+  <section class="sn-hire" aria-label="Why hire me">
+    <div>
+      <h2>Why hire me</h2>
+      <p class="sn-claim">{person.hire}</p>
+      <p class="sn-sub">Proven on live telecom rollouts. Now applied for clients as an independent MIS and reporting professional.</p>
+    </div>
+    <div class="sn-six">
+      <b>{huaweiYears}<small> years</small></b>
+      <span>Huawei Technologies Nepal, Engineer then Product Manager</span>
+    </div>
+  </section>
 
-  <section class="sn-flow" aria-label="How I turn information into clarity">
-    {strands.map((s, i) => (
-      <div class="sn-step">
-        <div class="sn-sh"><span class="sn-ic"><Icon name={s.icon} size={15} stroke={1.8} /></span><h2>{s.label}</h2></div>
-        <p>{s.text}</p>
-        <ul>{s.proof.map((p) => <li>{p}</li>)}</ul>
-        {i < strands.length - 1 && <span class="sn-arrow" aria-hidden="true"><Icon name="arrow" size={14} /></span>}
+  <section class="sn-caps" aria-label="What I do">
+    {capabilities.map((c) => (
+      <div class="sn-cap">
+        <div class="sn-ch"><span class="sn-ic"><Icon name={c.icon} size={14} stroke={1.8} /></span><h3>{c.title}</h3></div>
+        <p class="sn-line">{c.line}</p>
+        <ul>{c.proof.map((p) => <li>{p}</li>)}</ul>
       </div>
     ))}
   </section>
 
+  <section aria-label="Proof from Huawei">
+    <h2>Proof, from {huaweiYears} years at Huawei</h2>
+    <div class="sn-proof">
+      <div class="sn-card">
+        <p class="sn-k">Ncell modernisation <span>{ncell.totalSites} sites</span></p>
+        <p class="sn-big"><b>{ncell.swapped}</b> sites live in one night</p>
+        <ul><li>Multi-million gap closed</li><li>Zero discrepancy, on time</li></ul>
+      </div>
+      <div class="sn-card">
+        <p class="sn-k">{nt.name}</p>
+        <p class="sn-big"><b>{nt.swaps}</b> equipment swaps</p>
+        <ul><li>{nt.bts} BTS sites to on-air</li><li>Project controller, end to end</li></ul>
+      </div>
+      <div class="sn-card">
+        <p class="sn-k">WDM Golden Seed <span>Shenzhen</span></p>
+        <p class="sn-big"><b>2019</b> selected for training</p>
+        <ul><li>Performed excellently</li><li>Excellent team award</li></ul>
+      </div>
+    </div>
+    <p class="sn-more no-print">Full detail: <a href="#resume">Modern Resume</a>, <a href="#europass">Europass CV</a>, <a href="#full-cv">Full CV</a></p>
+  </section>
+
   <section class="sn-sched" aria-label="Career schedule">
-    <h2>Career schedule</h2>
+    <h2>Where it fits</h2>
     <div class="sn-axis" aria-hidden="true"><span></span><div>{ticks.map((t) => <i style={`left:${pct(t)}%`}>{t}</i>)}</div></div>
     <ol>
-      {scheduleRows.map((r) => (
+      {rows.map((r) => (
         <li>
           <span class="sn-lab">{r.label}<small>{r.sub}</small></span>
           <span class="sn-trk">
@@ -60,68 +84,46 @@ const facts = [
     </ol>
   </section>
 
-  <div class="sn-grid">
-    <section>
-      <h2>Delivered</h2>
-      <p class="sn-big"><b>{ncell.totalSites}</b> sites</p>
-      <p class="sn-note">Ncell network modernisation, Kathmandu. Project controller for several clusters, end to end. {ncell.swapped} sites swapped to live on-air in a single night, {ncell.year}.</p>
-      <p class="sn-note">Also: NT 10M Project; ERP reporting and material planning for senior management.</p>
-    </section>
-    <section>
-      <h2>Recognition</h2>
-      <ul class="sn-rec">
-        {recognition.map((r) => <li><Icon name={r.icon} size={13} stroke={1.8} />{r.title}</li>)}
-      </ul>
-      <p class="sn-note">{huawei.org.replace(/ Co\., Pvt\. Ltd\./, '')}, as Engineer and later Product Manager.</p>
-    </section>
-    <section>
-      <h2>Toolkit</h2>
-      <ul class="sn-chips">
-        {['Advanced Excel', 'MIS and reporting', 'ERP, SCM, CRM', 'PowerPoint, Word', 'Project control'].map((c) => <li>{c}</li>)}
-      </ul>
-      <p class="sn-note">{strengths[2]}.</p>
-      <p class="sn-note">Volunteer, {volunteer.title.replace(/^Volunteer, /, '')} ({volunteer.year}).</p>
-    </section>
-  </div>
+  <section class="sn-rec" aria-label="Recognition">
+    <h2>Also recognised</h2>
+    <ul>{others.map((r) => <li><Icon name={r.icon} size={12} stroke={1.8} />{r.title}</li>)}</ul>
+  </section>
 
-  <footer class="sn-foot">
-    <span><Icon name="pin" size={12} /> {person.city}, {person.country}</span>
+  <div class="sn-foot">
     <span><Icon name="mail" size={12} /> {person.email}</span>
+    <span><Icon name="phone" size={12} /> WhatsApp {person.whatsapp}</span>
     <span><Icon name="link" size={12} /> {person.linkedin}</span>
     <span><Icon name="globe" size={12} /> {person.languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(', ')}</span>
-  </footer>
+  </div>
 </article>
 
 <style is:global>
   .snap { --ink:#14203a; --mut:#5a667d; --line:#dde3ee; --acc:#2f6fed; --tint:#f1f5fc; --navy:#0c1b3a;
-    font-family:"Inter Variable",system-ui,sans-serif; color:var(--ink); background:#fff; font-size:9.8pt; line-height:1.45;
-    -webkit-print-color-adjust:exact; print-color-adjust:exact; display:grid; gap:18pt; }
-  .snap h1 { font-family:inherit; font-size:26pt; line-height:1; letter-spacing:-.03em; font-weight:700; margin:0; color:var(--navy); }
-  .snap h2 { font-family:inherit; font-size:10pt; font-weight:650; margin:0 0 4pt; color:var(--navy); letter-spacing:0; }
+    font-family:"Inter Variable",system-ui,sans-serif; color:var(--ink); background:#fff; font-size:9.2pt; line-height:1.38;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact; display:grid; gap:7.5pt; }
+  .snap h1 { font-family:inherit; font-size:27pt; line-height:1; letter-spacing:-.03em; font-weight:700; margin:0; color:var(--navy); }
+  .snap h2 { font-family:inherit; font-size:9.5pt; font-weight:650; margin:0 0 5pt; color:var(--navy); letter-spacing:0; }
+  .snap h3 { font-family:inherit; font-size:12pt; font-weight:700; margin:6pt 0 1pt; color:var(--navy); letter-spacing:-.01em; }
   .snap p { margin:0; }
-  .sn-head { display:flex; justify-content:space-between; align-items:center; gap:14pt; padding-bottom:10pt; border-bottom:1.5pt solid var(--navy); }
-  .sn-role { font-size:11.5pt; color:var(--acc); font-weight:500; margin-top:5pt !important; }
-  .sn-tag { color:var(--mut); margin-top:2pt !important; }
-  .sn-photo { width:25mm; height:25mm; border-radius:50%; object-fit:cover; object-position:top; background:var(--tint); flex:none; }
-  .sn-facts { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin:0; padding:0; list-style:none; border:.6pt solid var(--line); border-radius:4pt; }
-  .sn-facts li { padding:7pt 9pt; display:grid; gap:1pt; border-left:.6pt solid var(--line); }
-  .sn-facts li:first-child { border-left:0; }
-  .sn-facts b { font-size:17pt; letter-spacing:-.02em; color:var(--navy); line-height:1.1; }
-  .sn-facts small { font-size:8.5pt; font-weight:500; color:var(--mut); letter-spacing:0; }
-  .sn-facts span { color:var(--mut); font-size:8pt; }
-  .sn-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:10pt; }
-  .sn-step { position:relative; background:var(--tint); border-radius:4pt; padding:9pt 10pt 8pt; }
-  .sn-sh { display:flex; align-items:center; gap:6pt; margin-bottom:3pt; }
-  .sn-sh h2 { margin:0; }
-  .sn-ic { width:20pt; height:20pt; border-radius:50%; background:#fff; border:.6pt solid var(--line); display:grid; place-items:center; color:var(--acc); }
-  .sn-step > p { color:var(--mut); font-size:9pt; }
-  .sn-step ul { margin:5pt 0 0; padding:0; list-style:none; display:grid; gap:1.5pt; }
-  .sn-step li { padding-left:9pt; position:relative; font-size:9pt; }
-  .sn-step li::before { content:""; position:absolute; left:0; top:5pt; width:4pt; height:4pt; border-radius:50%; background:var(--acc); }
-  .sn-arrow { position:absolute; right:-9.5pt; top:50%; transform:translateY(-50%); z-index:1; width:13pt; height:13pt; border-radius:50%; background:#fff; border:.6pt solid var(--line); color:var(--acc); display:grid; place-items:center; }
-  .sn-sched ol { list-style:none; margin:0; padding:0; display:grid; gap:5pt; }
+  .sn-head { display:flex; justify-content:space-between; align-items:center; gap:14pt; }
+  .sn-id { font-size:12pt; color:var(--acc); font-weight:550; margin-top:5pt !important; }
+  .sn-loc { color:var(--mut); margin-top:3pt !important; font-size:8.6pt; display:flex; align-items:center; gap:3pt; }
+  .sn-photo { width:21mm; height:21mm; border-radius:50%; object-fit:cover; object-position:top; background:var(--tint); flex:none; }
+  .sn-hire { background:var(--navy); color:#fff; border-radius:5pt; padding:10pt 14pt; }
+  .sn-hire h2 { color:#8fb2f5; font-weight:600; margin-bottom:3pt; }
+  .sn-claim { font-size:14.5pt; line-height:1.25; font-weight:600; letter-spacing:-.015em; }
+  .sn-sub { color:#b8c6e0; margin-top:5pt !important; font-size:9pt; }
+  .sn-caps { display:grid; grid-template-columns:repeat(3,1fr); gap:9pt; }
+  .sn-cap { border:.7pt solid var(--line); border-top:2.5pt solid var(--acc); border-radius:4pt; padding:8pt 10pt; }
+  .sn-ch { display:flex; align-items:center; gap:7pt; margin-bottom:2pt; } .sn-ch h3 { margin:0; }
+  .sn-ic { width:22pt; height:22pt; border-radius:50%; background:var(--tint); display:grid; place-items:center; color:var(--acc); }
+  .sn-line { color:var(--mut); font-size:8.8pt; }
+  .sn-cap ul { margin:6pt 0 0; padding:0; list-style:none; display:grid; gap:3pt; }
+  .sn-cap li { padding-left:9pt; position:relative; font-size:8.5pt; }
+  .sn-cap li::before { content:""; position:absolute; left:0; top:5pt; width:4pt; height:4pt; border-radius:50%; background:var(--acc); }
+  .sn-sched ol { list-style:none; margin:0; padding:0; display:grid; gap:2pt; }
   .sn-sched li, .sn-axis { display:grid; grid-template-columns:52mm 1fr; align-items:center; gap:8pt; }
-  .sn-lab { font-size:9pt; font-weight:600; line-height:1.15; }
+  .sn-lab { font-size:8.8pt; font-weight:600; line-height:1.15; }
   .sn-lab small { display:block; font-weight:400; color:var(--mut); font-size:7.4pt; }
   .sn-trk { position:relative; height:9pt; border-bottom:.4pt dashed var(--line); }
   .sn-bar { position:absolute; top:1.5pt; height:6pt; border-radius:3pt; background:#9fb0cc; }
@@ -129,18 +131,28 @@ const facts = [
   .sn-bar.edu { background:#fff; border:.9pt solid var(--acc); box-sizing:border-box; }
   .sn-trk em { position:absolute; top:0; font-style:normal; font-size:7.2pt; color:var(--mut); white-space:nowrap; line-height:9pt; }
   .sn-axis div { position:relative; height:9pt; } .sn-axis i { position:absolute; font-style:normal; font-size:7pt; color:var(--mut); transform:translateX(-50%); }
-  .sn-grid { display:grid; grid-template-columns:1.15fr 1fr 1fr; gap:14pt; border-top:.6pt solid var(--line); padding-top:10pt; }
-  .sn-big { font-size:8.5pt; color:var(--mut); } .sn-big b { font-size:21pt; letter-spacing:-.02em; color:var(--navy); line-height:1.1; }
-  .sn-note { color:var(--mut); font-size:8.8pt; margin-top:3pt !important; }
-  .sn-rec, .sn-chips { list-style:none; margin:0; padding:0; display:grid; gap:3pt; }
-  .sn-rec li { display:flex; gap:5pt; align-items:center; font-size:9.2pt; font-weight:500; } .sn-rec svg { color:var(--acc); flex:none; }
-  .sn-chips { display:flex; flex-wrap:wrap; gap:3pt; } .sn-chips li { border:.6pt solid var(--line); border-radius:9pt; padding:1.5pt 7pt; font-size:8pt; background:var(--tint); }
-  .sn-foot { display:flex; flex-wrap:wrap; gap:3pt 14pt; border-top:.6pt solid var(--line); padding-top:9pt; color:var(--mut); font-size:8.6pt; }
+  .sn-rec { display:flex; align-items:center; gap:12pt; flex-wrap:wrap; border-top:.6pt solid var(--line); padding-top:9pt; }
+  .sn-rec h2 { margin:0; }
+  .sn-rec ul { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:3pt 14pt; }
+  .sn-rec li { display:inline-flex; gap:5pt; align-items:center; font-size:8.8pt; font-weight:500; } .sn-rec svg { color:var(--acc); flex:none; }
+  .sn-foot { display:flex; flex-wrap:wrap; gap:3pt 14pt; border-top:1.5pt solid var(--navy); padding-top:8pt; color:var(--ink); font-size:8.6pt; font-weight:500; }
   .sn-foot span { display:inline-flex; align-items:center; gap:4pt; } .sn-foot svg { color:var(--acc); }
   @media (max-width:640px){
-    .sn-facts { grid-template-columns:1fr 1fr; } .sn-facts li:nth-child(3){ border-left:0; } .sn-facts li:nth-child(n+3){ border-top:.6pt solid var(--line); }
-    .sn-flow, .sn-grid { grid-template-columns:1fr; } .sn-arrow { display:none; }
+    .sn-caps { grid-template-columns:1fr; }
     .sn-sched li, .sn-axis { grid-template-columns:30mm 1fr; gap:6pt; } .sn-photo { width:20mm; height:20mm; }
-    .snap { font-size:10pt; } .snap h1 { font-size:22pt; }
+    .snap { font-size:10pt; } .snap h1 { font-size:22pt; } .sn-claim { font-size:13pt; }
   }
+
+  .sn-hire { display:grid; grid-template-columns:1fr auto; gap:16pt; align-items:center; }
+  .sn-six { border-left:.6pt solid rgba(255,255,255,.25); padding-left:14pt; display:grid; gap:2pt; max-width:38mm; }
+  .sn-six b { font-size:30pt; line-height:1; letter-spacing:-.03em; color:#fff; } .sn-six small { font-size:11pt; font-weight:500; color:#8fb2f5; letter-spacing:0; }
+  .sn-six span { color:#b8c6e0; font-size:8.2pt; line-height:1.3; }
+  .sn-proof { display:grid; grid-template-columns:repeat(3,1fr); gap:9pt; }
+  .sn-card { background:var(--tint); border-radius:4pt; padding:10pt 12pt; display:grid; gap:4pt; align-content:start; border-top:2.5pt solid var(--navy); }
+  .sn-k { font-weight:650; color:var(--navy); font-size:9pt; display:flex; justify-content:space-between; gap:6pt; } .sn-k span { font-weight:500; color:var(--mut); font-size:8pt; }
+  .sn-big { font-size:9pt; color:var(--mut); line-height:1.2; } .sn-big b { display:block; font-size:28pt; letter-spacing:-.03em; color:var(--acc); line-height:1.05; }
+  .sn-more { margin-top:5pt !important; font-size:8.6pt; color:var(--mut); } .sn-more a { color:var(--acc); font-weight:600; }
+  .sn-card ul { margin:0; padding:0; list-style:none; display:grid; gap:3pt; } .sn-card li { padding-left:9pt; position:relative; font-size:8.5pt; }
+  .sn-card li::before { content:""; position:absolute; left:0; top:5pt; width:4pt; height:4pt; border-radius:50%; background:var(--acc); }
+  @media (max-width:640px){ .sn-hire { grid-template-columns:1fr; } .sn-six { border-left:0; border-top:.6pt solid rgba(255,255,255,.25); padding:10pt 0 0; max-width:none; } .sn-proof { grid-template-columns:1fr; } }
 </style>

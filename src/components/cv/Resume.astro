@@ -1,6 +1,6 @@
 ---
 // Modern two-column resume: sidebar for facts, main column for impact.
-import { person, jobs, edu, recognition, stack, strengths, ncell } from '../../lib/cv';
+import { person, jobs, edu, recognition, stack, strengths, ncell, nt } from '../../lib/cv';
 ---
 
 <article class="rs cvx" aria-label="Modern resume">
@@ -41,8 +41,9 @@ import { person, jobs, edu, recognition, stack, strengths, ncell } from '../../l
           <p class="rs-org">{j.org}</p>
           {'groups' in j && j.groups ? (
             <ul>
-              <li><b>Ncell modernisation:</b> project controller for several clusters, end to end. {ncell.totalSites} Kathmandu sites moved to Huawei equipment; {ncell.swapped} swapped live in one night.</li>
-              {j.groups.map((g) => <li><b>{g.title}:</b> {g.bullets[g.bullets[0].startsWith('Project controller') ? 1 : 0].replace(/\.$/, '')}.</li>)}
+              <li><b>Ncell modernisation:</b> project controller for several clusters, end to end. {ncell.totalSites} Kathmandu sites moved to Huawei equipment; {ncell.swapped} swapped live in one night. {ncell.reconciliation} {ncell.delivery}</li>
+              <li><b>{nt.name}:</b> {nt.bts} BTS sites from installation to on-air, and {nt.swaps} equipment swaps.</li>
+              {j.groups.map((g) => { const b = g.bullets.find((x) => !/^(Project controller|Ncell modernisation|NT GSM)/.test(x))!; return <li><b>{g.title}:</b> {b.replace(/\.$/, '')}.</li>; })}
             </ul>
           ) : (
             <ul>{j.bullets.slice(0, j.kind === 'now' ? 5 : 2).map((b) => <li>{b}</li>)}</ul>
