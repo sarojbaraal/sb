@@ -15,7 +15,9 @@
     ],
     "fromYear": 2022,
     "toYear": null,
-    "kind": "now"
+    "kind": "now",
+    "snapshot": true,
+    "counts": true
   },
   {
     "role": "Engineer and Product Manager",
@@ -38,7 +40,9 @@
       {
         "title": "Project control and operations",
         "bullets": [
-          "Project controller for several clusters, end to end, on the Ncell modernisation project and NT 10M Project",
+          "Project controller for several clusters, end to end, on the Ncell modernisation project and the NT GSM 10M project.",
+          "Ncell modernisation: completed material reconciliation and closed long-pending sales orders, closing a multi-million gap; sole owner of BOQ-based site delivery configuration, closed on time with no discrepancy.",
+          "NT GSM 10M project: 100+ BTS sites from installation to on-air, and 200+ equipment swaps.",
           "Planned, executed and monitored projects to hold delivery dates and quality standards.",
           "Set priorities, delegated work and enforced operating procedures and deadlines.",
           "Oversaw budgeting, contracting and administration for project management.",
@@ -62,7 +66,9 @@
       "Engineer",
       "Product Manager"
     ],
-    "kind": "core"
+    "kind": "core",
+    "snapshot": true,
+    "counts": true
   },
   {
     "role": "Survey Engineer",
@@ -77,7 +83,9 @@
     ],
     "fromYear": 2011.833,
     "toYear": 2012.417,
-    "kind": "field"
+    "kind": "field",
+    "snapshot": true,
+    "counts": true
   },
   {
     "role": "Intern",
@@ -93,6 +101,8 @@
     ],
     "fromYear": 2010.667,
     "toYear": 2011.0,
-    "kind": "field"
+    "kind": "field",
+    "snapshot": false,
+    "counts": false
   }
 ]

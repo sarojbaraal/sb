@@ -47,8 +47,8 @@
     },
     {
       "icon": "trophy",
-      "title": "Excellent team award",
-      "text": "Earned global recognition at the WDM Golden Seeds Training Programme in Shenzhen, China, for elite technical collaboration and problem-solving (2019)."
+      "title": "WDM Golden Seed, Shenzhen",
+      "text": "Selected as a WDM Golden Seed for training at Huawei in Shenzhen, China (2019), performed excellently there, and earned an excellent team award."
     },
     {
       "icon": "target",
@@ -61,6 +61,47 @@
     "swappedSites": 100,
     "plus": true,
     "year": 2015,
-    "place": "Kathmandu"
+    "place": "Kathmandu",
+    "reconciliation": "Completed material reconciliation and closed long-pending sales orders, closing a multi-million gap.",
+    "delivery": "Sole owner of BOQ-based site delivery configuration, closed on time with no discrepancy."
+  },
+  "capabilities": [
+    {
+      "icon": "target",
+      "title": "Project control",
+      "line": "Keep delivery on plan, on budget, on date.",
+      "proof": [
+        "Project controller for several Ncell clusters, end to end",
+        "Sole owner of BOQ-based site delivery, closed with no discrepancy",
+        "Change control, budgeting and BOQ material planning"
+      ]
+    },
+    {
+      "icon": "chart",
+      "title": "MIS and reporting",
+      "line": "Make the numbers accurate and easy to act on.",
+      "proof": [
+        "ERP data kept accurate, with regular reports to senior management",
+        "Material reconciliation that closed long-pending sales orders",
+        "Independent since 2022: MIS, reporting and data consolidation for clients"
+      ]
+    },
+    {
+      "icon": "users",
+      "title": "Coordination",
+      "line": "Connect sales, finance, supply chain, vendors and delivery.",
+      "proof": [
+        "Technical bids and solution design with sales and finance",
+        "Guided vendors and internal teams to delivery dates",
+        "Business reports, presentations and documentation"
+      ]
+    }
+  ],
+  "nt": {
+    "name": "NT GSM 10M project",
+    "bts": 100,
+    "btsPlus": true,
+    "swaps": 200,
+    "swapsPlus": true
   }
 }

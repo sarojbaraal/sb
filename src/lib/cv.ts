@@ -29,6 +29,9 @@ export const person = {
   linkedinUrl: profile.linkedin,
   linkedin: profile.linkedin.replace(/^https?:\/\/(www\.)?/, ''),
   summary: profile.summary,
+  hire: profile.hire,
+  identity: profile.identity,
+  whatsapp: profile.whatsapp,
   languages: profile.languages,
 };
 
@@ -47,8 +50,6 @@ export const jobs: Job[] = experience.map((j) => {
 
 export const huawei = jobs.find((j) => j.kind === 'core')!;
 export const current = jobs.find((j) => j.kind === 'now')!;
-export const careerStart = Math.min(...jobs.map((j) => j.fromYear));
-export const careerYears = Math.floor(nowYear - careerStart);
 export const huaweiYears = Math.round(huawei.years);
 
 export const edu = education.map((e) => ({ ...e, period: `${e.start} to ${e.end}` }));
@@ -56,18 +57,14 @@ export const recognition = cv.recognition;
 export const strengths = cv.strengths;
 export const stack = cv.stack;
 export const volunteer = cv.volunteer;
+export const nt = { ...cv.nt, bts: `${cv.nt.bts}${cv.nt.btsPlus ? '+' : ''}`, swaps: `${cv.nt.swaps}${cv.nt.swapsPlus ? '+' : ''}` };
 export const ncell = {
   ...cv.ncell,
   swapped: `${cv.ncell.swappedSites}${cv.ncell.plus ? '+' : ''}`,
   share: Math.round((cv.ncell.swappedSites / cv.ncell.totalSites) * 100),
 };
 
-/** Fixed order of the four content areas used by the Snapshot's "information to clarity" flow. */
-export const strands = [
-  { id: 'info', label: 'Information', icon: 'search', text: 'Gather and check the raw data: ERP, BOQ and SCM records, site surveys, client files.', proof: ['Site surveys, GTL Nepal', 'ERP and BOQ data, Huawei', 'Research and consolidation, freelance'] },
-  { id: 'structure', label: 'Structure', icon: 'network', text: 'Turn it into plans, schedules and reports that people can run a project from.', proof: ['Project controller, several clusters', 'Material planning from BOQ and SCM', 'Reporting to senior management'] },
-  { id: 'clarity', label: 'Clarity', icon: 'chart', text: 'Give decision makers a clear view of status, risk and next step.', proof: ['MIS dashboards and reports', 'Change control and delivery tracking', 'Business documentation and presentations'] },
-] as const;
+export const capabilities = cv.capabilities;
 
 export function formatById(id: string) {
   return formats.find((f) => f.id === id);
@@ -77,6 +74,6 @@ export const monthName = (m: number) => MONTHS[m];
 const yr = (a: number, b: number | null) => `${Math.floor(a + 0.001)}–${b === null ? 'present' : Math.round(b)}`;
 /** Education and work as one chronological schedule (used by the home page and the Snapshot). */
 export const scheduleRows = [
-  ...edu.map((e) => ({ label: e.short, sub: e.institution, start: e.fromYear, end: e.toYear as number, kind: 'edu' as string, years: yr(e.fromYear, e.toYear) })),
-  ...jobs.map((j) => ({ label: j.role, sub: j.org.replace(/ Co\., Pvt\. Ltd\./, ''), start: j.fromYear, end: (j.toYear ?? nowYear) as number, kind: j.kind as string, years: yr(j.fromYear, j.toYear) })),
+  ...edu.map((e) => ({ show: true, label: e.short, sub: e.institution, start: e.fromYear, end: e.toYear as number, kind: 'edu' as string, years: yr(e.fromYear, e.toYear) })),
+  ...jobs.map((j) => ({ show: j.snapshot !== false, label: j.role, sub: j.org.replace(/ Co\., Pvt\. Ltd\./, ''), start: j.fromYear, end: (j.toYear ?? nowYear) as number, kind: j.kind as string, years: yr(j.fromYear, j.toYear) })),
 ].sort((a, b) => a.start - b.start);
