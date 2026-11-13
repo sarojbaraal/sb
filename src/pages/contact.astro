@@ -65,7 +65,9 @@ import profile from "../data/profile.json";
                 Phone / WhatsApp
               </span>
               <a
-                href={`tel:${profile.phone}`}
+                href={`https://wa.me/${profile.whatsapp.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 class="text-base font-medium text-[var(--color-text)] hover:text-[var(--color-accent)]"
               >
                 {profile.phone}

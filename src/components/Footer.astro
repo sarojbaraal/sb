@@ -40,7 +40,7 @@ const nav = [
         <p class="text-white font-semibold mb-3">Contact</p>
         <ul class="list-none p-0 m-0 space-y-2">
           <li><a href={`mailto:${profile.email}`} class="hover:text-white underline-offset-4 hover:underline">{profile.email}</a></li>
-          <li><a href={`tel:${profile.phone}`} class="hover:text-white underline-offset-4 hover:underline">{profile.phone}</a></li>
+          <li><a href={`https://wa.me/${profile.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" class="hover:text-white underline-offset-4 hover:underline">{profile.phone}</a></li>
           <li><a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-white underline-offset-4 hover:underline">LinkedIn</a></li>
           <li><a href={url("/contact")} class="hover:text-white underline-offset-4 hover:underline">Contact form</a></li>
           <li><a href={url("/rss.xml")} class="text-sm opacity-80 hover:opacity-100 underline-offset-4 hover:underline">RSS feed</a></li>
