@@ -91,7 +91,7 @@ const others = recognition.filter((r) => r !== seed);
 
   <div class="sn-foot">
     <span><Icon name="mail" size={12} /> {person.email}</span>
-    <span><Icon name="phone" size={12} /> WhatsApp {person.whatsapp}</span>
+    <span><Icon name="phone" size={12} /> WhatsApp, Telegram {person.handle}</span>
     <span><Icon name="link" size={12} /> {person.linkedin}</span>
     <span><Icon name="globe" size={12} /> {person.languages.map((l) => `${l.name} (${l.level.toLowerCase()})`).join(', ')}</span>
   </div>

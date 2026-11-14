@@ -25,13 +25,13 @@ export const person = {
   city: profile.location.city,
   country: profile.location.country,
   email: profile.email,
-  phone: profile.phone,
+  handle: profile.handle,
+  chatUrl: profile.chatUrl,
   linkedinUrl: profile.linkedin,
   linkedin: profile.linkedin.replace(/^https?:\/\/(www\.)?/, ''),
   summary: profile.summary,
   hire: profile.hire,
   identity: profile.identity,
-  whatsapp: profile.whatsapp,
   languages: profile.languages,
 };
 

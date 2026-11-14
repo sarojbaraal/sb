@@ -54,7 +54,7 @@ import profile from "../data/profile.json";
                 {profile.email}
               </a>
               <span class="text-xs text-[var(--color-muted)] block mt-0.5">
-                Fallback: {profile.emailFallback}
+                Also: {profile.emailAlt}
               </span>
             </div>
 
@@ -62,15 +62,15 @@ import profile from "../data/profile.json";
               <span
                 class="text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider block"
               >
-                Phone / WhatsApp
+                WhatsApp / Telegram
               </span>
               <a
-                href={`https://wa.me/${profile.whatsapp.replace(/\D/g, "")}`}
+                href={profile.chatUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="text-base font-medium text-[var(--color-text)] hover:text-[var(--color-accent)]"
               >
-                {profile.phone}
+                {profile.handle}
               </a>
             </div>
 

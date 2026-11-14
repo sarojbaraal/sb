@@ -9,8 +9,6 @@
     "tzLabel": "NPT (UTC+5:45)"
   },
   "email": "info@sarojbaral.com.np",
-  "emailFallback": "info@sarojbaral.com.np",
-  "phone": "[removed] (WhatsApp)",
   "linkedin": "https://www.linkedin.com/in/sarojbaraal",
   "availability": "Available for remote roles and consulting",
   "languages": [
@@ -46,7 +44,9 @@
     }
   ],
   "summary": "Engineer with six years of project implementation, technical sales and solution delivery at Huawei Technologies Nepal, followed by independent MIS, reporting and business support for clients and businesses. I turn scattered inputs from sales, finance, supply chain and vendors into one accurate, reportable picture, and I hold an Executive MBA in strategic management.",
-  "whatsapp": "[removed]",
   "hire": "I turn scattered project and business data into one accurate picture that teams can act on.",
-  "identity": "Engineer turned project controller and MIS specialist"
+  "identity": "Engineer turned project controller and MIS specialist",
+  "emailAlt": "hello@sarojbaral.com.np",
+  "handle": "@sarojbaral",
+  "chatUrl": "https://t.me/sarojbaral"
 }

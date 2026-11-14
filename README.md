@@ -49,7 +49,7 @@ All structured data lives in JSON files within `src/data/`:
 
 | Data File | Description |
 | :--- | :--- |
-| `src/data/profile.json` | Name, headline, tagline, location, email, phone, LinkedIn, proof strip stats, and languages. |
+| `src/data/profile.json` | Name, headline, tagline, location, email, messaging handle, LinkedIn, proof strip stats, and languages. |
 | `src/data/experience.json` | Professional roles (Huawei, Consulting, GTL, Radio Nepal), dates, summaries, bullets, and awards. |
 | `src/data/services.json` | Core services (MIS & Reporting, Document Control, Project Coordination) with pricing and scopes. |
 | `src/data/website-packages.json` | SME website packages (Starter, Business, Custom) with pricing and feature lists. |
@@ -106,7 +106,7 @@ Locally: `npm run build && bash scripts/build-cv.sh dist` (needs Chrome). `/cv.p
 ## 4. Web3Forms Configuration
 
 The contact form uses [Web3Forms](https://web3forms.com/) for zero-backend form submissions.
-1. Visit [web3forms.com](https://web3forms.com/) and enter `info@sarojbaral.com.np` to receive your free Access Key.
+1. Visit [web3forms.com](https://web3forms.com/) and enter your email to receive your free Access Key.
 2. Open `src/components/ContactForm.astro`.
 3. Replace `YOUR_WEB3FORMS_KEY` with your actual key:
    ```html
@@ -132,7 +132,7 @@ The site includes pre-configured Cloudflare Pages files:
 
 Before officially publishing to production, ensure these placeholders are updated:
 
-- [ ] **Phone Number**: Confirm `[removed]` in `src/data/profile.json` and `src/pages/cv.astro`.
+- [ ] **Contact**: WhatsApp and Telegram use the `@sarojbaral` handle (no phone number is published). Edit `handle` and `chatUrl` in `src/data/profile.json`.
 - [ ] **LinkedIn URL**: Replace `https://www.linkedin.com/in/sarojbaraal` in `src/data/profile.json` and `public/_redirects`.
 - [ ] **Web3Forms Key**: Replace `YOUR_WEB3FORMS_KEY` in `src/components/http://192.sarojbaral.com.np/contact`.
 - [ ] **Cal.com Meeting Link**: Replace `https://cal.com/sarojbaral` in `src/pages/contact.astro`.
