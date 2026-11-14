@@ -2,6 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactForm from "../components/ContactForm.astro";
 import profile from "../data/profile.json";
+import Icon from "../components/Icon.astro";
+import { channels } from "../lib/contact";
 ---
 
 <BaseLayout
@@ -41,54 +43,17 @@ import profile from "../data/profile.json";
           </h2>
 
           <div class="space-y-4 text-sm">
-            <div>
-              <span
-                class="text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider block"
-              >
-                Primary Email
-              </span>
-              <a
-                href={`mailto:${profile.email}`}
-                class="text-base font-medium text-[var(--color-accent)] hover:underline"
-              >
-                {profile.email}
-              </a>
-              <span class="text-xs text-[var(--color-muted)] block mt-0.5">
-                Also: {profile.emailAlt}
-              </span>
-            </div>
-
-            <div class="pt-2 border-t border-[var(--color-border)]">
-              <span
-                class="text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider block"
-              >
-                WhatsApp / Telegram
-              </span>
-              <a
-                href={profile.chatUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-base font-medium text-[var(--color-text)] hover:text-[var(--color-accent)]"
-              >
-                {profile.handle}
-              </a>
-            </div>
-
-            <div class="pt-2 border-t border-[var(--color-border)]">
-              <span
-                class="text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider block"
-              >
-                LinkedIn
-              </span>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-base font-medium text-[var(--color-accent)] hover:underline inline-flex items-center gap-1"
-              >
-                Saroj Baral on LinkedIn &nearr;
-              </a>
-            </div>
+            <ul class="list-none p-0 m-0 space-y-3">
+              {channels.map((c) => (
+                <li>
+                  <a href={c.href} target={c.external ? "_blank" : undefined} rel={c.external ? "noopener noreferrer" : undefined} class="flex items-center gap-3 text-base font-medium text-[var(--color-text)] hover:text-[var(--color-accent)]">
+                    <span class="inline-flex w-9 h-9 items-center justify-center rounded-full bg-[var(--color-accent-soft)] text-[var(--color-accent)] shrink-0"><Icon name={c.icon} size={18} /></span>
+                    <span><span class="block text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider">{c.label}</span>{c.value}</span>
+                  </a>
+                </li>
+              ))}
+              <li class="text-xs text-[var(--color-muted)] pl-12 pb-3">Also: {profile.emailAlt}</li>
+            </ul>
 
             <div class="pt-2 border-t border-[var(--color-border)]">
               <span

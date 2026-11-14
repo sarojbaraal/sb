@@ -6,6 +6,7 @@ import { url } from '../utils/url';
 export async function GET(context: APIContext) {
   const notes = await getCollection('notes', ({ data }) => !data.draft);
   return rss({
+    stylesheet: url('/rss/styles.xsl'),
     title: 'Saroj Baral — Field Notes',
     description: 'Working notes on MIS, project control, spreadsheet architecture, ERP data integrity, and project operations.',
     site: context.site?.toString() || 'https://sarojbaral.com.np',

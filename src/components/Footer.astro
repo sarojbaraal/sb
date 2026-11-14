@@ -1,6 +1,8 @@
 ---
 import { url } from "../utils/url";
 import profile from '../data/profile.json';
+import Icon from './Icon.astro';
+import { channels } from '../lib/contact';
 
 const currentYear = new Date().getFullYear();
 const nav = [
@@ -39,9 +41,9 @@ const nav = [
       <div>
         <p class="text-white font-semibold mb-3">Contact</p>
         <ul class="list-none p-0 m-0 space-y-2">
-          <li><a href={`mailto:${profile.email}`} class="hover:text-white underline-offset-4 hover:underline">{profile.email}</a></li>
-          <li><a href={profile.chatUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white underline-offset-4 hover:underline">WhatsApp, Telegram {profile.handle}</a></li>
-          <li><a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-white underline-offset-4 hover:underline">LinkedIn</a></li>
+          {channels.map((c) => (
+            <li><a href={c.href} target={c.external ? "_blank" : undefined} rel={c.external ? "noopener noreferrer" : undefined} class="inline-flex items-center gap-2 hover:text-white underline-offset-4 hover:underline"><Icon name={c.icon} size={15} />{c.id === 'email' || c.id === 'linkedin' ? (c.id === 'email' ? c.value : 'LinkedIn') : `${c.label} ${c.value}`}</a></li>
+          ))}
           <li><a href={url("/contact")} class="hover:text-white underline-offset-4 hover:underline">Contact form</a></li>
           <li><a href={url("/rss.xml")} class="text-sm opacity-80 hover:opacity-100 underline-offset-4 hover:underline">RSS feed</a></li>
         </ul>
