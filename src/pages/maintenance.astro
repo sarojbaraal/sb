@@ -1,0 +1,274 @@
+---
+import "../styles/global.css";
+
+const pageTitle = "Under Maintenance | Saroj Baral";
+const pageDescription = "This website is temporarily under maintenance while I make a few improvements. Please check back shortly.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08132A" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script is:inline>
+      try {
+        var savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark" || savedTheme === "light") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <main class="maintenance-page">
+      <div class="ambient ambient-one" aria-hidden="true"></div>
+      <div class="ambient ambient-two" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Saroj Baral home">
+          <span class="brand-mark">SB<span>.</span></span>
+          <span class="brand-copy">
+            <strong>Saroj Baral</strong>
+            <small>PERSONAL WEBSITE</small>
+          </span>
+        </a>
+
+        <button class="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.4A8.5 8.5 0 0 1 8.6 3.8 8.6 8.6 0 1 0 20.2 15.4Z"></path></svg>
+        </button>
+      </header>
+
+      <section class="content" aria-labelledby="maintenance-title">
+        <div class="visual" aria-hidden="true">
+          <div class="orbit orbit-outer"></div>
+          <div class="orbit orbit-inner"></div>
+          <div class="visual-core">
+            <svg viewBox="0 0 100 100" role="presentation">
+              <path d="M61 12a31 31 0 0 0-37 40L12 64l24 24 12-12a31 31 0 0 0 40-37L70 57 54 41l7-29Z"></path>
+              <path d="m36 64 28-28"></path>
+              <circle cx="69" cy="31" r="5"></circle>
+            </svg>
+          </div>
+          <span class="orbit-point point-blue"></span>
+          <span class="orbit-point point-gold"></span>
+          <span class="visual-caption">A LITTLE WORK BEHIND THE SCENES</span>
+        </div>
+
+        <div class="message">
+          <p class="eyebrow"><span class="status-dot"></span> TEMPORARILY UNAVAILABLE</p>
+          <h1 id="maintenance-title">A better experience<br /><span>is taking shape.</span></h1>
+          <p class="intro">
+            I'm making a few improvements to this website. The work is underway,
+            and everything will be back online as soon as possible.
+          </p>
+
+          <div class="status-card">
+            <span class="status-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 8v4l2.5 1.5"></path><circle cx="12" cy="12" r="9"></circle></svg>
+            </span>
+            <span class="status-copy">
+              <strong>Maintenance in progress</strong>
+              <small>Updating, refining and making things better.</small>
+            </span>
+            <span class="status-live"><i></i> IN PROGRESS</span>
+          </div>
+
+          <p class="closing">Thank you for your patience.</p>
+        </div>
+      </section>
+
+      <footer class="bottom">
+        <span>© {new Date().getFullYear()} Saroj Baral</span>
+        <span class="footer-note"><span></span> Back soon, with a little more polish.</span>
+      </footer>
+    </main>
+  </body>
+</html>
+
+<script>
+  const themeButton = document.querySelector<HTMLButtonElement>(".theme-toggle");
+
+  themeButton?.addEventListener("click", () => {
+    const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+    try {
+      localStorage.setItem("theme", nextTheme);
+    } catch (e) {}
+  });
+</script>
+
+<style is:global>
+  :root {
+    --maintenance-bg: #F3F5F9;
+    --maintenance-text: #0F1B33;
+    --maintenance-muted: #64718A;
+    --maintenance-border: rgba(15, 27, 51, .12);
+    --maintenance-panel: rgba(255, 255, 255, .72);
+    --maintenance-blue: #2F6FED;
+    --maintenance-gold: #F2B01E;
+    --maintenance-navy: #08132A;
+  }
+
+  :root[data-theme="dark"] {
+    --maintenance-bg: #070E1D;
+    --maintenance-text: #EDF2FC;
+    --maintenance-muted: #A7B4CC;
+    --maintenance-border: rgba(190, 207, 239, .15);
+    --maintenance-panel: rgba(17, 31, 59, .68);
+    --maintenance-blue: #79A8FF;
+    --maintenance-gold: #F2B01E;
+  }
+
+  body {
+    min-height: 100vh;
+    background: var(--maintenance-bg);
+    color: var(--maintenance-text);
+  }
+
+  .maintenance-page {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 0 clamp(24px, 7vw, 104px);
+    background:
+      radial-gradient(ellipse at 78% 42%, rgba(47,111,237,.09), transparent 38%),
+      radial-gradient(ellipse at 14% 88%, rgba(242,176,30,.06), transparent 32%),
+      var(--maintenance-bg);
+  }
+
+  .ambient {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    border: 1px solid var(--maintenance-border);
+    border-radius: 50%;
+  }
+  .ambient-one { width: 620px; height: 620px; right: -390px; top: 12%; }
+  .ambient-two { width: 440px; height: 440px; right: -300px; top: 21%; }
+
+  .topbar, .bottom {
+    width: 100%;
+    max-width: 1320px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .topbar { min-height: 100px; border-bottom: 1px solid var(--maintenance-border); }
+  .brand { display: inline-flex; align-items: center; gap: 13px; color: inherit; text-decoration: none; }
+  .brand-mark {
+    display: grid; place-items: center; width: 43px; height: 43px;
+    border: 1px solid rgba(47,111,237,.38); border-radius: 7px;
+    color: var(--maintenance-text); font-weight: 750; font-size: 17px; letter-spacing: -.08em;
+    background: linear-gradient(145deg, rgba(47,111,237,.14), rgba(47,111,237,.03));
+  }
+  .brand-mark span { color: var(--maintenance-blue); }
+  .brand-copy { display: grid; gap: 2px; }
+  .brand-copy strong { font-size: 14px; letter-spacing: -.01em; }
+  .brand-copy small { color: var(--maintenance-muted); font-size: 9px; font-weight: 650; letter-spacing: .15em; }
+  .theme-toggle {
+    width: 42px; height: 42px; display: grid; place-items: center;
+    border: 1px solid var(--maintenance-border); border-radius: 50%;
+    color: var(--maintenance-text); background: var(--maintenance-panel); cursor: pointer;
+    transition: border-color .2s, transform .2s;
+  }
+  .theme-toggle:hover { border-color: var(--maintenance-blue); transform: translateY(-2px); }
+  .theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .moon-icon { display: none; }
+  :root[data-theme="dark"] .sun-icon { display: none; }
+  :root[data-theme="dark"] .moon-icon { display: block; }
+
+  .content {
+    width: 100%; max-width: 1120px; margin: auto; padding: 76px 0 88px;
+    display: grid; grid-template-columns: minmax(280px, .9fr) minmax(0, 1.1fr);
+    align-items: center; gap: clamp(42px, 8vw, 112px);
+  }
+  .visual { min-height: 390px; position: relative; display: grid; place-items: center; }
+  .orbit {
+    position: absolute; border: 1px solid var(--maintenance-border); border-radius: 50%;
+    transform: rotate(-24deg);
+  }
+  .orbit-outer { width: min(31vw, 350px); height: min(31vw, 350px); }
+  .orbit-inner { width: min(23vw, 258px); height: min(23vw, 258px); border-color: rgba(47,111,237,.25); transform: rotate(35deg); }
+  .visual-core {
+    width: 142px; height: 142px; display: grid; place-items: center; border-radius: 28px;
+    background: linear-gradient(145deg, #102653, #09152F);
+    border: 1px solid rgba(127,176,255,.36);
+    box-shadow: 0 28px 75px rgba(5,11,24,.24), inset 0 1px 0 rgba(255,255,255,.12);
+    transform: rotate(-7deg);
+  }
+  .visual-core svg { width: 72px; height: 72px; fill: none; stroke: #8DBBFF; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+  .orbit-point { position: absolute; width: 11px; height: 11px; border-radius: 50%; box-shadow: 0 0 0 7px var(--maintenance-bg); }
+  .point-blue { top: 17%; right: 21%; background: var(--maintenance-blue); }
+  .point-gold { bottom: 18%; left: 19%; background: var(--maintenance-gold); }
+  .visual-caption { position: absolute; bottom: 5px; color: var(--maintenance-muted); font-size: 9px; font-weight: 650; letter-spacing: .2em; }
+
+  .message { max-width: 590px; }
+  .eyebrow {
+    display: flex; align-items: center; gap: 10px; margin: 0 0 23px;
+    color: var(--maintenance-blue); font-size: 11px; font-weight: 700; letter-spacing: .14em;
+  }
+  .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--maintenance-gold); box-shadow: 0 0 0 4px rgba(242,176,30,.13); }
+  .message h1 {
+    margin: 0 0 22px; color: var(--maintenance-text);
+    font-size: clamp(2.55rem, 5vw, 4.35rem); line-height: 1.07; letter-spacing: -.055em; font-weight: 720;
+  }
+  .message h1 span { color: var(--maintenance-blue); }
+  .intro { max-width: 49ch; margin: 0; color: var(--maintenance-muted); font-size: 16px; line-height: 1.8; }
+  .status-card {
+    display: flex; align-items: center; gap: 14px; margin-top: 34px; padding: 17px 18px;
+    border: 1px solid var(--maintenance-border); border-radius: 7px;
+    background: var(--maintenance-panel); box-shadow: 0 12px 36px rgba(5,11,24,.045);
+    backdrop-filter: blur(12px);
+  }
+  .status-icon {
+    flex: none; display: grid; place-items: center; width: 40px; height: 40px;
+    border-radius: 6px; color: var(--maintenance-blue); background: rgba(47,111,237,.11);
+  }
+  .status-icon svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .status-copy { display: grid; gap: 2px; min-width: 0; }
+  .status-copy strong { font-size: 13px; font-weight: 650; }
+  .status-copy small { color: var(--maintenance-muted); font-size: 11px; line-height: 1.5; }
+  .status-live { margin-left: auto; white-space: nowrap; color: var(--maintenance-muted); font-size: 9px; font-weight: 700; letter-spacing: .1em; }
+  .status-live i { display: inline-block; width: 6px; height: 6px; margin: 0 5px 1px 0; border-radius: 50%; background: #27B47E; }
+  .closing { margin: 22px 0 0; color: var(--maintenance-muted); font-size: 13px; }
+
+  .bottom {
+    min-height: 76px; border-top: 1px solid var(--maintenance-border);
+    color: var(--maintenance-muted); font-size: 11px;
+  }
+  .footer-note { display: inline-flex; align-items: center; gap: 9px; }
+  .footer-note span { width: 5px; height: 5px; border-radius: 50%; background: var(--maintenance-gold); }
+
+  @media (max-width: 760px) {
+    .maintenance-page { padding-inline: 24px; }
+    .topbar { min-height: 78px; }
+    .content { grid-template-columns: 1fr; gap: 25px; padding: 48px 0 58px; }
+    .visual { min-height: 230px; order: 2; }
+    .message { order: 1; }
+    .orbit-outer { width: 220px; height: 220px; }
+    .orbit-inner { width: 166px; height: 166px; }
+    .visual-core { width: 100px; height: 100px; border-radius: 21px; }
+    .visual-core svg { width: 54px; height: 54px; }
+    .visual-caption { bottom: 0; }
+    .message h1 { font-size: clamp(2.45rem, 11vw, 3.5rem); }
+    .bottom { min-height: 70px; gap: 10px; flex-wrap: wrap; padding: 15px 0; }
+  }
+  @media (max-width: 420px) {
+    .status-card { align-items: flex-start; flex-wrap: wrap; }
+    .status-live { margin-left: 54px; }
+    .footer-note { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  }
+</style>
