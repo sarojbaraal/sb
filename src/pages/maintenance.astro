@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { url } from "../utils/url";
 
 const pageTitle = "Under Maintenance | Saroj Baral";
 const pageDescription = "This website is temporarily under maintenance while I make a few improvements. Please check back shortly.";
@@ -14,7 +15,7 @@ const pageDescription = "This website is temporarily under maintenance while I m
     <meta name="robots" content="noindex, nofollow" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href={url("/favicon.png")} />
     <script is:inline>
       try {
         var savedTheme = localStorage.getItem("theme");
@@ -30,13 +31,13 @@ const pageDescription = "This website is temporarily under maintenance while I m
       <div class="ambient ambient-two" aria-hidden="true"></div>
 
       <header class="topbar">
-        <a class="brand" href="/" aria-label="Saroj Baral home">
+        <div class="brand" aria-label="Saroj Baral">
           <span class="brand-mark">SB<span>.</span></span>
           <span class="brand-copy">
             <strong>Saroj Baral</strong>
             <small>PERSONAL WEBSITE</small>
           </span>
-        </a>
+        </div>
 
         <button class="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
           <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
